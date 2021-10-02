@@ -188,7 +188,7 @@ namespace Assets.Scripts
                 Options = new PlayerOptions()
                 {
                     AreAnimationsEnabled = true,
-                    BackgroundVolume = 0.125f,
+                    BackgroundVolume = 1f,                    //BackgroundVolume = 0.125f,
                     ForegroundVolume = 1f
                 };
             }

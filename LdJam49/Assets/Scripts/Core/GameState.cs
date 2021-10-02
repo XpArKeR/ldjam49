@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.Ships;
-
+﻿
 using System;
-using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -43,8 +41,8 @@ namespace Assets.Scripts
         }
 
         [SerializeField]
-        private Ship ship;
-        public Ship Ship
+        private BasicShip ship;
+        public BasicShip Ship
         {
             get
             {
