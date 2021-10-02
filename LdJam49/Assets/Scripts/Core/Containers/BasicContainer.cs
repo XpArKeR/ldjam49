@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class BasicContainer 
 {
-    private float Weigth;
-
+    private float weigth;
+    public float Weight
+    {
+        get
+        {
+            return this.weigth;
+        }
+        set
+        {
+            if (this.weigth != value)
+            {
+                this.weigth = value;
+            }
+        }
+    }
 }
