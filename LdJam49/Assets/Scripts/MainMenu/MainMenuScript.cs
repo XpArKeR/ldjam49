@@ -1,6 +1,12 @@
 
 
+using System;
+
+using Assets.Scripts;
+using Assets.Scripts.Audio;
+
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
@@ -13,15 +19,37 @@ public class MainMenuScript : MonoBehaviour
     public GameObject QuitButton;
     public GameObject BackButton;
 
-    public AudioSource AudioSource;
+    public BackgroundManager BackgroundManager;
+    public ForegroundManager ForegroundManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (this.VersionText != null)
+        if (VersionText != default)
         {
-            this.VersionText.text = System.Math.Round(Random.Range(1f, 25.2145f), 4).ToString();
+            this.VersionText.text = Application.version;
+        }
+
+        if (Core.BackgroundMusicManager == default)
+        {
+            Core.BackgroundMusicManager = this.BackgroundManager;
+            Core.BackgroundMusicManager.Initialize();
+        }
+
+        if (Core.ForegroundMusicManager == default)
+        {
+            Core.ForegroundMusicManager = this.ForegroundManager;
+            Core.ForegroundMusicManager.Initialize();
+        }
+
+        if (!Core.BackgroundMusicManager.IsPlaying)
+        {
+            Core.BackgroundMusicManager.Resume();
+        }
+        else
+        {
+            Core.BackgroundMusicManager.Unmute();
         }
     }
 
@@ -33,11 +61,41 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
+        Core.StartGame();
+    }
 
+    public void ShowOptions()
+    {
+        this.ChangeContainerVisiblity(options: true);
+    }
+
+    public void ShowCredits()
+    {
+        this.ChangeContainerVisiblity(credits: true);
+    }
+
+    public void BackToMainMenu()
+    {
+        this.ChangeContainerVisiblity(mainMenu: true);
     }
 
     public void Quit()
     {
+        Application.Quit();
+    }
 
+    private void ChangeContainerVisiblity(Boolean mainMenu = false, Boolean options = false, Boolean credits = false)
+    {
+        if (!mainMenu && !options && !credits)
+        {
+            throw new InvalidOperationException("No visiblity is not allowed!");
+        }
+
+        this.MainMenuContainer.SetActive(mainMenu);
+        this.OptionsMenuContainer.SetActive(options);
+        this.CreditsContainer.SetActive(credits);
+
+        this.QuitButton.SetActive(mainMenu);
+        this.BackButton.SetActive(!mainMenu);
     }
 }
