@@ -10,5 +10,6 @@ namespace Assets.Scripts.Constants
     {
         public const String MainMenu = "MainMenuScene";
         public const String HighSea = "HighSea";
+        public const String Port = "Port";
     }
 }

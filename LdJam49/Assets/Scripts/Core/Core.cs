@@ -167,7 +167,7 @@ namespace Assets.Scripts
                     Ship = default
                 };
 
-                effectiveGameState.CurrentScene = SceneNames.MainMenu;
+                effectiveGameState.CurrentScene = SceneNames.Port;
             }
 
             GameState = effectiveGameState;

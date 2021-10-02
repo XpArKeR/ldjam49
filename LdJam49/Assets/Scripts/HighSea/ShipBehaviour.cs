@@ -23,17 +23,17 @@ public class ShipBehaviour : MonoBehaviour
     void Update()
     {
 
-        RotationAxis = new Vector3(0, calculateRotation(), 0) * Time.deltaTime;
+        //RotationAxis = new Vector3(0, calculateRotation(), 0) * Time.deltaTime;
         ShipTransform.Rotate(RotationAxis, 5);
     }
 
-    private float calculateRotation()
-    {
-        float rotation;
-        if (ShipTransform.rotation.eulerAngles.z < Ship.)
+    //private float calculateRotation()
+    //{
+    //    float rotation;
+    //    if (ShipTransform.rotation.eulerAngles.z < Ship.)
 
 
-        return rotation;
-        = MAX(IF(ABS(B14) <$E$4,$E$2 * ABS(B14),$E$5 +$E$3 * ABS(B14)), 0)
-    }
+    //    return rotation;
+    //    = MAX(IF(ABS(B14) <$E$4,$E$2 * ABS(B14),$E$5 +$E$3 * ABS(B14)), 0)
+    //}
 }
