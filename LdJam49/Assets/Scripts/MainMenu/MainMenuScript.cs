@@ -1,4 +1,6 @@
 
+using Unity.Mathematics;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +22,7 @@ public class MainMenuScript : MonoBehaviour
     {
         if (this.VersionText != null)
         {
-            this.VersionText.text = Math.Round(Random.Range(1f, 25.2145f), 4).ToString();
+            this.VersionText.text = System.Math.Round(Random.Range(1f, 25.2145f), 4).ToString();
         }
     }
 
