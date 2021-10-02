@@ -7,7 +7,11 @@ public class ShipBehaviour : MonoBehaviour
     public RectTransform ShipTransform;
     public BasicShip Ship;
     private Vector3 RotationAxis;
-    private 
+
+
+
+    float ShipAngle;
+    private float PreviousRotationAcceleration = 0f;
 
     void Start()
     {
@@ -22,18 +26,39 @@ public class ShipBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        RotationAxis = new Vector3(0, calculateRotation(), 0) * Time.deltaTime;
+        ShipAngle = Mathf.Abs(ShipTransform.rotation.eulerAngles.z);
+        RotationAxis = new Vector3(0, CalculateShipRotation(), 0);
         ShipTransform.Rotate(RotationAxis, 5);
     }
 
-    private float calculateRotation()
+    private float CalculateShipRotation()
     {
-        float rotation;
-        if (ShipTransform.rotation.eulerAngles.z < Ship.)
-
-
+        float rotation = PreviousRotationAcceleration;
+        PreviousRotationAcceleration = CalculateRotationAcceleration() * Time.deltaTime;
         return rotation;
-        = MAX(IF(ABS(B14) <$E$4,$E$2 * ABS(B14),$E$5 +$E$3 * ABS(B14)), 0)
+    }
+
+    private float CalculateRotationAcceleration()
+    {
+        return (-Ship.Damping * CalculateShipRotation() - CalculateShipReaction() * ShipAngle + CalculateLoadForce()) / Ship.Mass;
+    }
+
+    private float CalculateLoadForce()
+    {
+        return Ship.ShipLoad.Weight * Mathf.Sin(ShipAngle + Ship.ShipLoad.Offset);
+    }
+
+    private float CalculateShipReaction()
+    {
+        float reaction;
+        if (ShipAngle < Ship.TiltingAngle)
+        {
+            reaction = Ship.StabilityConstant1 * ShipAngle;
+        } else
+        {
+            reaction = 224f + Ship.StabilityConstant2 * ShipAngle;
+        }
+
+        return reaction;
     }
 }

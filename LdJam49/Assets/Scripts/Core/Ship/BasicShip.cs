@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicShip
-{   
-    private float StabilityConstant1;
-    private float StabilityConstant2;
-    private float TiltingAngle;
-    private float Mass;
-    private float Damping;
+public class BasicShip { 
 
-    public float MyProperty { get; set; }
+    public float StabilityConstant1 { get; set; }
+    public float StabilityConstant2 { get; set; }
+    public float TiltingAngle { get; set; }
+    public float Mass { get; set; }
+    public float Damping { get; set; }
 
-    private ShipLoad ShipLoad;
+
+    public ShipLoad ShipLoad { get; set; }
 
 
     public void SetDefaultValues()
@@ -24,5 +23,9 @@ public class BasicShip
         Mass = 1f;
         Damping = 2f;
 
+        ShipLoad = new ShipLoad();
+
+        ShipLoad.Offset = 20f;
+        ShipLoad.Weight = 300f;
     }
 }

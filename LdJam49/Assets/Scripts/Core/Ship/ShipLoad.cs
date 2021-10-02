@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ShipLoad 
 {
-    private float Weight;
-    private float Offset;
+    public float Weight { get; set; }
+    public float Offset { get; set; }
 
-    private List<LoadedContainer> Containers;
+    public List<LoadedContainer> Containers { get; set; }
 
 
 }
