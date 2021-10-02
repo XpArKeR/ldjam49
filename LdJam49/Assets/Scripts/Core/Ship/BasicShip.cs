@@ -37,7 +37,7 @@ public class BasicShip {
 
         ShipLoad = new ShipLoad()
         {
-            Offset = 20f,
+            Offset = 10f,
             Weight = 300f
         };
     }
