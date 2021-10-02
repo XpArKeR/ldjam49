@@ -25,35 +25,18 @@ namespace Assets.Scripts
         }
 
         [SerializeField]
-        private float backgroundVolume;
-        public float BackgroundVolume
-        {
-            get
-            {
-                return this.backgroundVolume;
-            }
-            set
-            {
-                if (this.backgroundVolume != value)
-                {
-                    this.backgroundVolume = value;
-                }
-            }
-        }
-
-        [SerializeField]
-        private float foregroundVolume;
+        private float effectsVolume;
         public float EffectsVolume
         {
             get
             {
-                return this.foregroundVolume;
+                return this.effectsVolume;
             }
             set
             {
-                if (this.foregroundVolume != value)
+                if (this.effectsVolume != value)
                 {
-                    this.foregroundVolume = value;
+                    this.effectsVolume = value;
                 }
             }
         }
@@ -71,6 +54,23 @@ namespace Assets.Scripts
                 if (this.ambienceVolume != value)
                 {
                     this.ambienceVolume = value;
+                }
+            }
+        }
+
+        [SerializeField]
+        private float backgroundVolume;
+        public float BackgroundVolume
+        {
+            get
+            {
+                return this.backgroundVolume;
+            }
+            set
+            {
+                if (this.backgroundVolume != value)
+                {
+                    this.backgroundVolume = value;
                 }
             }
         }

@@ -205,8 +205,9 @@ namespace Assets.Scripts
                 Options = new PlayerOptions()
                 {
                     AreAnimationsEnabled = true,
-                    BackgroundVolume = 1f,                    //BackgroundVolume = 0.125f,
-                    EffectsVolume = 1f
+                    EffectsVolume = 1f,
+                    AmbienceVolume = 1.125f,
+                    BackgroundVolume = 0.125f,
                 };
             }
         }

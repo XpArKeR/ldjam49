@@ -18,7 +18,7 @@ public class Port : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Core.AmbienceAudioManager.Play(Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "Port", "Background_Slow")), true);
+        Core.AmbienceAudioManager?.Play(Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "Port", "Background_Slow")), true);
     }
 
     // Update is called once per frame
