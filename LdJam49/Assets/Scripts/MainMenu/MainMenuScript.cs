@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,15 +14,29 @@ public class MainMenuScript : MonoBehaviour
 
     public AudioSource AudioSource;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (this.VersionText != null)
+        {
+            this.VersionText.text = Math.Round(Random.Range(1f, 25.2145f), 4).ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void StartGame()
+    {
+
+    }
+
+    public void Quit()
+    {
+
     }
 }
