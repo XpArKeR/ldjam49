@@ -1,5 +1,10 @@
 
 
+using System;
+
+using Assets.Scripts;
+using Assets.Scripts.Constants;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +26,7 @@ public class MainMenuScript : MonoBehaviour
     {
         if (this.VersionText != null)
         {
-            this.VersionText.text = System.Math.Round(Random.Range(1f, 25.2145f), 4).ToString();
+            this.VersionText.text = System.Math.Round(UnityEngine.Random.Range(1f, 25.2145f), 4).ToString();
         }
     }
 
@@ -33,11 +38,38 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
+        Core.ChangeScene(SceneNames.HighSea);
+    }
 
+    public void ShowOptions()
+    {
+        this.ChangeContainerVisiblity(options: true);
+    }
+
+    public void ShowCredits()
+    {
+        this.ChangeContainerVisiblity(credits: true);
+    }
+
+    public void BackToMainMenu()
+    {
+        this.ChangeContainerVisiblity(mainMenu: true);
     }
 
     public void Quit()
     {
 
+    }
+
+    private void ChangeContainerVisiblity(Boolean mainMenu = false, Boolean options = false, Boolean credits = false)
+    {
+        if (!mainMenu && !options && !credits)
+        {
+            throw new InvalidOperationException("No visiblity is not allowed!");
+        }
+
+        this.MainMenuContainer.SetActive(mainMenu);
+        this.OptionsMenuContainer.SetActive(options);
+        this.MainMenuContainer.SetActive(credits);
     }
 }
