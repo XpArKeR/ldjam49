@@ -29,7 +29,9 @@ namespace Assets.Scripts.Audio
                     this.VolumeChanged.Invoke(value);
 
                     foreach (var audioSource in this.AudioSources)
+                    {
                         audioSource.volume = value;
+                    }
                 }
             }
         }
