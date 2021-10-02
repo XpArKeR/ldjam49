@@ -58,7 +58,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void Quit()
     {
-
+        Application.Quit();
     }
 
     private void ChangeContainerVisiblity(Boolean mainMenu = false, Boolean options = false, Boolean credits = false)
@@ -70,6 +70,9 @@ public class MainMenuScript : MonoBehaviour
 
         this.MainMenuContainer.SetActive(mainMenu);
         this.OptionsMenuContainer.SetActive(options);
-        this.MainMenuContainer.SetActive(credits);
+        this.CreditsContainer.SetActive(credits);
+
+        this.QuitButton.SetActive(mainMenu);
+        this.BackButton.SetActive(!mainMenu);
     }
 }
