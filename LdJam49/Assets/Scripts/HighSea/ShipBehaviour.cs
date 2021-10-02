@@ -27,15 +27,15 @@ public class ShipBehaviour : MonoBehaviour
     void Update()
     {
         ShipAngle = Mathf.Abs(ShipTransform.rotation.eulerAngles.z);
-        RotationAxis = new Vector3(0, CalculateShipRotation(), 0);
+        float RotationAcceleration = CalculateRotationAcceleration();
+        RotationAxis = new Vector3(0, 0, CalculateShipRotation());
+        PreviousRotationAcceleration = RotationAcceleration;
         ShipTransform.Rotate(RotationAxis, 5);
     }
 
     private float CalculateShipRotation()
     {
-        float rotation = PreviousRotationAcceleration;
-        PreviousRotationAcceleration = CalculateRotationAcceleration() * Time.deltaTime;
-        return rotation;
+        return PreviousRotationAcceleration * Time.deltaTime;
     }
 
     private float CalculateRotationAcceleration()
