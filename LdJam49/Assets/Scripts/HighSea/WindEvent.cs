@@ -7,6 +7,17 @@ public class WindEvent : SeaEvent
     public float Strength { get; set; }
     public float Direction { get; set; }
 
+    private float DurationPI;
+
+    private float GetDurationPI()
+    {
+        if (DurationPI == default)
+        {
+            DurationPI = Duration / Mathf.PI;
+        }
+        return DurationPI;
+    }
+
     public override bool ExecuteEvent(ShipBehaviour ShipBehaviour, float time)
     {
         float relativeEventTime = time - StartingTime;
@@ -15,8 +26,7 @@ public class WindEvent : SeaEvent
             return true;
         }
 
-        float strength = Strength * Mathf.Sin(relativeEventTime / Duration * Mathf.PI);
-        Debug.Log(strength);
+        float strength = Strength * Mathf.Sin(relativeEventTime / GetDurationPI());
         ShipBehaviour.PushSide(Direction, strength);
         return false;
     }

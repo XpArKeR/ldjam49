@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: fjhfgh
+    uniqueID: 305364227
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
