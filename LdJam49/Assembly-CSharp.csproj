@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\MainMenu\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\HighSea\Ship.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
