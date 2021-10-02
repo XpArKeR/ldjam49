@@ -8,6 +8,7 @@ namespace Assets.Scripts.Audio
     public abstract class SingleAudioManager : Manager
     {
         public AudioSource AudioSource;
+        private Single pauseTime;
 
         public void Play(AudioClip audioClip, Boolean isLooped = false)
         {
@@ -26,6 +27,30 @@ namespace Assets.Scripts.Audio
             if (AudioSource != default)
             {
                 AudioSource.volume = volume;
+            }
+        }
+
+        public override void Pause()
+        {
+            base.Pause();
+
+            if (this.AudioSource.isPlaying)
+            {
+                this.AudioSource.Pause();
+                pauseTime = this.AudioSource.time;
+            }
+        }
+
+        public override void Resume()
+        {
+            base.Resume();
+
+            if ((!this.AudioSource.isPlaying) && (pauseTime > 0))
+            {
+                this.AudioSource.time = pauseTime;
+                this.AudioSource.Play();
+
+                pauseTime = default;
             }
         }
     }

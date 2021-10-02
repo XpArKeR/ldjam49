@@ -43,9 +43,9 @@ public class OptionsMenu : MonoBehaviour
 
     public void OnRestoreDefaultsClick()
     {
-        Core.EffectsAudioManager.Volume = 1f;
-        Core.AmbienceAudioManager.Volume = 0.125f;
-        Core.BackgroundAudioManager.Volume = 0.125f;
+        EffectsVolumeSlider.value = 1f;
+        AmbienceVolumeSlider.value = 0.125f;
+        BackgroundVolumeSlider.value = 0.125f;
         Core.Options.AreAnimationsEnabled = true;
     }
 
