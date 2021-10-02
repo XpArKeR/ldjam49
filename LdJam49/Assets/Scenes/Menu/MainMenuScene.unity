@@ -397,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 11500000, guid: 3bc2daf6be0c38b45b6b02c68a04a91d, type: 3}
     - target: {fileID: 8849340443900071137, guid: 0aa33998ceea7c3449003516de85ade3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8849340443900071137, guid: 0aa33998ceea7c3449003516de85ade3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 894428514}
   - component: {fileID: 894428513}
   - component: {fileID: 894428512}
+  - component: {fileID: 894428516}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -1044,6 +1045,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &894428516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894428511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1075904809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,7 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.022546506, g: 0.66316265, b: 0.8962264, a: 1}
+  m_Color: {r: 0, g: 0.7309418, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
