@@ -30,15 +30,21 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        public virtual float Volume
+        private float volume;
+        public float Volume
         {
             get
             {
-                throw new NotImplementedException();
+                return this.volume;
             }
             set
             {
-                throw new NotImplementedException();
+                if (this.volume != value)
+                {
+                    this.volume = value;
+                    this.VolumeChanged.Invoke(value);
+                    OnVolumeChanged(value);
+                }
             }
         }
 
@@ -89,5 +95,7 @@ namespace Assets.Scripts.Audio
         protected virtual void Update()
         {
         }
+
+        protected abstract void OnVolumeChanged(float volume);
     }
 }

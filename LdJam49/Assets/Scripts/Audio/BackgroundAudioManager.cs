@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Audio
 {
-    public class BackgroundManager : Manager
+    public class BackgroundAudioManager : Manager
     {
         public List<AudioClip> clips;
         public List<AudioSource> AudioSources;
@@ -14,37 +14,13 @@ namespace Assets.Scripts.Audio
         private Int32 toggle = 0;
         private Double nextStartTime;
 
-        public override float Volume
-        {
-            get
-            {
-                return Core.Options.BackgroundVolume;
-            }
-            set
-            {
-                if (Core.Options.BackgroundVolume != value)
-                {
-                    Core.Options.BackgroundVolume = value;
-
-                    this.VolumeChanged.Invoke(value);
-
-                    foreach (var audioSource in this.AudioSources)
-                    {
-                        audioSource.volume = value;
-                    }
-                }
-            }
-        }
-
-
         public override void Initialize()
         {
             base.Initialize();
 
-            foreach (var audioSource in this.AudioSources)
-            {
-                audioSource.volume = Volume;
-            }
+            this.Volume = Core.BackgroundAudioManager.Volume;
+
+            this.PropagateVolume(this.Volume);
         }
 
         public override void Stop()
@@ -77,14 +53,10 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        // Start is called before the first frame update
-        protected override void Start()
+        protected override void OnVolumeChanged(Single volume)
         {
-            //StartAudio();
-        }
-
-        private void FixedUpdate()
-        {
+            Core.Options.BackgroundVolume = volume;
+            this.PropagateVolume(volume);
         }
 
         // Update is called once per frame
@@ -99,6 +71,17 @@ namespace Assets.Scripts.Audio
                 if (AudioSettings.dspTime > nextStartTime)
                 {
                     nextStartTime = QueueAudio(nextStartTime);
+                }
+            }
+        }
+
+        private void PropagateVolume(float volume)
+        {
+            if (this.AudioSources?.Count > 0)
+            {
+                foreach (var audioSource in this.AudioSources)
+                {
+                    audioSource.volume = volume;
                 }
             }
         }

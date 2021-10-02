@@ -54,24 +54,9 @@ namespace Assets.Scripts
             }
         }
 
-        private static BackgroundManager backgroundMusicManager;
-        public static BackgroundManager BackgroundMusicManager
-        {
-            get
-            {
-                return backgroundMusicManager;
-            }
-            set
-            {
-                if (backgroundMusicManager != value)
-                {
-                    backgroundMusicManager = value;
-                }
-            }
-        }
 
-        private static ForegroundManager foregroundMusicManager;
-        public static ForegroundManager ForegroundMusicManager
+        private static EffectsAudioManager foregroundMusicManager;
+        public static EffectsAudioManager EffectsAudioManager
         {
             get
             {
@@ -82,6 +67,38 @@ namespace Assets.Scripts
                 if (foregroundMusicManager != value)
                 {
                     foregroundMusicManager = value;
+                }
+            }
+        }
+
+        private static AmbienceAudioManager ambienceMusicManager;
+        public static AmbienceAudioManager AmbienceAudioManager
+        {
+            get
+            {
+                return ambienceMusicManager;
+            }
+            set
+            {
+                if (ambienceMusicManager != value)
+                {
+                    ambienceMusicManager = value;
+                }
+            }
+        }
+
+        private static BackgroundAudioManager backgroundAudioManager;
+        public static BackgroundAudioManager BackgroundAudioManager
+        {
+            get
+            {
+                return backgroundAudioManager;
+            }
+            set
+            {
+                if (backgroundAudioManager != value)
+                {
+                    backgroundAudioManager = value;
                 }
             }
         }
@@ -189,7 +206,7 @@ namespace Assets.Scripts
                 {
                     AreAnimationsEnabled = true,
                     BackgroundVolume = 1f,                    //BackgroundVolume = 0.125f,
-                    ForegroundVolume = 1f
+                    EffectsVolume = 1f
                 };
             }
         }

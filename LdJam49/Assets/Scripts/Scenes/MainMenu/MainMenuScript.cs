@@ -1,6 +1,7 @@
 
 
 using System;
+using System.IO;
 
 using Assets.Scripts;
 using Assets.Scripts.Audio;
@@ -18,46 +19,11 @@ public class MainMenuScript : MonoBehaviour
     public GameObject QuitButton;
     public GameObject BackButton;
 
-    public BackgroundManager BackgroundManager;
-    public ForegroundManager ForegroundManager;
+    public EffectsAudioManager EffectsAudioManager;
+    public AmbienceAudioManager AmbienceAudioManager;
+    public BackgroundAudioManager BackgroundAudioManager;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (VersionText != default)
-        {
-            this.VersionText.text = Application.version;
-        }
-
-        if (Core.BackgroundMusicManager == default)
-        {
-            Core.BackgroundMusicManager = this.BackgroundManager;
-            Core.BackgroundMusicManager.Initialize();
-        }
-
-        if (Core.ForegroundMusicManager == default)
-        {
-            Core.ForegroundMusicManager = this.ForegroundManager;
-            Core.ForegroundMusicManager.Initialize();
-        }
-
-        if (!Core.BackgroundMusicManager.IsPlaying)
-        {
-            Core.BackgroundMusicManager.Resume();
-        }
-        else
-        {
-            Core.BackgroundMusicManager.Unmute();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+        
     public void StartGame()
     {
         Core.StartGame();
@@ -81,6 +47,58 @@ public class MainMenuScript : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (VersionText != default)
+        {
+            this.VersionText.text = Application.version;
+        }
+
+        if (Core.EffectsAudioManager == default)
+        {
+            Core.EffectsAudioManager = this.EffectsAudioManager;
+            Core.EffectsAudioManager.Initialize();
+        }
+        if (Core.AmbienceAudioManager == default)
+        {
+            Core.AmbienceAudioManager = this.AmbienceAudioManager;
+            Core.AmbienceAudioManager.Initialize();
+        }
+
+        if (Core.BackgroundAudioManager == default)
+        {
+            Core.BackgroundAudioManager = this.BackgroundAudioManager;
+            Core.BackgroundAudioManager.Initialize();
+        }
+
+        if (!Core.BackgroundAudioManager.IsPlaying)
+        {
+            Core.BackgroundAudioManager.Resume();
+        }
+        else
+        {
+            Core.BackgroundAudioManager.Unmute();
+        }
+
+        if (!Core.AmbienceAudioManager.IsPlaying)
+        {
+            Core.AmbienceAudioManager.AudioSource.clip = Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"));
+            Core.AmbienceAudioManager.AudioSource.Play();
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Core.OnClose();
     }
 
     private void ChangeContainerVisiblity(Boolean mainMenu = false, Boolean options = false, Boolean credits = false)

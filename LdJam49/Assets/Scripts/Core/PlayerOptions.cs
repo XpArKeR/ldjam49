@@ -43,7 +43,7 @@ namespace Assets.Scripts
 
         [SerializeField]
         private float foregroundVolume;
-        public float ForegroundVolume
+        public float EffectsVolume
         {
             get
             {
@@ -54,6 +54,23 @@ namespace Assets.Scripts
                 if (this.foregroundVolume != value)
                 {
                     this.foregroundVolume = value;
+                }
+            }
+        }
+
+        [SerializeField]
+        private float ambienceVolume;
+        public float AmbienceVolume
+        {
+            get
+            {
+                return this.ambienceVolume;
+            }
+            set
+            {
+                if (this.ambienceVolume != value)
+                {
+                    this.ambienceVolume = value;
                 }
             }
         }
