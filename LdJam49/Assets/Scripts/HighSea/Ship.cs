@@ -14,6 +14,6 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShipTransform.RotateAround(RotationAxis, 5);
+        ShipTransform.Rotate(RotationAxis, 5);
     }
 }
