@@ -10,6 +10,18 @@ public class BasicShip {
     public float Mass { get; set; }
     public float Damping { get; set; }
 
+    private float _StabilityOffset;
+    public float StabilityOffset { 
+        get
+        { 
+            if (_StabilityOffset == default)
+            {
+                _StabilityOffset = (StabilityConstant1 - StabilityConstant2) * TiltingAngle;
+            }
+            return _StabilityOffset;
+        }
+    }
+
 
     public ShipLoad ShipLoad { get; set; }
 
@@ -20,12 +32,13 @@ public class BasicShip {
         StabilityConstant2 = -10f;
         TiltingAngle = 20f;
 
-        Mass = 1f;
-        Damping = 2f;
+        Mass = 4f;
+        Damping = 3f;
 
-        ShipLoad = new ShipLoad();
-
-        ShipLoad.Offset = 20f;
-        ShipLoad.Weight = 300f;
+        ShipLoad = new ShipLoad()
+        {
+            Offset = 20f,
+            Weight = 300f
+        };
     }
 }

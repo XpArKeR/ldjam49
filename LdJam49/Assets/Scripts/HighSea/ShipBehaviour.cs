@@ -11,7 +11,10 @@ public class ShipBehaviour : MonoBehaviour
 
 
     float ShipAngle;
-    private float PreviousRotationAcceleration = 0f;
+    private float Acceleration = 0f;
+    private float Velocity = 0f;
+
+
 
     void Start()
     {
@@ -21,44 +24,57 @@ public class ShipBehaviour : MonoBehaviour
             Ship = new BasicShip();
             Ship.SetDefaultValues();
         }
+
+        ShipAngle = ShipTransform.rotation.eulerAngles.z;
+        if (ShipAngle > 180)
+        {
+            ShipAngle = ShipAngle - 360;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShipAngle = Mathf.Abs(ShipTransform.rotation.eulerAngles.z);
+
+        ShipTransform.Rotate(RotationAxis, Velocity * Time.deltaTime);
+
+
+
+        ShipAngle += Velocity * Time.deltaTime;
+        Velocity += Acceleration * Time.deltaTime;
+
         float RotationAcceleration = CalculateRotationAcceleration();
-        RotationAxis = new Vector3(0, 0, CalculateShipRotation());
-        PreviousRotationAcceleration = RotationAcceleration;
-        ShipTransform.Rotate(RotationAxis, 5);
+        Debug.Log(Time.deltaTime + " " + ShipAngle + "  " + Velocity + " " + RotationAcceleration + " " + CalculateShipReaction() + " " + CalculateLoadForce());
+        Acceleration = RotationAcceleration;
     }
 
-    private float CalculateShipRotation()
-    {
-        return PreviousRotationAcceleration * Time.deltaTime;
-    }
+
 
     private float CalculateRotationAcceleration()
     {
-        return (-Ship.Damping * CalculateShipRotation() - CalculateShipReaction() * ShipAngle + CalculateLoadForce()) / Ship.Mass;
+        return (-Ship.Damping * Velocity - CalculateShipReaction() * ShipAngle + CalculateLoadForce()) / Ship.Mass;
     }
 
     private float CalculateLoadForce()
     {
-        return Ship.ShipLoad.Weight * Mathf.Sin(ShipAngle + Ship.ShipLoad.Offset);
+
+        float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
+        return Ship.ShipLoad.Weight * Mathf.Sin(radians);
     }
 
     private float CalculateShipReaction()
     {
         float reaction;
-        if (ShipAngle < Ship.TiltingAngle)
+        float absAngle = Mathf.Abs(ShipAngle);
+        if (absAngle < Ship.TiltingAngle)
         {
-            reaction = Ship.StabilityConstant1 * ShipAngle;
+            reaction = Ship.StabilityConstant1 * absAngle;
         } else
         {
-            reaction = 224f + Ship.StabilityConstant2 * ShipAngle;
+            reaction = Ship.StabilityOffset + Ship.StabilityConstant2 * absAngle;
         }
 
-        return reaction;
+        
+        return Mathf.Max(reaction, 0);
     }
 }
