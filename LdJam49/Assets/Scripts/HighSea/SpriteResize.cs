@@ -10,7 +10,8 @@ public class SpriteResize : MonoBehaviour
 
     void Start()
     {
-        //parent.localScale = parent.rect.size / sprite.size * sprite.sprite.pixelsPerUnit;
+        float hightScale = parent.rect.size.y / sprite.sprite.rect.size.y * sprite.sprite.pixelsPerUnit / 2;
+        parent.localScale = new Vector2(hightScale, hightScale);
     }
 
 }
