@@ -28,8 +28,10 @@ public class ShipBehaviour : MonoBehaviour
         ShipAngle = ShipTransform.rotation.eulerAngles.z;
         if (ShipAngle > 180)
         {
-            ShipAngle = ShipAngle - 360;
+            ShipAngle -= 360;
         }
+
+
     }
 
     // Update is called once per frame
@@ -39,12 +41,11 @@ public class ShipBehaviour : MonoBehaviour
         ShipTransform.Rotate(RotationAxis, Velocity * Time.deltaTime);
 
 
-
         ShipAngle += Velocity * Time.deltaTime;
         Velocity += Acceleration * Time.deltaTime;
 
         float RotationAcceleration = CalculateRotationAcceleration();
-        Debug.Log(Time.deltaTime + " " + ShipAngle + "  " + Velocity + " " + RotationAcceleration + " " + CalculateShipReaction() + " " + CalculateLoadForce());
+        //Debug.Log(Time.deltaTime + " " + ShipAngle + "  " + Velocity + " " + RotationAcceleration + " " + CalculateShipReaction() + " " + CalculateLoadForce());
         Acceleration = RotationAcceleration;
     }
 
