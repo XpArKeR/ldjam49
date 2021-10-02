@@ -15,6 +15,11 @@ public class ShipBehaviour : MonoBehaviour
     private float Velocity = 0f;
 
 
+    public void PushSide(float Direction, float Strength)
+    {
+        float pushAcceleration = Direction * Strength / Ship.Mass;
+        Acceleration += pushAcceleration;
+    }
 
     void Start()
     {
