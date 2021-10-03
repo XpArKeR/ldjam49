@@ -586,7 +586,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5194281991783336649, guid: 0aa33998ceea7c3449003516de85ade3, type: 3}
       propertyPath: m_Text
-      value: Begin again!
+      value: Try again!
       objectReference: {fileID: 0}
     - target: {fileID: 5452424541030572497, guid: 0aa33998ceea7c3449003516de85ade3, type: 3}
       propertyPath: m_Name
