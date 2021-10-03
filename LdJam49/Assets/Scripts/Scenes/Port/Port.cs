@@ -79,15 +79,15 @@ public class Port : MonoBehaviour
             SpawnContainer(ContainerSlot3);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
         {
             this.SelectContainer(this.ContainerSlot1);
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        else if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
         {
             this.SelectContainer(this.ContainerSlot2);
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        else if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
         {
             this.SelectContainer(this.ContainerSlot3);
         }
