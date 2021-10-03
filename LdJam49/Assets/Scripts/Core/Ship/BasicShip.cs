@@ -1,4 +1,5 @@
 
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class BasicShip
@@ -78,8 +79,9 @@ public class BasicShip
         }
     }
 
-    [SerializeField]
+    [JsonIgnore]
     private float draft;
+    [JsonIgnore]
     public float Draft
     {
         get
@@ -93,8 +95,9 @@ public class BasicShip
         }
     }
 
-    [SerializeField]
+    [JsonIgnore]
     private Vector2 effectuveMassPoint;
+    [JsonIgnore]
     public Vector2 EffectiveMassPoint
     {
         get
@@ -180,19 +183,30 @@ public class BasicShip
         }
     }
 
-    [SerializeField]
+    [JsonProperty]
+    private float relativeCenterOfMassX;
+    [JsonProperty]
+    private float relativeCenterOfMassY;
+
+    [JsonIgnore]
     private Vector2 relativeCenterOfMass;
+    [JsonIgnore]
     public Vector2 RelativeCenterOfMass
     {
         get
         {
+            if (relativeCenterOfMass == default)
+            {
+                relativeCenterOfMass = new Vector2(relativeCenterOfMassX, relativeCenterOfMassY);
+            }
             return this.relativeCenterOfMass;
         }
         set
         {
             if (this.relativeCenterOfMass != value)
             {
-                this.relativeCenterOfMass = value;
+                relativeCenterOfMassX = value.x;
+                relativeCenterOfMassY = value.y;
             }
         }
     }
@@ -214,8 +228,9 @@ public class BasicShip
         }
     }
 
-    [SerializeField]
+    [JsonIgnore]
     private float stabilityOffset;
+    [JsonIgnore]
     public float StabilityOffset
     {
         get

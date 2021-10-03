@@ -50,28 +50,7 @@ public class GameRun : MonoBehaviour
 
     private Level GetDefaultLevel()
     {
-
-        //Level = new Level
-        //{
-        //    Events = new List<SeaEvent>() {
-        //        new WindEvent()
-        //        {
-        //            EventName = "Blast",
-        //            Strength = 2000f,
-        //            Direction = 1,
-        //            StartingTime = 10,
-        //            Duration = 2
-        //        } 
-        //    },
-
-        //    Name = "Default",
-        //    WaterDepth = 100,
-        //    Length = 30
-
-        //};
-        //string levelString = LevelLoader.SerializeLevel(Level);
-        //return Level;
-        return LevelLoader.GetDefaultLevel();
+        return JasonHandler.GetDefaultLevel();
     }
 
     // Update is called once per frame

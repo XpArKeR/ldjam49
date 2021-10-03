@@ -34,8 +34,12 @@ public class ShipBehaviour : MonoBehaviour
         RotationAxis = new Vector3(0, 0, 1);
         if (Ship == null)
         {
-            Ship = new BasicShip();
-            Ship.SetDefaultValues();
+            //Ship = new BasicShip();
+            //Ship.SetDefaultValues();
+            //string json = JasonHandler.SerializeObject(Ship);
+            //Debug.Log(json);
+
+            Ship = JasonHandler.GetDefaultShip();
         }
 
         ShipAngle = ShipTransform.rotation.eulerAngles.z;
@@ -48,7 +52,7 @@ public class ShipBehaviour : MonoBehaviour
         Vector2 PositionOffset = new Vector2(0, (Ship.Height / 2 - Ship.Draft) / Ship.Height * ShipTransform.rect.height);
         Offset = ScaleByLocal(PositionOffset);
 
-        MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width/2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height/2);
+        MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
         ShipTransform.parent.transform.position = Offset;
@@ -85,7 +89,7 @@ public class ShipBehaviour : MonoBehaviour
         ShipTransform.parent.transform.position = Offset;
         this.MassMiddle.transform.position = MassMiddleVector;
         ShipTransform.RotateAround(this.MassMiddle.transform.position, RotationAxis, Velocity * Time.deltaTime);
-        
+
 
 
         ShipAngle += Velocity * Time.deltaTime;

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,22 +22,34 @@ public class ShipLoad
         }
     }
 
-    [SerializeField]
+    [JsonProperty]
+    private float centerOfMassX;
+    [JsonProperty]
+    private float centerOfMassY;
+
+    [JsonIgnore]
     private Vector2 centerOfMass;
+    [JsonIgnore]
     public Vector2 CenterOfMass
     {
         get
         {
+            if (centerOfMass == default)
+            {
+                centerOfMass = new Vector2(centerOfMassX, centerOfMassY);
+            }
             return this.centerOfMass;
         }
         set
         {
             if (this.centerOfMass != value)
             {
-                this.centerOfMass = value;
+                centerOfMassX = value.x;
+                centerOfMassY = value.y;
             }
         }
     }
+
 
     [SerializeField]
     private float offset;

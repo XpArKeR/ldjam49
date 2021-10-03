@@ -1,3 +1,6 @@
+Todo:
+ - RotationPoint ignores draft
+
 Nice to have:
 
  - Easter-egg with small button that triggers an event / sound
