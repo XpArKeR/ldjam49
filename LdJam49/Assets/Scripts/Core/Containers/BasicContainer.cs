@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicContainer 
 {
+    [SerializeField]
     private float weigth;
     public float Weight
     {
@@ -20,6 +21,7 @@ public class BasicContainer
         }
     }
 
+    [SerializeField]
     private Color color;
     public Color Color
     {

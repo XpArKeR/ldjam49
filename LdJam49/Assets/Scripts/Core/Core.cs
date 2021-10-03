@@ -181,7 +181,23 @@ namespace Assets.Scripts
             {
                 effectiveGameState = new GameState()
                 {
-                    Ship = default
+                    Ship = new BasicShip()
+                    {
+                        Width = 195,
+                        Height = 170,
+                        MaxDraft = 118,
+                        Buoyancy = 40,
+                        RelativeCenterOfMass = new Vector2(0.5f, 0.5f),
+
+                        StabilityConstant1 = 1.2f,
+                        StabilityConstant2 = -10f,
+                        TiltingAngle = 20f,
+
+                        Mass = 4f,
+                        Damping = 3f,
+
+                        ShipLoad = new ShipLoad()
+                    }
                 };
 
                 effectiveGameState.CurrentScene = SceneNames.Port;
