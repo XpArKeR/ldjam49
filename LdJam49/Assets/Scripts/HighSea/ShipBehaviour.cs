@@ -5,15 +5,21 @@ using UnityEngine;
 public class ShipBehaviour : MonoBehaviour
 {
     public RectTransform ShipTransform;
+    public RectTransform MassMiddle;
     public BasicShip Ship;
     private Vector3 RotationAxis;
     private Vector2 Offset;
+    private Vector2 MassMiddleVector;
 
 
 
     public float ShipAngle { get; private set; }
     private float Acceleration = 0f;
     private float Velocity = 0f;
+
+
+    public float MaxAngle { get; private set; }
+    public float MinAngle { get; private set; }
 
 
     public void PushSide(float Direction, float Strength)
@@ -39,31 +45,53 @@ public class ShipBehaviour : MonoBehaviour
         }
 
 
-        Vector2 PositionOffset = new Vector2(0, -Ship.Draft / Ship.Height * ShipTransform.rect.height);
+        Vector2 PositionOffset = new Vector2(0, (Ship.Height / 2 - Ship.Draft) / Ship.Height * ShipTransform.rect.height);
+        Offset = ScaleByLocal(PositionOffset);
 
-        Offset = new Vector2(PositionOffset.x / ShipTransform.localScale.x, PositionOffset.y / ShipTransform.localScale.y);
+        MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width/2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height/2);
+        MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
-        //Vector3 PositionOffset = new Vector3(0, -Ship.Draft / Ship.Height, 0);
-        //Debug.Log("Offset: " + PositionOffset);
+        ShipTransform.parent.transform.position = Offset;
+        this.MassMiddle.transform.position = MassMiddleVector + Offset;
 
-        Vector2 target = (Vector2)ShipTransform.position + Offset;
-
-        ShipTransform.position = Vector2.MoveTowards(ShipTransform.position, target, 50000);
-
-        Debug.Log(ShipTransform.rect.y);
+        Vector2 ScaleByLocal(Vector2 PositionOffset)
+        {
+            return new Vector2(PositionOffset.x / ShipTransform.localScale.x, PositionOffset.y / ShipTransform.localScale.y);
+        }
+        CalculateBoundingAngles();
     }
 
-    // Update is called once per frame
+    void CalculateBoundingAngles()
+    {
+        float hm = Ship.Height * Ship.EffectiveMassPoint.y;
+        float mdhdsq = Mathf.Pow(Ship.MaxDraft - hm, 2);
+        float dhm = Ship.Draft - hm;
+
+        float wm = Ship.Width * Ship.EffectiveMassPoint.x;
+        MaxAngle = CalculateAngle(mdhdsq, dhm, wm);
+        MinAngle = -CalculateAngle(mdhdsq, dhm, Ship.Width - wm);
+    }
+
+    private static float CalculateAngle(float mdhdsq, float dhm, float wm)
+    {
+        float r = Mathf.Sqrt(Mathf.Pow(wm, 2) + mdhdsq);
+        float angle = Mathf.Acos(wm / r) - Mathf.Asin(dhm / r);
+        return (180 / Mathf.PI) * angle;
+    }
+
     void Update()
     {
-        ShipTransform.RotateAround(Ship.EffectiveMassPoint + Offset, RotationAxis, Velocity * Time.deltaTime);
+
+        ShipTransform.parent.transform.position = Offset;
+        this.MassMiddle.transform.position = MassMiddleVector;
+        ShipTransform.RotateAround(this.MassMiddle.transform.position, RotationAxis, Velocity * Time.deltaTime);
+        
 
 
         ShipAngle += Velocity * Time.deltaTime;
         Velocity += Acceleration * Time.deltaTime;
 
         float RotationAcceleration = CalculateRotationAcceleration();
-        //Debug.Log(Time.deltaTime + " " + ShipAngle + "  " + Velocity + " " + RotationAcceleration + " " + CalculateShipReaction() + " " + CalculateLoadForce());
         Acceleration = RotationAcceleration;
     }
 
