@@ -179,6 +179,9 @@ namespace Assets.Scripts
                         Damping = 3f,
 
                         ShipLoad = new ShipLoad()
+                        {
+                            Containers = new System.Collections.Generic.List<LoadedContainer>()
+                        }
                     }
                 };
 

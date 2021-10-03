@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ContainerDetailsBehaviour : MonoBehaviour
 {
-    public Text TypeText;
+    public Text ValueText;
     public Text WeightText;
 
     private BasicContainer container;
@@ -29,12 +29,12 @@ public class ContainerDetailsBehaviour : MonoBehaviour
     {
         if (this.Container != default)
         {
-            this.TypeText.text = "Test";
+            this.ValueText.text = this.Container.Value.ToString("C");
             this.WeightText.text = this.Container.Weight.ToString("####0.0t");
         }
         else
         {
-            this.TypeText.text = "";
+            this.ValueText.text = "";
             this.WeightText.text = "";
         }
     }

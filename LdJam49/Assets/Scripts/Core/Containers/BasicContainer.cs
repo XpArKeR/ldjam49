@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+
 using UnityEngine;
 
-public class BasicContainer 
+public class BasicContainer
 {
     [SerializeField]
     private float weigth;
@@ -17,6 +17,23 @@ public class BasicContainer
             if (this.weigth != value)
             {
                 this.weigth = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private Decimal value;
+    public Decimal Value
+    {
+        get
+        {
+            return this.value;
+        }
+        set
+        {
+            if (this.value != value)
+            {
+                this.value = value;
             }
         }
     }

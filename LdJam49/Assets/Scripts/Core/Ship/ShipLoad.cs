@@ -50,8 +50,6 @@ public class ShipLoad
         }
     }
 
-    
-
     [SerializeField]
     private List<LoadedContainer> containers;
     public List<LoadedContainer> Containers
