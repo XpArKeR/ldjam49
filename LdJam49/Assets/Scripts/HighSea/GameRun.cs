@@ -20,7 +20,7 @@ public class GameRun : MonoBehaviour
     {
 
         CurrentEvents = new List<SeaEvent>();
-        WaterDepth = 50;
+        WaterDepth = 100;
 
         if (Events == default)
         {
@@ -41,10 +41,10 @@ public class GameRun : MonoBehaviour
             new WindEvent()
             {
                 EventName = "Blast",
-                Strength = 200f,
-                Direction = 1,
-                StartingTime = 10,
-                Duration = 2
+                Strength = 2000f,
+                Direction = -1,
+                StartingTime = 2,
+                Duration = 20
             }
         };
         return newEvents;
@@ -116,15 +116,20 @@ public class GameRun : MonoBehaviour
 
     private void CheckDraftAngle()
     {
-        float hm = ShipBehaviour.Ship.Height * ShipBehaviour.Ship.EffectiveMassPoint.y;
-        float mDraft = ShipBehaviour.Ship.MaxDraft - hm;
-        float alpha = Mathf.Atan2(mDraft, ShipBehaviour.Ship.Width / 2);
-        float squaaaar = Mathf.Sqrt(Mathf.Pow(ShipBehaviour.Ship.Width / 2, 2) + Mathf.Pow(mDraft, 2));
-        float row = squaaaar * Mathf.Sin(alpha - (Mathf.PI / 180) * ShipBehaviour.ShipAngle);
+        //float hm = ShipBehaviour.Ship.Height * ShipBehaviour.Ship.EffectiveMassPoint.y;
+        //float mDraft = ShipBehaviour.Ship.MaxDraft - hm;
+        //float alpha = Mathf.Atan2(mDraft, ShipBehaviour.Ship.Width / 2);
+        //float squaaaar = Mathf.Sqrt(Mathf.Pow(ShipBehaviour.Ship.Width / 2, 2) + Mathf.Pow(mDraft, 2));
+        //float row = squaaaar * Mathf.Sin(alpha - (Mathf.PI / 180) * ShipBehaviour.ShipAngle);
 
-        if (row <= ShipBehaviour.Ship.Draft - hm)
+        //if (row <= ShipBehaviour.Ship.Draft - hm)
+        //{
+        //    throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
+        //}
+
+        if (ShipBehaviour.ShipAngle < ShipBehaviour.MinAngle || ShipBehaviour.ShipAngle > ShipBehaviour.MaxAngle)
         {
-            throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
+            throw new ShipDownException("Tilted!! with angle  " + ShipBehaviour.MaxAngle);
         }
     }
 }

@@ -32,7 +32,7 @@ public class BasicShip {
             {
                 float massTotal = Mass + ShipLoad.Weight;
                 _EffectiveMassPoint = (Mass * RelativeCenterOfMass + ShipLoad.Weight * ShipLoad.CenterOfMass) / massTotal;
-
+                //_EffectiveMassPoint = new Vector2(_EffectiveMassPoint.x, 1 - _EffectiveMassPoint.y);
             }
             return _EffectiveMassPoint;
         }
@@ -67,7 +67,7 @@ public class BasicShip {
         Width = 195;
         Height = 170;
         MaxDraft = 118;
-        Buoyancy = 40;
+        Buoyancy = 5;
         RelativeCenterOfMass = new Vector2(0.5f, 0.5f);
 
         StabilityConstant1 = 1.2f;
@@ -80,7 +80,7 @@ public class BasicShip {
         ShipLoad = new ShipLoad()
         {
             Offset = 0f,
-            CenterOfMass = new Vector2(.5f, 0.4f),
+            CenterOfMass = new Vector2(.6f, 0.1f),
             Weight = 300f
         };
     }
