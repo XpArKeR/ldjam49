@@ -29,6 +29,12 @@ namespace Assets.Scripts.Audio
             }
         }
 
+        public void PlayAndWaitForSound(String audioClipPath, Action onEffectFinished)
+        {
+            this.Play(audioClipPath, false);
+            this.AudioSource.WaitForSound(onEffectFinished);
+        }
+
         protected override void OnVolumeChanged(float volume)
         {
             this.VolumeChanged.Invoke(volume);

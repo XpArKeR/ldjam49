@@ -29,6 +29,13 @@ public class Port : MonoBehaviour
     public void SetSail()
     {
         Core.BackgroundAudioManager.Stop();
+
+        Core.EffectsAudioManager.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
+        StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
+    }
+
+    private void onEffectFinished()
+    {
         Core.ChangeScene(SceneNames.HighSea);
     }
 

@@ -1,7 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Constants;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ShipBehaviour : MonoBehaviour
@@ -49,7 +48,7 @@ public class ShipBehaviour : MonoBehaviour
 
 
         StartShip(null, 0);
-        
+
     }
 
     void StartShip(BasicShip newShip, float startAngle)
@@ -65,17 +64,13 @@ public class ShipBehaviour : MonoBehaviour
         Offset = new Vector2(0, (Ship.Height / 2 - Ship.Draft) / Ship.Height * ShipTransform.rect.height);
         //Offset = ScaleByLocal(PositionOffset);
 
-        MassMiddleVector = new Vector2(Ship.RelativeCenterOfMass.x , Ship.RelativeCenterOfMass.y );
+        MassMiddleVector = new Vector2(Ship.RelativeCenterOfMass.x, Ship.RelativeCenterOfMass.y);
         //MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
         //ShipTransform.parent.transform.position = Offset;
         this.MassMiddle.transform.position = MassMiddleVector + Offset;
 
-        Vector2 ScaleByLocal(Vector2 PositionOffset)
-        {
-            return new Vector2(PositionOffset.x / ShipTransform.localScale.x, PositionOffset.y / ShipTransform.localScale.y);
-        }
         CalculateBoundingAngles();
     }
 
@@ -115,11 +110,13 @@ public class ShipBehaviour : MonoBehaviour
             {
                 ShipTransform.parent.transform.position -= new Vector3(0f, -10f * Time.deltaTime, 0);
                 SinkingTimer = SinkingTimer - Time.deltaTime;
-            } else
+            }
+            else
             {
                 Core.ChangeScene(SceneNames.GameOver);
             }
-        } else
+        }
+        else
         {
             ShipAngle += Velocity * Time.deltaTime;
             Velocity += Acceleration * Time.deltaTime;
@@ -143,7 +140,7 @@ public class ShipBehaviour : MonoBehaviour
     private float CalculateLoadForce()
     {
 
-       // float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
+        // float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
         float radians = (Mathf.PI / 180) * (ShipAngle + Ship.Offset);
         return Ship.ShipLoad.Weight * Mathf.Sin(radians);
     }

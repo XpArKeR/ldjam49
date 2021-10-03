@@ -52,8 +52,7 @@ namespace Assets.Scripts
                 }
             }
         }
-
-
+        
         private static EffectsAudioManager foregroundMusicManager;
         public static EffectsAudioManager EffectsAudioManager
         {
