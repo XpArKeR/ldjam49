@@ -50,8 +50,16 @@ public class JasonHandler
                     ""Strength"": 100.0,
                     ""Direction"": 1.0,
                     ""EventName"": ""Blast"",
+                    ""EventType"": ""Thunderstorm"",
                     ""Duration"": 2.0,
                     ""StartingTime"": 3.0
+                  },
+                  {
+                    ""$type"": ""ThunderStormEvent, Assembly-CSharp"",
+                    ""EventName"": ""Thanderman"",
+                    ""EventType"": ""Thunderstorm"",
+                    ""Duration"": 20.0,
+                    ""StartingTime"": 5.0
                   }
                 ]
               },

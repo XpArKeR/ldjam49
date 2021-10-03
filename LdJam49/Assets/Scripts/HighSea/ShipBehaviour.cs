@@ -144,7 +144,7 @@ public class ShipBehaviour : MonoBehaviour
     {
 
        // float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
-        float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
+        float radians = (Mathf.PI / 180) * (ShipAngle + Ship.Offset);
         return Ship.ShipLoad.Weight * Mathf.Sin(radians);
     }
 
