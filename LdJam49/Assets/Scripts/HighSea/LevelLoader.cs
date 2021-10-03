@@ -34,13 +34,13 @@ public class LevelLoader
     private static string GetRawDefaultLevel()
     {
         return @"{
-                ""$type"": ""Level"",
+                ""$type"": ""Level, Assembly - CSharp"",
                 ""name"": ""Default"",
-                ""events"": {""$type"": ""System.Collections.Generic.List`1[[SeaEvent]], mscorlib"",
+                ""events"": {""$type"": ""System.Collections.Generic.List`1[[SeaEvent, Assembly - CSharp]], mscorlib"",
                              ""$values"":
                              [
                                 {
-                                ""$type"": ""WindEvent"",
+                                ""$type"": ""WindEvent, Assembly - CSharp"",
                                 ""eventName"" : ""Blast"",
                                 ""strength"" : 2000,
                                 ""direction"" : -1,
