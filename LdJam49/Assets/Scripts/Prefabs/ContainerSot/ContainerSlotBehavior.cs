@@ -6,6 +6,8 @@ public class ContainerSlotBehavior : MonoBehaviour
 {
     public Port Port;
     public BasicContainer Container;
+    public Color ImageOverlayColor;
+    public SpriteRenderer SpriteRenderer;
     
     // Start is called before the first frame update
     void Start()
@@ -16,16 +18,14 @@ public class ContainerSlotBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if (this.SpriteRenderer.color != this.ImageOverlayColor)
+        //{
+        //    this.SpriteRenderer.color = this.ImageOverlayColor;
+        //}
     }
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
-        this.Port.OnSlotMouseEnter(this);
-    }
-
-    private void OnMouseExit()
-    {
-        this.Port.OnSlotMouseExit(this);
+        this.Port.SelectContainer(this);   
     }
 }
