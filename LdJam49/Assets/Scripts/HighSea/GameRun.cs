@@ -15,6 +15,8 @@ public class GameRun : MonoBehaviour
     public Text TimeDisplay;
     public Text GameOverDisplay;
 
+    public GameObject ThunderStorm;
+
     private Level Level;
     private List<SeaEvent> CurrentEvents;
     private int EventIndex;
@@ -46,6 +48,44 @@ public class GameRun : MonoBehaviour
         }
         nextEvent = Level.Events[EventIndex];
 
+        InitEvents();
+    }
+
+  
+
+    void Update()
+    {
+        timeCounter += Time.deltaTime;
+        TimeDisplay.text = timeCounter.ToString("#0.0");
+        if (Level == null)
+        {
+            return;
+
+        }
+        CheckForNewEvents();
+        ExecuteCurrentEvents();
+        try
+        {
+
+            CheckShipStatus();
+        }
+        catch (ShipDownException)
+        {
+            GameOverDisplay.gameObject.SetActive(true);
+            ShipBehaviour.SinkShip();
+        }
+
+    }
+
+    private void InitEvents()
+    {
+        foreach(SeaEvent seaEvent in Level.Events)
+        {
+            if (seaEvent.EventType.Equals("Thunderstorm"))
+            {
+                seaEvent.init(ThunderStorm);
+            }
+        }
     }
 
     private void StartLevel()
@@ -64,30 +104,6 @@ public class GameRun : MonoBehaviour
         return JasonHandler.GetDefaultLevel();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timeCounter += Time.deltaTime;
-        TimeDisplay.text = timeCounter.ToString("#0.0");
-        if (Level == null)
-        {
-            return;
-
-        }
-        CheckForNewEvents();
-        ExecuteCurrentEvents();
-        try
-        {
-
-            CheckShipStatus();
-        }
-        catch (ShipDownException )
-        {
-            GameOverDisplay.gameObject.SetActive(true);
-            ShipBehaviour.SinkShip();
-        }
-
-    }
 
     private void CheckForNewEvents()
     {

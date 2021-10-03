@@ -1,4 +1,7 @@
 
+using System;
+using System.Collections;
+
 using UnityEngine;
 
 namespace Assets.Scripts.Audio
@@ -18,6 +21,11 @@ namespace Assets.Scripts.Audio
             base.OnVolumeChanged(volume);
 
             Core.Options.EffectsVolume = volume;
+        }
+
+        public IEnumerator WaitForSound(Action onPlaybackFinished)
+        {
+            return this.AudioSource.WaitForSound(onPlaybackFinished);
         }
     }
 }

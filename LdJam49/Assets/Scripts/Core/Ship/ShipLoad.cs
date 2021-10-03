@@ -50,22 +50,7 @@ public class ShipLoad
         }
     }
 
-
-    [JsonIgnore]
-    private float offset;
-    [JsonIgnore]
-    public float Offset
-    {
-        get
-        {
-            if (offset == default)
-            {
-
-            }
-            return this.offset;
-        }
-        
-    }
+    
 
     [SerializeField]
     private List<LoadedContainer> containers;

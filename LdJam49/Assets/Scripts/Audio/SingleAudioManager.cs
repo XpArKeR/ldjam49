@@ -10,7 +10,7 @@ namespace Assets.Scripts.Audio
         public AudioSource AudioSource;
         private Single pauseTime;
 
-        public void Play(String resourceKey, Boolean isLooped)
+        public void Play(String resourceKey, Boolean isLooped = false)
         {
             this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped);
         }
@@ -27,6 +27,12 @@ namespace Assets.Scripts.Audio
             {
                 throw new ArgumentNullException(nameof(audioClip));
             }
+        }
+
+        public void PlayAndWaitForSound(String audioClipPath, Action onEffectFinished)
+        {
+            this.Play(audioClipPath, false);
+            this.AudioSource.WaitForSound(onEffectFinished);
         }
 
         protected override void OnVolumeChanged(float volume)

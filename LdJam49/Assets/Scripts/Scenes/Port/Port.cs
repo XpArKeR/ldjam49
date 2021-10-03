@@ -29,6 +29,13 @@ public class Port : MonoBehaviour
     public void SetSail()
     {
         Core.BackgroundAudioManager.Stop();
+
+        Core.EffectsAudioManager.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
+        StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
+    }
+
+    private void onEffectFinished()
+    {
         Core.ChangeScene(SceneNames.HighSea);
     }
 
@@ -49,19 +56,14 @@ public class Port : MonoBehaviour
 
         if (ship != default)
         {
-            var containerAmount = 3;
+            var containerAmount = 6;
 
             for (int i = 0; i < containerAmount; i++)
             {
-                var newSlot = GameObject.Instantiate<ShipContainerSlotBehavior>(this.ShipContainerTemplate);
+                var newSlot = CloneSlot(new Vector2(i, 0), this.ShipContainerTemplate.transform);
 
                 newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
-                
-                newSlot.transform.SetParent(ShipContainer.gameObject.transform);
-
-                newSlot.gameObject.SetActive(true);
-                                
-                this.ShipContainer.Slots.Add(newSlot);
+                //newSlot.transform.Translate(new Vector2(i, 0), this.ShipContainerTemplate.transform);
             }
         }
     }
@@ -82,6 +84,19 @@ public class Port : MonoBehaviour
         if (ContainerSlot3.Container == default)
         {
             SpawnContainer(ContainerSlot3);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            this.SelectContainer(this.ContainerSlot1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            this.SelectContainer(this.ContainerSlot2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            this.SelectContainer(this.ContainerSlot3);
         }
     }
 
@@ -120,6 +135,36 @@ public class Port : MonoBehaviour
             };
 
             this.seletedLandContainer.Container = default;
+
+            this.GenerateShipSlot(container);
+
+            container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);
+            this.seletedLandContainer = default;
         }
+    }
+
+    private void GenerateShipSlot(ShipContainerSlotBehavior container)
+    {
+        var newSlot = CloneSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
+
+        newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
+        //newSlot.transform.Translate(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
+    }
+
+    private ShipContainerSlotBehavior CloneSlot(Vector2 offset, Transform relativeTo)
+    {
+        var newSlot = GameObject.Instantiate<ShipContainerSlotBehavior>(this.ShipContainerTemplate);
+
+        newSlot.transform.SetParent(ShipContainer.gameObject.transform);
+
+        newSlot.Offset = offset;
+
+        newSlot.transform.Translate(offset, relativeTo);
+
+        this.ShipContainer.Slots.Add(newSlot);
+
+        newSlot.gameObject.SetActive(true);
+
+        return newSlot;
     }
 }

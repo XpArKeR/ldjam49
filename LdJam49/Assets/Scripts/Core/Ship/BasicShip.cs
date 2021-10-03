@@ -261,6 +261,22 @@ public class BasicShip
         }
     }
 
+    [JsonIgnore]
+    private float offset;
+    [JsonIgnore]
+    public float Offset
+    {
+        get
+        {
+            if (offset == default)
+            {
+                offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
+            }
+            return this.offset;
+        }
+
+    }
+
     public void SetDefaultValues()
     {
         Width = 195;

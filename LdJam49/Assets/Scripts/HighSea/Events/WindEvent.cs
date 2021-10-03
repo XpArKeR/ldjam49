@@ -64,4 +64,9 @@ public class WindEvent : SeaEvent
         ShipBehaviour.PushSide(Direction, strength);
         return false;
     }
+
+    public override void init(GameObject parent)
+    {
+        Debug.Log("Implement init for wind");
+    }
 }
