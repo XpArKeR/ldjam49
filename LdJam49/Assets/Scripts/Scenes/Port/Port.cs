@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 
 using Assets.Scripts;
 
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Port : MonoBehaviour
 {
@@ -13,7 +11,16 @@ public class Port : MonoBehaviour
     public ContainerSlotBehavior ContainerSlot1;
     public ContainerSlotBehavior ContainerSlot2;
     public ContainerSlotBehavior ContainerSlot3;
-    public Text ContainerDescription;
+    public ContainerDetailsBehaviour ContainerDetails;
+
+    private ContainerSlotBehavior selectedContainer;
+
+    public void SelectContainer(ContainerSlotBehavior containerSlotBehavior)
+    {
+        this.selectedContainer = containerSlotBehavior;
+
+        this.UpdateContainerInfo();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -40,26 +47,27 @@ public class Port : MonoBehaviour
         }
     }
 
-    public void OnSlotMouseEnter(ContainerSlotBehavior hoveredElement)
-    {
-        if (hoveredElement.Container != default)
-        {
-            this.ContainerDescription.text = String.Format("Container Weight: {0:##.0.00}t", hoveredElement.Container.Weight);
-        }
-    }
-
-    public void OnSlotMouseExit(ContainerSlotBehavior hoveredElement)
-    {
-        this.ContainerDescription.text = default;
-    }
-
     private void SpawnContainer(ContainerSlotBehavior containerSlotBehavior)
     {
         var container = new BasicContainer()
         {
-            Weight = UnityEngine.Random.Range(0, 125f)
+            Weight = UnityEngine.Random.Range(0, 125f),
+            Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 
         containerSlotBehavior.Container = container;
+    }
+
+    private void UpdateContainerInfo()
+    {
+        if (this.selectedContainer != default)
+        {
+            this.ContainerDetails.gameObject.SetActive(true);
+            this.ContainerDetails.Container = this.selectedContainer.Container;
+        }
+        else
+        {
+            this.ContainerDetails.gameObject.SetActive(false);
+        }
     }
 }

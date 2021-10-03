@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicContainer 
 {
+    [SerializeField]
     private float weigth;
     public float Weight
     {
@@ -16,6 +17,23 @@ public class BasicContainer
             if (this.weigth != value)
             {
                 this.weigth = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private Color color;
+    public Color Color
+    {
+        get
+        {
+            return this.color;
+        }
+        set
+        {
+            if (this.color != value)
+            {
+                this.color = value;
             }
         }
     }
