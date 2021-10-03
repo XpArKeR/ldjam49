@@ -1,31 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ContainerSlotBehavior : MonoBehaviour
 {
     public Port Port;
     public BasicContainer Container;
-    
+    public SpriteRenderer SpriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (this.Container?.Color != default)
+        {
+            if (this.SpriteRenderer.color != this.Container.Color)
+            {
+                this.SpriteRenderer.color = this.Container.Color;
+            }
+        }
     }
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
-        this.Port.OnSlotMouseEnter(this);
-    }
-
-    private void OnMouseExit()
-    {
-        this.Port.OnSlotMouseExit(this);
+        this.Port.SelectContainer(this);
     }
 }
