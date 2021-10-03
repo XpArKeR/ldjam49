@@ -79,7 +79,6 @@ public class JasonHandler
                       ""ShipLoad"": {
                         ""$type"": ""ShipLoad, Assembly-CSharp"",
                         ""Weight"": 300.0,
-                        ""Offset"": 0.0,
                         ""centerOfMassX"": 0.5,
                         ""centerOfMassY"": 0.4,
                         ""Containers"": null
