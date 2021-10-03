@@ -10,7 +10,7 @@ namespace Assets.Scripts.Audio
         public AudioSource AudioSource;
         private Single pauseTime;
 
-        public void Play(String resourceKey, Boolean isLooped)
+        public void Play(String resourceKey, Boolean isLooped = false)
         {
             this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped);
         }
