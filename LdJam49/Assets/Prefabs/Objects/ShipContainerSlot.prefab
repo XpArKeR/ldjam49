@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7885178624385280766}
   - component: {fileID: 4787226410881681230}
   m_Layer: 0
-  m_Name: ContainerSlot
+  m_Name: ShipContainerSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,9 +160,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6113023279462624259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 855cc8ad9c52e644b966ae40d86cdeb3, type: 3}
+  m_Script: {fileID: 11500000, guid: ff00d3e41a6012f478794535e224a2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Port: {fileID: 0}
-  ImageOverlayColor: {r: 0, g: 0, b: 0, a: 0}
+  ContainerClicked:
+    m_PersistentCalls:
+      m_Calls: []
   SpriteRenderer: {fileID: 433151893413838244}
+  Offset: {x: 0, y: 0}

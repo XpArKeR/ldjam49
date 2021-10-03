@@ -1,11 +1,16 @@
 
-using UnityEngine;
+using System;
 
-public class ContainerSlotBehavior : MonoBehaviour
+using UnityEngine;
+using UnityEngine.Events;
+
+public class LandContainerSlotBehavior : MonoBehaviour
 {
-    public Port Port;
-    public BasicContainer Container;
+    public UnityEvent<LandContainerSlotBehavior> ContainerClicked;
     public SpriteRenderer SpriteRenderer;
+
+    public BasicContainer Container;
+    public Vector2 Offset;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,6 @@ public class ContainerSlotBehavior : MonoBehaviour
 
     private void OnMouseDown()
     {
-        this.Port.SelectContainer(this);
+        ContainerClicked?.Invoke(this);
     }
 }
