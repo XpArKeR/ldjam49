@@ -1,10 +1,59 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public abstract class SeaEvent
 {
-    public string EventName { get; set; }
+    [SerializeField]
+    private string eventName;
+    public string EventName
+    {
+        get
+        {
+            return this.eventName;
+        }
+        set
+        {
+            if (this.eventName != value)
+            {
+                this.eventName = value;
+            }
+        }
+    }
 
-    public float Duration { get; set; }
+    [SerializeField]
+    private float duration;
+    public float Duration
+    {
+        get
+        {
+            return this.duration;
+        }
+        set
+        {
+            if (this.duration != value)
+            {
+                this.duration = value;
+            }
+        }
+    }
 
-    public float StartingTime { get; set; }
+    [SerializeField]
+    private float startingTime;
+    public float StartingTime
+    {
+        get
+        {
+            return this.startingTime;
+        }
+        set
+        {
+            if (this.startingTime != value)
+            {
+                this.startingTime = value;
+            }
+        }
+    }
 
     public abstract bool ExecuteEvent(ShipBehaviour ShipBehaviour, float time);
 

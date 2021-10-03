@@ -1,11 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class WindEvent : SeaEvent
 {
-    public float Strength { get; set; }
-    public float Direction { get; set; }
+
+    [SerializeField]
+    private float strength;
+    public float Strength
+    {
+        get
+        {
+            return this.strength;
+        }
+        set
+        {
+            if (this.strength != value)
+            {
+                this.strength = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float direction;
+    public float Direction
+    {
+        get
+        {
+            return this.direction;
+        }
+        set
+        {
+            if (this.direction != value)
+            {
+                this.direction = value;
+            }
+        }
+    }
 
     private float DurationPI;
 

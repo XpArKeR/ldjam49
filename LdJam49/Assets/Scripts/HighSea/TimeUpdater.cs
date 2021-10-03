@@ -9,11 +9,11 @@ public class TimeUpdater : MonoBehaviour
 
     void Start()
     {
-        timeDisplay.text = Time.time.ToString("0:##0.00");
+        timeDisplay.text = Time.time.ToString("#0.0");
     }
 
     void Update()
     {
-        timeDisplay.text = Time.time.ToString("0:##0.00");
+        timeDisplay.text = Time.time.ToString("#0.0");
     }
 }

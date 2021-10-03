@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameRun : MonoBehaviour
 {
 
     public ShipBehaviour ShipBehaviour;
+    public Text LevelDisplay;
 
     private Level Level;
     private List<SeaEvent> CurrentEvents;
@@ -19,14 +21,14 @@ public class GameRun : MonoBehaviour
     {
 
 
-        
+
 
         if (Level == default)
         {
             Level = GetDefaultLevel();
             StartLevel();
         }
-        
+
         if (EventIndex > Level.Events.Count)
         {
             //ERROR
@@ -39,11 +41,36 @@ public class GameRun : MonoBehaviour
     {
         EventIndex = 0;
         CurrentEvents = new List<SeaEvent>();
+        if (Level.Events == null)
+        {
+            Level.Events = new List<SeaEvent>();
+        }
+        LevelDisplay.text = Level.Name;
     }
 
     private Level GetDefaultLevel()
     {
-        
+
+        //Level = new Level
+        //{
+        //    Events = new List<SeaEvent>() {
+        //        new WindEvent()
+        //        {
+        //            EventName = "Blast",
+        //            Strength = 2000f,
+        //            Direction = 1,
+        //            StartingTime = 10,
+        //            Duration = 2
+        //        } 
+        //    },
+
+        //    Name = "Default",
+        //    WaterDepth = 100,
+        //    Length = 30
+
+        //};
+        //string levelString = LevelLoader.SerializeLevel(Level);
+        //return Level;
         return LevelLoader.GetDefaultLevel();
     }
 
@@ -53,6 +80,7 @@ public class GameRun : MonoBehaviour
         if (Level == null)
         {
             return;
+
         }
         CheckForNewEvents();
         ExecuteCurrentEvents();
@@ -88,7 +116,7 @@ public class GameRun : MonoBehaviour
     private void ExecuteCurrentEvents()
     {
 
-        for (int i = CurrentEvents.Count - 1; i >= 0 ; i--)
+        for (int i = CurrentEvents.Count - 1; i >= 0; i--)
         {
             SeaEvent currentEvent = CurrentEvents[i];
             Debug.Log("Executing Event: " + currentEvent.EventName);
