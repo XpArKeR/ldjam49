@@ -23,6 +23,23 @@ namespace Assets.Scripts
         }
 
         [SerializeField]
+        private String currentLevel;
+        public String CurrentLevel
+        {
+            get
+            {
+                return currentLevel;
+            }
+            set
+            {
+                if (currentLevel != value)
+                {
+                    currentLevel = value;
+                }
+            }
+        }
+
+        [SerializeField]
         private String currentScene;
         public String CurrentScene
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Assets.Scripts;
-
+using Assets.Scripts.Constants;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +14,7 @@ public class GameRun : MonoBehaviour
     public Text LevelDisplay;
     public Text TimeDisplay;
     public Text GameOverDisplay;
+    public Text LevelCompletedDisplay;
 
     public GameObject ThunderStorm;
 
@@ -24,21 +25,23 @@ public class GameRun : MonoBehaviour
 
     private float timeCounter;
 
+    private float levelCompletedTime;
+
 
 
     void Start()
     {
-        if(Core.BackgroundAudioManager?.IsPlaying == true)
+        if (Core.BackgroundAudioManager?.IsPlaying == true)
         {
             Core.BackgroundAudioManager.Stop();
         }
 
-        Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio","Scenes","HighSea", "HighSeaBackground"), true);
+        Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio", "Scenes", "HighSea", "HighSeaBackground"), true);
 
 
         if (Level == default)
         {
-            Level = GetDefaultLevel();
+            Level = LevelManager.GetLevel(Core.GameState.CurrentLevel);
             StartLevel();
         }
 
@@ -51,7 +54,7 @@ public class GameRun : MonoBehaviour
         InitEvents();
     }
 
-  
+
 
     void Update()
     {
@@ -62,6 +65,18 @@ public class GameRun : MonoBehaviour
             return;
 
         }
+        if (levelCompletedTime == 0 && timeCounter > Level.Length)
+        {
+            levelCompletedTime = timeCounter + 3f;
+            LevelCompletedDisplay.gameObject.SetActive(true);
+        }
+
+        if (levelCompletedTime != 0 && levelCompletedTime < timeCounter)
+        {
+            LevelCompleted();
+            return;
+        }
+
         CheckForNewEvents();
         ExecuteCurrentEvents();
         try
@@ -77,9 +92,16 @@ public class GameRun : MonoBehaviour
 
     }
 
+    private void LevelCompleted()
+    {
+        Core.ChangeScene(SceneNames.Port);
+        Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
+    }
+
+
     private void InitEvents()
     {
-        foreach(SeaEvent seaEvent in Level.Events)
+        foreach (SeaEvent seaEvent in Level.Events)
         {
             if (seaEvent.EventType.Equals("Thunderstorm"))
             {
@@ -91,6 +113,7 @@ public class GameRun : MonoBehaviour
     private void StartLevel()
     {
         EventIndex = 0;
+        levelCompletedTime = 0;
         CurrentEvents = new List<SeaEvent>();
         if (Level.Events == null)
         {
@@ -98,12 +121,6 @@ public class GameRun : MonoBehaviour
         }
         LevelDisplay.text = Level.Name;
     }
-
-    private Level GetDefaultLevel()
-    {
-        return JasonHandler.GetDefaultLevel();
-    }
-
 
     private void CheckForNewEvents()
     {

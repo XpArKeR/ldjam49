@@ -1,0 +1,60 @@
+{        
+	"$type": "System.Collections.Generic.List`1[[Level, Assembly-CSharp]], mscorlib",
+          "$values": [
+	{
+	    "$type": "Level, Assembly-CSharp",
+              "Name": "Dodo",
+              "Events": {
+                            "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "WindEvent, Assembly-CSharp",
+                    "Strength": 100.0,
+                    "Direction": 1.0,
+                    "EventName": "Blast",
+                    "EventType": "Thunderstorm",
+                    "Duration": 2.0,
+                    "StartingTime": 3.0
+                  },
+                  {
+                    "$type": "ThunderStormEvent, Assembly-CSharp",
+                    "EventName": "Thanderman",
+                    "EventType": "Thunderstorm",
+                    "Duration": 20.0,
+                    "StartingTime": 5.0
+                  }
+                ]
+              },
+              "WaterDepth": 100.0,
+              "Length": 30.0
+        },
+{
+	    "$type": "Level, Assembly-CSharp",
+              "Name": "Pogo",
+              "Events": {
+                            "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
+                "$values": [
+                  {
+                    "$type": "WindEvent, Assembly-CSharp",
+                    "Strength": 100.0,
+                    "Direction": 1.0,
+                    "EventName": "Blast",
+                    "EventType": "Thunderstorm",
+                    "Duration": 2.0,
+                    "StartingTime": 3.0
+                  },
+                  {
+                    "$type": "ThunderStormEvent, Assembly-CSharp",
+                    "EventName": "Thanderman",
+                    "EventType": "Thunderstorm",
+                    "Duration": 20.0,
+                    "StartingTime": 5.0
+                  }
+                ]
+              },
+              "WaterDepth": 100.0,
+              "Length": 30.0
+        }
+
+    ]
+}

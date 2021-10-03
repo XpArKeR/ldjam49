@@ -1,12 +1,8 @@
+using System.IO;
 using UnityEngine;
 
 public class JasonHandler
 {
-    public static Level GetDefaultLevel()
-    {
-        return DeserializeObject<Level>(GetRawDefaultLevel());
-    }
-
     public static BasicShip GetDefaultShip()
     {
         return DeserializeObject<BasicShip>(GetRawDefaultShip());
@@ -24,11 +20,11 @@ public class JasonHandler
     }
 
 
-    private static T DeserializeObject<T>(string rawLevel)
+    public static T DeserializeObject<T>(string rawJson)
     {
         //return Newtonsoft.Json.JsonConvert.DeserializeObject<Level>(RawLevel);
 
-        return Newtonsoft.Json.JsonConvert.DeserializeObject<T>((rawLevel), new Newtonsoft.Json.JsonSerializerSettings()
+        return Newtonsoft.Json.JsonConvert.DeserializeObject<T>((rawJson), new Newtonsoft.Json.JsonSerializerSettings()
         {
             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
             NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
@@ -36,37 +32,15 @@ public class JasonHandler
     }
 
 
-    private static string GetRawDefaultLevel()
+    public static T DeserializeObjectFromFile<T>(string filePath)
     {
-
-        return @"{        
-              ""$type"": ""Level, Assembly-CSharp"",
-              ""Name"": ""Dodo"",
-              ""Events"": {
-                            ""$type"": ""System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib"",
-                ""$values"": [
-                  {
-                    ""$type"": ""WindEvent, Assembly-CSharp"",
-                    ""Strength"": 100.0,
-                    ""Direction"": 1.0,
-                    ""EventName"": ""Blast"",
-                    ""EventType"": ""Thunderstorm"",
-                    ""Duration"": 2.0,
-                    ""StartingTime"": 3.0
-                  },
-                  {
-                    ""$type"": ""ThunderStormEvent, Assembly-CSharp"",
-                    ""EventName"": ""Thanderman"",
-                    ""EventType"": ""Thunderstorm"",
-                    ""Duration"": 20.0,
-                    ""StartingTime"": 5.0
-                  }
-                ]
-              },
-              ""WaterDepth"": 100.0,
-              ""Length"": 30.0
-        }";
+        //StreamReader reader = new StreamReader(Application.persistentDataPath + filePath);
+        string json = File.ReadAllText(System.IO.Path.Combine(Application.dataPath, filePath));
+        return DeserializeObject<T>(json);
     }
+
+
+ 
 
 
     private static string GetRawDefaultShip()
