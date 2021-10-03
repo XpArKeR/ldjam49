@@ -51,7 +51,7 @@ public class JasonHandler
                     ""Direction"": 1.0,
                     ""EventName"": ""Blast"",
                     ""Duration"": 2.0,
-                    ""StartingTime"": 10.0
+                    ""StartingTime"": 3.0
                   }
                 ]
               },

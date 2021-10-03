@@ -9,6 +9,7 @@ public class GameRun : MonoBehaviour
 
     public ShipBehaviour ShipBehaviour;
     public Text LevelDisplay;
+    public Text GameOverDisplay;
 
     private Level Level;
     private List<SeaEvent> CurrentEvents;
@@ -68,10 +69,12 @@ public class GameRun : MonoBehaviour
 
             CheckShipStatus();
         }
-        catch (ShipDownException e)
+        catch (ShipDownException )
         {
-            Debug.LogException(e, this);
+            GameOverDisplay.gameObject.SetActive(true);
+            ShipBehaviour.SinkShip();
         }
+
     }
 
     private void CheckForNewEvents()

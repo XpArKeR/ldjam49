@@ -1,5 +1,6 @@
 Todo:
  - RotationPoint ignores draft
+ - Sink ship
 
 Nice to have:
 

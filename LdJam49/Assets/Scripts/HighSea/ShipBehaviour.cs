@@ -1,3 +1,5 @@
+using Assets.Scripts;
+using Assets.Scripts.Constants;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +23,17 @@ public class ShipBehaviour : MonoBehaviour
     public float MaxAngle { get; private set; }
     public float MinAngle { get; private set; }
 
+    private float SinkingTimer = -1;
+    private bool Sinking = false;
+
+    public void SinkShip()
+    {
+        if (!Sinking)
+        {
+            SinkingTimer = 5f;
+            Sinking = true;
+        }
+    }
 
     public void PushSide(float Direction, float Strength)
     {
@@ -34,11 +47,6 @@ public class ShipBehaviour : MonoBehaviour
         RotationAxis = new Vector3(0, 0, 1);
         if (Ship == null)
         {
-            //Ship = new BasicShip();
-            //Ship.SetDefaultValues();
-            //string json = JasonHandler.SerializeObject(Ship);
-            //Debug.Log(json);
-
             Ship = JasonHandler.GetDefaultShip();
         }
 
@@ -90,13 +98,29 @@ public class ShipBehaviour : MonoBehaviour
         this.MassMiddle.transform.position = MassMiddleVector;
         ShipTransform.RotateAround(this.MassMiddle.transform.position, RotationAxis, Velocity * Time.deltaTime);
 
+        if (Sinking)
+        {
+            if (SinkingTimer > 0)
+            {
+
+                ShipTransform.parent.transform.position -= new Vector3(0f, -10f * Time.deltaTime, 0);
+                SinkingTimer = SinkingTimer - Time.deltaTime;
+            } else
+            {
+                Core.ChangeScene(SceneNames.GameOver);
+            }
+        } else
+        {
+            ShipAngle += Velocity * Time.deltaTime;
+            Velocity += Acceleration * Time.deltaTime;
+
+            float RotationAcceleration = CalculateRotationAcceleration();
+            Acceleration = RotationAcceleration;
+        }
 
 
-        ShipAngle += Velocity * Time.deltaTime;
-        Velocity += Acceleration * Time.deltaTime;
 
-        float RotationAcceleration = CalculateRotationAcceleration();
-        Acceleration = RotationAcceleration;
+
     }
 
 
