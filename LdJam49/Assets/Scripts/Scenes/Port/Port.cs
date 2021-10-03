@@ -52,6 +52,7 @@ public class Port : MonoBehaviour
         var container = new BasicContainer()
         {
             Weight = UnityEngine.Random.Range(0, 125f),
+            Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 
         containerSlotBehavior.Container = container;

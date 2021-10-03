@@ -873,6 +873,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 169195988}
     - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
+      propertyPath: ImageOverlayColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
       propertyPath: ImageOverlayColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -1107,6 +1111,10 @@ PrefabInstance:
       propertyPath: Port
       value: 
       objectReference: {fileID: 169195988}
+    - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
+      propertyPath: ImageOverlayColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
       propertyPath: ImageOverlayColor.b
       value: 0
@@ -1428,6 +1436,10 @@ PrefabInstance:
       propertyPath: Port
       value: 
       objectReference: {fileID: 169195988}
+    - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
+      propertyPath: ImageOverlayColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
       propertyPath: ImageOverlayColor.b
       value: 0

@@ -19,4 +19,20 @@ public class BasicContainer
             }
         }
     }
+
+    private Color color;
+    public Color Color
+    {
+        get
+        {
+            return this.color;
+        }
+        set
+        {
+            if (this.color != value)
+            {
+                this.color = value;
+            }
+        }
+    }
 }
