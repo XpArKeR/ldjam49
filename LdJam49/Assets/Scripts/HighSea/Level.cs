@@ -1,14 +1,74 @@
-using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
-public class Level 
+public class Level
 {
-    public string Name { get;  set; }
+    [SerializeField]
+    private string name;
+    public string Name
+    {
+        get
+        {
+            return this.name;
+        }
+        set
+        {
+            if (this.name != value)
+            {
+                this.name = value;
+            }
+        }
+    }
 
-    public List<SeaEvent> Events { get; set; }
+    [SerializeField]
+    private List<SeaEvent> events;
+    public List<SeaEvent> Events
+    {
+        get
+        {
+            return this.events;
+        }
+        set
+        {
+            if (this.events != value)
+            {
+                this.events = value;
+            }
+        }
+    }
 
-    public float WaterDepth { get; set; }
+    [SerializeField]
+    private float waterDepth { get; set; }
+    public float WaterDepth
+    {
+        get
+        {
+            return this.waterDepth;
+        }
+        set
+        {
+            if (this.waterDepth != value)
+            {
+                this.waterDepth = value;
+            }
+        }
+    }
 
-    public float Length { get; set; }
+    [SerializeField]
+    private float length { get; set; }
+    public float Length
+    {
+        get
+        {
+            return this.length;
+        }
+        set
+        {
+            if (this.length != value)
+            {
+                this.length = value;
+            }
+        }
+    }
 }
