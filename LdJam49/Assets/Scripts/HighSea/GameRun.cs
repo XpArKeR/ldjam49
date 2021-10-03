@@ -8,51 +8,52 @@ public class GameRun : MonoBehaviour
 
     public ShipBehaviour ShipBehaviour;
 
-    private List<SeaEvent> Events;
+    private Level Level;
     private List<SeaEvent> CurrentEvents;
     private int EventIndex;
     private SeaEvent nextEvent;
 
-    private float WaterDepth;
 
 
     void Start()
     {
 
-        CurrentEvents = new List<SeaEvent>();
-        WaterDepth = 100;
 
-        if (Events == default)
+        
+
+        if (Level == default)
         {
-            Events = GetDefaultEvents();
+            Level = GetDefaultLevel();
+            StartLevel();
         }
-        EventIndex = 0;
-        if (EventIndex > Events.Count)
+        
+        if (EventIndex > Level.Events.Count)
         {
             //ERROR
         }
-        nextEvent = Events[EventIndex];
+        nextEvent = Level.Events[EventIndex];
 
     }
 
-    private List<SeaEvent> GetDefaultEvents()
+    private void StartLevel()
     {
-        List<SeaEvent> newEvents = new List<SeaEvent>() {
-            new WindEvent()
-            {
-                EventName = "Blast",
-                Strength = 2000f,
-                Direction = -1,
-                StartingTime = 2,
-                Duration = 20
-            }
-        };
-        return newEvents;
+        EventIndex = 0;
+        CurrentEvents = new List<SeaEvent>();
+    }
+
+    private Level GetDefaultLevel()
+    {
+        
+        return LevelLoader.GetDefaultLevel();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Level == null)
+        {
+            return;
+        }
         CheckForNewEvents();
         ExecuteCurrentEvents();
         try
@@ -72,9 +73,9 @@ public class GameRun : MonoBehaviour
         {
             CurrentEvents.Add(nextEvent);
             EventIndex++;
-            if (EventIndex < Events.Count)
+            if (EventIndex < Level.Events.Count)
             {
-                nextEvent = Events[EventIndex];
+                nextEvent = Level.Events[EventIndex];
             }
             else
             {
@@ -106,9 +107,9 @@ public class GameRun : MonoBehaviour
     private void CheckIfAfloat()
     {
 
-        if (ShipBehaviour.Ship.Draft > WaterDepth)
+        if (ShipBehaviour.Ship.Draft > Level.WaterDepth)
         {
-            throw new ShipDownException("Scratch: " + ShipBehaviour.Ship.Draft + " : " + WaterDepth);
+            throw new ShipDownException("Scratch: " + ShipBehaviour.Ship.Draft + " : " + Level.WaterDepth);
         }
 
         CheckDraftAngle();
