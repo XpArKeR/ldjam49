@@ -129,22 +129,6 @@ namespace Assets.Scripts
             SavePlayerOptions();
         }
 
-        public static Sprite GetBackgroundSprite()
-        {
-            if ((currentBackground == default) && (!String.IsNullOrEmpty(GameState?.CurrentBackground)))
-            {
-                currentBackground = ResourceCache.GetSprite(Path.Combine("UI", "Sprites", GameState.CurrentBackground));
-            }
-
-            return currentBackground;
-        }
-
-        public static void SetCurrentBackground(Sprite background)
-        {
-            currentBackground = background;
-            GameState.CurrentBackground = background.name;
-        }
-
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void InitGame()
         {
