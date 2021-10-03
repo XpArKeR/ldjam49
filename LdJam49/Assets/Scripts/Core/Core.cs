@@ -70,8 +70,8 @@ namespace Assets.Scripts
             }
         }
 
-        private static AmbienceAudioManager ambienceMusicManager;
-        public static AmbienceAudioManager AmbienceAudioManager
+        private static BackgroundAudioManager ambienceMusicManager;
+        public static BackgroundAudioManager BackgroundAudioManager
         {
             get
             {
@@ -86,8 +86,8 @@ namespace Assets.Scripts
             }
         }
 
-        private static BackgroundAudioManager backgroundAudioManager;
-        public static BackgroundAudioManager BackgroundAudioManager
+        private static AmbienceAudioManager backgroundAudioManager;
+        public static AmbienceAudioManager AmbienceAudioManager
         {
             get
             {
@@ -205,8 +205,8 @@ namespace Assets.Scripts
                 {
                     AreAnimationsEnabled = true,
                     EffectsVolume = 1f,
-                    AmbienceVolume = 1.125f,
-                    BackgroundVolume = 0.125f,
+                    BackgroundVolume = 1.125f,
+                    AmbienceVolume = 0.125f,
                 };
             }
         }

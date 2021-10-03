@@ -28,12 +28,12 @@ public class OptionsMenu : MonoBehaviour
 
     public void OnAmbienceSliderChanged()
     {
-        Core.AmbienceAudioManager.Volume = AmbienceVolumeSlider.value;
+        Core.BackgroundAudioManager.Volume = AmbienceVolumeSlider.value;
     }
 
     public void OnBackgroundSliderChanged()
     {
-        Core.BackgroundAudioManager.Volume = BackgroundVolumeSlider.value;
+        Core.AmbienceAudioManager.Volume = BackgroundVolumeSlider.value;
     }
 
     public void OnAnimationEnabledToggleValueChanged()
@@ -58,14 +58,14 @@ public class OptionsMenu : MonoBehaviour
                 this.EffectsVolumeSlider.value = Core.Options.EffectsVolume;
             }
 
-            if (this.AmbienceVolumeSlider.value != Core.Options.AmbienceVolume)
+            if (this.AmbienceVolumeSlider.value != Core.Options.BackgroundVolume)
             {
-                this.AmbienceVolumeSlider.value = Core.Options.AmbienceVolume;
+                this.AmbienceVolumeSlider.value = Core.Options.BackgroundVolume;
             }
 
-            if (this.BackgroundVolumeSlider.value != Core.Options.BackgroundVolume)
+            if (this.BackgroundVolumeSlider.value != Core.Options.AmbienceVolume)
             {
-                this.BackgroundVolumeSlider.value = Core.Options.BackgroundVolume;
+                this.BackgroundVolumeSlider.value = Core.Options.AmbienceVolume;
             }
 
             if (this.AnimationEnabledToggle.isOn != Core.Options.AreAnimationsEnabled)

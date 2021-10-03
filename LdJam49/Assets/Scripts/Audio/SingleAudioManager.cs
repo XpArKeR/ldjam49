@@ -10,13 +10,22 @@ namespace Assets.Scripts.Audio
         public AudioSource AudioSource;
         private Single pauseTime;
 
+        public void Play(String resourceKey, Boolean isLooped)
+        {
+            this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped);
+        }
+
         public void Play(AudioClip audioClip, Boolean isLooped = false)
         {
             if (audioClip != default)
             {
-                Core.AmbienceAudioManager.AudioSource.loop = isLooped;
-                Core.AmbienceAudioManager.AudioSource.clip = audioClip;
-                Core.AmbienceAudioManager.AudioSource.Play();
+                Core.BackgroundAudioManager.AudioSource.loop = isLooped;
+                Core.BackgroundAudioManager.AudioSource.clip = audioClip;
+                Core.BackgroundAudioManager.AudioSource.Play();
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(audioClip));
             }
         }
 

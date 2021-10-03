@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 316708141}
   - component: {fileID: 316708140}
   m_Layer: 0
-  m_Name: BackgroundAudio
+  m_Name: AmbienceAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 564715079}
   - component: {fileID: 564715081}
   m_Layer: 0
-  m_Name: AmbienceAudio
+  m_Name: BackgroundAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1613,8 +1613,8 @@ MonoBehaviour:
   QuitButton: {fileID: 1479118195}
   BackButton: {fileID: 523073821}
   EffectsAudioManager: {fileID: 2071816228}
-  AmbienceAudioManager: {fileID: 564715081}
-  BackgroundAudioManager: {fileID: 316708140}
+  BackgroundAudioManager: {fileID: 564715081}
+  AmbienceAudioManager: {fileID: 316708140}
 --- !u!114 &894428513
 MonoBehaviour:
   m_ObjectHideFlags: 0
