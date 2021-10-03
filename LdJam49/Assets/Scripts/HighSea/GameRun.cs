@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using Assets.Scripts;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +26,12 @@ public class GameRun : MonoBehaviour
 
     void Start()
     {
+        if(Core.BackgroundAudioManager?.IsPlaying == true)
+        {
+            Core.BackgroundAudioManager.Stop();
+        }
 
-
+        Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio","Scenes","HighSea", "HighSeaBackground"), true);
 
 
         if (Level == default)

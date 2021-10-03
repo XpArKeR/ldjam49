@@ -28,13 +28,14 @@ public class Port : MonoBehaviour
 
     public void SetSail()
     {
+        Core.BackgroundAudioManager.Stop();
         Core.ChangeScene(SceneNames.HighSea);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Core.AmbienceAudioManager?.Play(Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "Port", "Background_Slow")), true);
+        Core.BackgroundAudioManager?.Play(Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "Port", "Background_Slow")), true);
 
         var ship = Core.GameState?.Ship;
 
@@ -59,9 +60,7 @@ public class Port : MonoBehaviour
                 newSlot.transform.SetParent(ShipContainer.gameObject.transform);
 
                 newSlot.gameObject.SetActive(true);
-
-                newSlot.transform.Translate(new Vector2(this.ShipContainer.transform.position.x + i, 0));
-
+                                
                 this.ShipContainer.Slots.Add(newSlot);
             }
         }
@@ -119,6 +118,8 @@ public class Port : MonoBehaviour
                 Container = this.seletedLandContainer.Container,
                 Offset = container.Offset
             };
+
+            this.seletedLandContainer.Container = default;
         }
     }
 }

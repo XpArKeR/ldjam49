@@ -20,10 +20,10 @@ public class MainMenuScript : MonoBehaviour
     public GameObject BackButton;
 
     public EffectsAudioManager EffectsAudioManager;
-    public AmbienceAudioManager AmbienceAudioManager;
     public BackgroundAudioManager BackgroundAudioManager;
+    public AmbienceAudioManager AmbienceAudioManager;
 
-        
+
     public void StartGame()
     {
         Core.StartGame();
@@ -62,31 +62,31 @@ public class MainMenuScript : MonoBehaviour
             Core.EffectsAudioManager = this.EffectsAudioManager;
             Core.EffectsAudioManager.Initialize();
         }
-        if (Core.AmbienceAudioManager == default)
-        {
-            Core.AmbienceAudioManager = this.AmbienceAudioManager;
-            Core.AmbienceAudioManager.Initialize();
-        }
-
         if (Core.BackgroundAudioManager == default)
         {
             Core.BackgroundAudioManager = this.BackgroundAudioManager;
             Core.BackgroundAudioManager.Initialize();
         }
 
-        if (!Core.BackgroundAudioManager.IsPlaying)
+        if (Core.AmbienceAudioManager == default)
         {
-            Core.BackgroundAudioManager.Resume();
-        }
-        else
-        {
-            Core.BackgroundAudioManager.Unmute();
+            Core.AmbienceAudioManager = this.AmbienceAudioManager;
+            Core.AmbienceAudioManager.Initialize();
         }
 
         if (!Core.AmbienceAudioManager.IsPlaying)
         {
-            Core.AmbienceAudioManager.AudioSource.clip = Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"));
-            Core.AmbienceAudioManager.AudioSource.Play();
+            Core.AmbienceAudioManager.Resume();
+        }
+        else
+        {
+            Core.AmbienceAudioManager.Unmute();
+        }
+
+        if (!Core.BackgroundAudioManager.IsPlaying)
+        {
+            Core.BackgroundAudioManager.AudioSource.clip = Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"));
+            Core.BackgroundAudioManager.AudioSource.Play();
         }
     }
 
