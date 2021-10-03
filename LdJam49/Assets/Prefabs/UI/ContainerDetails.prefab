@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4287284403097305881}
   - component: {fileID: 1331410458227533374}
   m_Layer: 5
-  m_Name: TypeDescriptionText
+  m_Name: ValueDescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Type:'
+  m_Text: 'Value:'
 --- !u!1 &2409377437170651139
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4017551229798712204}
   m_Layer: 0
-  m_Name: TypeArea
+  m_Name: ValueArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674f942bc4985cf46afc3ba726f25884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeText: {fileID: 4663992549783714275}
+  ValueText: {fileID: 4663992549783714275}
   WeightText: {fileID: 4323474909291471421}
 --- !u!222 &5461039693599438612
 CanvasRenderer:
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 2501734468698919634}
   - component: {fileID: 4663992549783714275}
   m_Layer: 5
-  m_Name: TypeText
+  m_Name: ValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

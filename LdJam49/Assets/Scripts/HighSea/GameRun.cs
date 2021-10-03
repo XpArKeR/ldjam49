@@ -24,8 +24,6 @@ public class GameRun : MonoBehaviour
 
     private float timeCounter;
 
-
-
     void Start()
     {
         if(Core.BackgroundAudioManager?.IsPlaying == true)

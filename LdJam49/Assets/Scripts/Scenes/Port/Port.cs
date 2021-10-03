@@ -48,6 +48,7 @@ public class Port : MonoBehaviour
 
         if (ship == default)
         {
+            // this should be removed ;)
             ship = new BasicShip()
             {
 
@@ -105,6 +106,7 @@ public class Port : MonoBehaviour
         var container = new BasicContainer()
         {
             Weight = UnityEngine.Random.Range(0, 125f),
+            Value = System.Convert.ToDecimal(UnityEngine.Random.Range(0f, 1000000f)),
             Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 
@@ -140,6 +142,9 @@ public class Port : MonoBehaviour
 
             container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);
             this.seletedLandContainer = default;
+
+            Core.GameState.Ship.ShipLoad.Containers.Add(container.LoadedContainer);
+            Core.GameState.Ship.ShipLoad.Weight += container.LoadedContainer.Container.Weight;
         }
     }
 

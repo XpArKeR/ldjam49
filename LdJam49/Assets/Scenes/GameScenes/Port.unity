@@ -1933,6 +1933,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContainerDetails
       objectReference: {fileID: 0}
+    - target: {fileID: 7045073978338182354, guid: a23230df39f41264d87b49fd37b47a83, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901719859039354046, guid: a23230df39f41264d87b49fd37b47a83, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23230df39f41264d87b49fd37b47a83, type: 3}
 --- !u!224 &1984372388 stripped
