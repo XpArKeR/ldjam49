@@ -47,7 +47,7 @@ public class JasonHandler
                 ""$values"": [
                   {
                     ""$type"": ""WindEvent, Assembly-CSharp"",
-                    ""Strength"": 2000.0,
+                    ""Strength"": 100.0,
                     ""Direction"": 1.0,
                     ""EventName"": ""Blast"",
                     ""Duration"": 2.0,
@@ -66,7 +66,7 @@ public class JasonHandler
         return @"{
                       ""$type"": ""BasicShip, Assembly-CSharp"",
                       ""relativeCenterOfMassX"": 0.5,
-                      ""relativeCenterOfMassY"": 0.5,
+                      ""relativeCenterOfMassY"": 0.2,
                       ""Width"": 195.0,
                       ""Height"": 170.0,
                       ""MaxDraft"": 118.0,
@@ -79,7 +79,7 @@ public class JasonHandler
                       ""ShipLoad"": {
                         ""$type"": ""ShipLoad, Assembly-CSharp"",
                         ""Weight"": 300.0,
-                        ""centerOfMassX"": 0.5,
+                        ""centerOfMassX"": 0.6,
                         ""centerOfMassY"": 0.4,
                         ""Containers"": null
                       }
