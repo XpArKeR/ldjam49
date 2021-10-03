@@ -39,7 +39,7 @@ public class Level
     }
 
     [SerializeField]
-    private float waterDepth { get; set; }
+    private float waterDepth;
     public float WaterDepth
     {
         get
@@ -56,7 +56,7 @@ public class Level
     }
 
     [SerializeField]
-    private float length { get; set; }
+    private float length;
     public float Length
     {
         get
