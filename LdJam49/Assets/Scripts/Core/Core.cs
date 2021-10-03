@@ -129,22 +129,6 @@ namespace Assets.Scripts
             SavePlayerOptions();
         }
 
-        public static Sprite GetBackgroundSprite()
-        {
-            if ((currentBackground == default) && (!String.IsNullOrEmpty(GameState?.CurrentBackground)))
-            {
-                currentBackground = ResourceCache.GetSprite(Path.Combine("UI", "Sprites", GameState.CurrentBackground));
-            }
-
-            return currentBackground;
-        }
-
-        public static void SetCurrentBackground(Sprite background)
-        {
-            currentBackground = background;
-            GameState.CurrentBackground = background.name;
-        }
-
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void InitGame()
         {
@@ -181,7 +165,23 @@ namespace Assets.Scripts
             {
                 effectiveGameState = new GameState()
                 {
-                    Ship = default
+                    Ship = new BasicShip()
+                    {
+                        Width = 195,
+                        Height = 170,
+                        MaxDraft = 118,
+                        Buoyancy = 40,
+                        RelativeCenterOfMass = new Vector2(0.5f, 0.5f),
+
+                        StabilityConstant1 = 1.2f,
+                        StabilityConstant2 = -10f,
+                        TiltingAngle = 20f,
+
+                        Mass = 4f,
+                        Damping = 3f,
+
+                        ShipLoad = new ShipLoad()
+                    }
                 };
 
                 effectiveGameState.CurrentScene = SceneNames.Port;

@@ -4,13 +4,71 @@ using UnityEngine;
 
 public class ShipLoad 
 {
-    public float Weight { get; set; }
+    [SerializeField]
+    private float weight;
+    public float Weight
+    {
+        get
+        {
+            return this.weight;
+        }
+        set
+        {
+            if (this.weight != value)
+            {
+                this.weight = value;
+            }
+        }
+    }
 
-    public Vector2 CenterOfMass { get; set; }
+    [SerializeField]
+    private Vector2 centerOfMass;
+    public Vector2 CenterOfMass
+    {
+        get
+        {
+            return this.centerOfMass;
+        }
+        set
+        {
+            if (this.centerOfMass != value)
+            {
+                this.centerOfMass = value;
+            }
+        }
+    }
 
-    public float Offset { get; set; }
+    [SerializeField]
+    private float offset;
+    public float Offset
+    {
+        get
+        {
+            return this.offset;
+        }
+        set
+        {
+            if (this.offset != value)
+            {
+                this.offset = value;
+            }
+        }
+    }
 
-    public List<LoadedContainer> Containers { get; set; }
-
-
+    [SerializeField]
+    private List<LoadedContainer> containers;
+    public List<LoadedContainer> Containers
+    {
+        get
+        {
+            return this.containers;
+        }
+        set
+        {
+            if (this.containers != value)
+            {
+                this.containers = value;
+            }
+        }
+    }
 }

@@ -1,66 +1,250 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class BasicShip {
+public class BasicShip
+{
 
-    public float Width { get; set; }
-    public float Height { get; set; }
-    public float MaxDraft { get; set; } //how deep the ship can go into the water
-    public float Buoyancy { get; set; }
+    [SerializeField]
+    private float width;
+    public float Width
+    {
+        get
+        {
+            return this.width;
+        }
+        set
+        {
+            if (this.width != value)
+            {
+                this.width = value;
+            }
+        }
+    }
 
-    private float _Draft;
+    [SerializeField]
+    private float height;
+    public float Height
+    {
+        get
+        {
+            return this.height;
+        }
+        set
+        {
+            if (this.height != value)
+            {
+                this.height = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float maxDraft;
+    /// <summary>
+    /// how deep the ship can go into the water
+    /// </summary>
+    public float MaxDraft
+    {
+        get
+        {
+            return this.maxDraft;
+        }
+        set
+        {
+            if (this.maxDraft != value)
+            {
+                this.maxDraft = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float buoyancy;
+    /// <summary>
+    /// how deep the ship can go into the water
+    /// </summary>
+    public float Buoyancy
+    {
+        get
+        {
+            return this.buoyancy;
+        }
+        set
+        {
+            if (this.buoyancy != value)
+            {
+                this.buoyancy = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float draft;
     public float Draft
     {
         get
         {
-            if (_Draft == default)
+            if (draft == default)
             {
-                _Draft = (Mass + ShipLoad.Weight) / Buoyancy;
+                draft = (Mass + ShipLoad.Weight) / Buoyancy;
             }
-            return _Draft;
+
+            return draft;
         }
     }
 
-
-    private Vector2 _EffectiveMassPoint;
+    [SerializeField]
+    private Vector2 effectuveMassPoint;
     public Vector2 EffectiveMassPoint
     {
         get
         {
-            if (_EffectiveMassPoint == default)
+            if (effectuveMassPoint == default)
             {
                 float massTotal = Mass + ShipLoad.Weight;
-                _EffectiveMassPoint = (Mass * RelativeCenterOfMass + ShipLoad.Weight * ShipLoad.CenterOfMass) / massTotal;
+                effectuveMassPoint = (Mass * RelativeCenterOfMass + ShipLoad.Weight * ShipLoad.CenterOfMass) / massTotal;
 
             }
-            return _EffectiveMassPoint;
+            return effectuveMassPoint;
         }
     }
 
-
-    public float StabilityConstant1 { get; set; }
-    public float StabilityConstant2 { get; set; }
-    public float TiltingAngle { get; set; }
-    public float Mass { get; set; }
-    public Vector2 RelativeCenterOfMass { get; set; }
-    public float Damping { get; set; }
-
-    private float _StabilityOffset;
-    public float StabilityOffset { 
+    [SerializeField]
+    private float stabilityConstant1;
+    /// <summary>
+    /// how deep the ship can go into the water
+    /// </summary>
+    public float StabilityConstant1
+    {
         get
-        { 
-            if (_StabilityOffset == default)
+        {
+            return this.stabilityConstant1;
+        }
+        set
+        {
+            if (this.stabilityConstant1 != value)
             {
-                _StabilityOffset = (StabilityConstant1 - StabilityConstant2) * TiltingAngle;
+                this.stabilityConstant1 = value;
             }
-            return _StabilityOffset;
         }
     }
 
+    [SerializeField]
+    private float stabilityConstant2;
+    public float StabilityConstant2
+    {
+        get
+        {
+            return this.stabilityConstant2;
+        }
+        set
+        {
+            if (this.stabilityConstant2 != value)
+            {
+                this.stabilityConstant2 = value;
+            }
+        }
+    }
 
-    public ShipLoad ShipLoad { get; set; }
+    [SerializeField]
+    private float tiltingAngle;
+    public float TiltingAngle
+    {
+        get
+        {
+            return this.tiltingAngle;
+        }
+        set
+        {
+            if (this.tiltingAngle != value)
+            {
+                this.tiltingAngle = value;
+            }
+        }
+    }
 
+    [SerializeField]
+    private float mass;
+    public float Mass
+    {
+        get
+        {
+            return this.mass;
+        }
+        set
+        {
+            if (this.mass != value)
+            {
+                this.mass = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private Vector2 relativeCenterOfMass;
+    public Vector2 RelativeCenterOfMass
+    {
+        get
+        {
+            return this.relativeCenterOfMass;
+        }
+        set
+        {
+            if (this.relativeCenterOfMass != value)
+            {
+                this.relativeCenterOfMass = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float damping;
+    public float Damping
+    {
+        get
+        {
+            return this.damping;
+        }
+        set
+        {
+            if (this.damping != value)
+            {
+                this.damping = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float stabilityOffset;
+    public float StabilityOffset
+    {
+        get
+        {
+            if (stabilityOffset == default)
+            {
+                stabilityOffset = (StabilityConstant1 - StabilityConstant2) * TiltingAngle;
+            }
+
+            return stabilityOffset;
+        }
+    }
+
+    [SerializeField]
+    private ShipLoad shipLoad;
+    public ShipLoad ShipLoad
+    {
+        get
+        {
+            return this.shipLoad;
+        }
+        set
+        {
+            if (this.shipLoad != value)
+            {
+                this.shipLoad = value;
+            }
+        }
+    }
 
     public void SetDefaultValues()
     {
