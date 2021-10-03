@@ -987,6 +987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipBehaviour: {fileID: 1371323616}
   LevelDisplay: {fileID: 515247469}
+  TimeDisplay: {fileID: 1323943241}
   GameOverDisplay: {fileID: 1655407440}
 --- !u!1 &2142654567
 GameObject:

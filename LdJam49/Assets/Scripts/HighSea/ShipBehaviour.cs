@@ -12,6 +12,7 @@ public class ShipBehaviour : MonoBehaviour
     private Vector3 RotationAxis;
     private Vector2 Offset;
     private Vector2 MassMiddleVector;
+    private Vector2 StartVector;
 
 
 
@@ -45,17 +46,21 @@ public class ShipBehaviour : MonoBehaviour
     {
 
         RotationAxis = new Vector3(0, 0, 1);
+
+
+        StartShip(null, 0);
+        
+    }
+
+    void StartShip(BasicShip newShip, float startAngle)
+    {
+        Ship = newShip;
         if (Ship == null)
         {
             Ship = JasonHandler.GetDefaultShip();
         }
 
-        ShipAngle = ShipTransform.rotation.eulerAngles.z;
-        if (ShipAngle > 180)
-        {
-            ShipAngle -= 360;
-        }
-
+        ShipAngle = startAngle;
 
         Vector2 PositionOffset = new Vector2(0, (Ship.Height / 2 - Ship.Draft) / Ship.Height * ShipTransform.rect.height);
         Offset = ScaleByLocal(PositionOffset);

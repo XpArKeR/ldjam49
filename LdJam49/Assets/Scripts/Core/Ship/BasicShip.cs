@@ -278,7 +278,6 @@ public class BasicShip
 
         ShipLoad = new ShipLoad()
         {
-            Offset = 0f,
             CenterOfMass = new Vector2(.5f, 0.4f),
             Weight = 300f
         };

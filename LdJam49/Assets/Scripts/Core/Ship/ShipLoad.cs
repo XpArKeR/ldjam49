@@ -51,21 +51,20 @@ public class ShipLoad
     }
 
 
-    [SerializeField]
+    [JsonIgnore]
     private float offset;
+    [JsonIgnore]
     public float Offset
     {
         get
         {
+            if (offset == default)
+            {
+
+            }
             return this.offset;
         }
-        set
-        {
-            if (this.offset != value)
-            {
-                this.offset = value;
-            }
-        }
+        
     }
 
     [SerializeField]

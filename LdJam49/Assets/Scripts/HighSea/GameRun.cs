@@ -9,12 +9,15 @@ public class GameRun : MonoBehaviour
 
     public ShipBehaviour ShipBehaviour;
     public Text LevelDisplay;
+    public Text TimeDisplay;
     public Text GameOverDisplay;
 
     private Level Level;
     private List<SeaEvent> CurrentEvents;
     private int EventIndex;
     private SeaEvent nextEvent;
+
+    private float timeCounter;
 
 
 
@@ -57,6 +60,8 @@ public class GameRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeCounter += Time.deltaTime;
+        TimeDisplay.text = timeCounter.ToString("#0.0");
         if (Level == null)
         {
             return;
@@ -79,7 +84,7 @@ public class GameRun : MonoBehaviour
 
     private void CheckForNewEvents()
     {
-        if (nextEvent != null && Time.time > nextEvent.StartingTime)
+        if (nextEvent != null && timeCounter > nextEvent.StartingTime)
         {
             CurrentEvents.Add(nextEvent);
             EventIndex++;
@@ -102,7 +107,7 @@ public class GameRun : MonoBehaviour
         {
             SeaEvent currentEvent = CurrentEvents[i];
             Debug.Log("Executing Event: " + currentEvent.EventName);
-            if (currentEvent.ExecuteEvent(ShipBehaviour, Time.time))
+            if (currentEvent.ExecuteEvent(ShipBehaviour, timeCounter))
             {
                 CurrentEvents.RemoveAt(i);
             }
