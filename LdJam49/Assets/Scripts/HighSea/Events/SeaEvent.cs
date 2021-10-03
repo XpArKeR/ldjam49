@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 [Serializable]
@@ -18,23 +18,6 @@ public abstract class SeaEvent
             if (this.eventName != value)
             {
                 this.eventName = value;
-            }
-        }
-    }
-
-    [SerializeField]
-    private string eventType;
-    public string EventType
-    {
-        get
-        {
-            return this.eventType;
-        }
-        set
-        {
-            if (this.eventType != value)
-            {
-                this.eventType = value;
             }
         }
     }

@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Assets.Scripts;
 using Assets.Scripts.Constants;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,8 +26,6 @@ public class GameRun : MonoBehaviour
 
     private float levelCompletedTime;
 
-
-
     void Start()
     {
         if (Core.BackgroundAudioManager?.IsPlaying == true)
@@ -41,6 +38,20 @@ public class GameRun : MonoBehaviour
 
         if (Level == default)
         {
+#if UNITY_EDITOR
+            if (Core.GameState == default)
+            {
+                Core.StartGame(new GameState()
+                {
+                    CurrentScene = SceneNames.HighSea,
+                    Ship = new BasicShip()
+                    {
+                        ShipLoad = new ShipLoad()
+                    }
+                });
+            }
+#endif
+
             Level = LevelManager.GetLevel(Core.GameState.CurrentLevel);
             StartLevel();
         }
@@ -98,12 +109,11 @@ public class GameRun : MonoBehaviour
         Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
     }
 
-
     private void InitEvents()
     {
         foreach (SeaEvent seaEvent in Level.Events)
         {
-            if (seaEvent.EventType.Equals("Thunderstorm"))
+            if (typeof(ThunderStormEvent) == seaEvent.GetType())
             {
                 seaEvent.init(ThunderStorm);
             }
@@ -142,11 +152,10 @@ public class GameRun : MonoBehaviour
 
     private void ExecuteCurrentEvents()
     {
-
         for (int i = CurrentEvents.Count - 1; i >= 0; i--)
         {
             SeaEvent currentEvent = CurrentEvents[i];
-            Debug.Log("Executing Event: " + currentEvent.EventName);
+//            Debug.Log("Executing Event: " + currentEvent.EventName);
             if (currentEvent.ExecuteEvent(ShipBehaviour, timeCounter))
             {
                 CurrentEvents.RemoveAt(i);
@@ -161,7 +170,6 @@ public class GameRun : MonoBehaviour
 
     private void CheckIfAfloat()
     {
-
         if (ShipBehaviour.Ship.Draft > Level.WaterDepth)
         {
             throw new ShipDownException("Scratch: " + ShipBehaviour.Ship.Draft + " : " + Level.WaterDepth);
