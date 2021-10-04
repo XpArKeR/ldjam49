@@ -51,7 +51,8 @@ public class Port : MonoBehaviour
         {
             Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShortShort"));
             //            StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
-            StartCoroutine(DelayChangeScene(1f));
+            //StartCoroutine(DelayChangeScene(1f));
+            Core.ChangeScene(SceneNames.HighSea2);
         }
         else
         {
@@ -59,7 +60,7 @@ public class Port : MonoBehaviour
         }
     }
 
-    IEnumerator DelayChangeScene(float seconds)
+/*    IEnumerator DelayChangeScene(float seconds)
     {
         LoadHighSeasStarted = true;
         LoadSecondsLeft = seconds;
@@ -69,7 +70,7 @@ public class Port : MonoBehaviour
         } while (--LoadSecondsLeft > 0);
 
         Core.ChangeScene(SceneNames.HighSea2);
-    }
+    }*/
 
     private void onEffectFinished()
     {
