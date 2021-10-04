@@ -29,7 +29,13 @@ public static class AudioSourceExtensions
     {
         yield return new WaitForSeconds(audioSource.clip.length);
 
-        Debug.Log("Finished playing Audio");
+        onFinishedAction.Invoke();
+    }
+    
+    public static IEnumerator WaitForFinished(this AudioSource audioSource, Func<Action> onFinishedAction)
+    {
+        yield return new WaitForSeconds(audioSource.clip.length);
+
         onFinishedAction.Invoke();
     }
 }

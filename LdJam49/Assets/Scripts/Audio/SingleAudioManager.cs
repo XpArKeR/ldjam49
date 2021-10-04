@@ -10,12 +10,12 @@ namespace Assets.Scripts.Audio
         public AudioSource AudioSource;
         private Single pauseTime;
 
-        public virtual void Play(String resourceKey, Boolean isLooped = false)
+        public virtual void Play(String resourceKey, Boolean isLooped = false, Action onFinishedCallback = default)
         {
-            this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped);
+            this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped, onFinishedCallback);
         }
 
-        public virtual void Play(AudioClip audioClip, Boolean isLooped = false)
+        public virtual void Play(AudioClip audioClip, Boolean isLooped = false, Action onFinishedCallback = default)
         {
             if (audioClip != default)
             {
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Audio
 
                 if (!isLooped)
                 {
-                    StartCoroutine(this.AudioSource.WaitForFinished(OnPlayBackFinishedCallback));
+                    StartCoroutine(this.AudioSource.WaitForFinished(() => { OnPlayBackFinishedCallback(onFinishedCallback); }));
                 }
             }
             else
@@ -36,12 +36,12 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        public virtual void PlayDelayed(String resourceKey, Single delay, Boolean isLooped = false)
+        public virtual void PlayStarted(String resourceKey, Single delay, Boolean isLooped = false, Action onFinishedCallback = default)
         {
-            this.PlayDelayed(Core.ResourceCache.GetAudioClip(resourceKey), delay, isLooped);
+            this.PlayStarted(Core.ResourceCache.GetAudioClip(resourceKey), delay, isLooped, onFinishedCallback);
         }
 
-        public virtual void PlayDelayed(AudioClip audioClip, Single delay, Boolean isLooped = false)
+        public virtual void PlayStarted(AudioClip audioClip, Single startTime, Boolean isLooped = false, Action onFinishedCallback = default)
         {
             if (audioClip != default)
             {
@@ -49,12 +49,16 @@ namespace Assets.Scripts.Audio
 
                 this.AudioSource.loop = isLooped;
                 this.AudioSource.clip = audioClip;
-                this.AudioSource.time = delay;
+                this.AudioSource.time = startTime;
                 this.AudioSource.Play();
 
                 if (!isLooped)
                 {
-                    this.AudioSource.WaitForFinished(OnPlayBackFinishedCallback);
+                    StartCoroutine(this.AudioSource.WaitForFinished(() =>
+                    {
+                        OnPlayBackFinishedCallback(onFinishedCallback);
+                    }
+                    ));
                 }
             }
             else
@@ -63,10 +67,11 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        private void OnPlayBackFinishedCallback()
+        private void OnPlayBackFinishedCallback(Action onFinishedCallback)
         {
-            Debug.Log("OnPlaybackFinished triggered");
             this.IsPlaying = false;
+
+            onFinishedCallback?.Invoke();
         }
 
         public void PlayAndWaitForSound(String audioClipPath, Action onEffectFinished)
