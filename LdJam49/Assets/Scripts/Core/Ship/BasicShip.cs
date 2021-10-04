@@ -333,7 +333,7 @@ public class BasicShip
         float offSumY = 0;
         foreach (var cont in this.ShipLoad.Containers)
         {
-            offSumX += cont.Container.Weight * (cont.Offset.x / (Core.GameState.Ship.ContainerCapacity - 1f));
+            offSumX += cont.Container.Weight * (cont.Offset.x / (this.ContainerCapacity - 1f));
             offSumY += cont.Container.Weight * (cont.Offset.y * 0.2f); //TODO: Define Container Height?
         }
 

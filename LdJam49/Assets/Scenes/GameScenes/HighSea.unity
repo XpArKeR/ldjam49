@@ -465,17 +465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515247466}
   m_CullTransparentMesh: 1
---- !u!114 &910025795 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8236068020747693601, guid: 65f7c86ce59efb3458bceb8293b83d60, type: 3}
-  m_PrefabInstance: {fileID: 1389784832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3ab7672a2b6d649b44d39af61812fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1025196303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,17 +1018,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7929378264995695187, guid: 65f7c86ce59efb3458bceb8293b83d60, type: 3}
   m_PrefabInstance: {fileID: 1389784832}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1389784834 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1282561602247428417, guid: 65f7c86ce59efb3458bceb8293b83d60, type: 3}
-  m_PrefabInstance: {fileID: 1389784832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb40b8e21511604983f39fe200fcb33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1655407438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1350,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117058588}
-  - component: {fileID: 2117058589}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -1404,25 +1381,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2117058589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117058587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47605d4cbe5e00409e61dc347495e19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShipBehaviour: {fileID: 910025795}
-  ShipCargoBehavior: {fileID: 1389784834}
-  LevelDisplay: {fileID: 515247469}
-  TimeDisplay: {fileID: 1323943241}
-  GameOverDisplay: {fileID: 1655407440}
-  LevelCompletedDisplay: {fileID: 137444228}
-  ThunderStorm: {fileID: 1982400280}
 --- !u!1 &2142654567
 GameObject:
   m_ObjectHideFlags: 0

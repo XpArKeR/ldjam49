@@ -157,9 +157,11 @@ public class Port : MonoBehaviour
             this.seletedLandContainer.Container = default;
 
             var slot = this.ShipCargo.GenerateShipSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
-            slot.ContainerClicked.AddListener(this.ShipContainerSelceted);
+
+            Debug.Log(slot.gameObject.transform);
 
             container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);
+            slot.ContainerClicked.AddListener(this.ShipContainerSelceted);
             this.seletedLandContainer = default;
             this.UpdateContainerInfo();
 

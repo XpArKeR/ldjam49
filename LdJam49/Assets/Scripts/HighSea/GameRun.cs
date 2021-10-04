@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class GameRun : MonoBehaviour
 {
+    private bool isStarted = false;
 
     public ShipBehaviour ShipBehaviour;
     public ShipCargoBehaviour ShipCargoBehavior;
@@ -29,42 +30,58 @@ public class GameRun : MonoBehaviour
 
     void Start()
     {
-        if (Core.BackgroundAudioManager?.IsPlaying == true)
+        if (!isStarted)
         {
-            Core.BackgroundAudioManager.Stop();
-        }
-
-        Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio", "Scenes", "HighSea", "HighSeaBackground"), true);
-
-
-        if (Level == default)
-        {
-#if UNITY_EDITOR
-            if (Core.GameState == default)
+            if (Core.BackgroundAudioManager?.IsPlaying == true)
             {
-                var gameState = new GameState()
-                {
-                    CurrentScene = SceneNames.HighSea,
-                    Ship = ShipManager.GetDefaultShip()
-                };
-                gameState.Ship.SetDefaultValues();
-                Core.StartGame(gameState);
+                Core.BackgroundAudioManager.Stop();
             }
+
+            Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio", "Scenes", "HighSea", "HighSeaBackground"), true);
+
+
+            if (Level == default)
+            {
+#if UNITY_EDITOR
+                if (Core.GameState == default)
+                {
+                    var gameState = new GameState()
+                    {
+                        CurrentScene = SceneNames.HighSea2,
+                        Ship = ShipManager.GetDefaultShip()
+                    };
+
+                    gameState.Ship.AddContainer(new LoadedContainer()
+                    {
+                        Container = new BasicContainer()
+                        {
+                            Weight = 30f,
+                            Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
+                        },
+                        Offset = new Vector2(0, 0)
+                    });
+
+                    gameState.Ship.SetDefaultValues();
+                    Core.StartGame(gameState);
+                }
 #endif
 
-            Level = LevelManager.GetLevel(Core.GameState.CurrentLevel);
-            StartLevel();
+                Level = LevelManager.GetLevel(Core.GameState.CurrentLevel);
+                StartLevel();
+            }
+
+            this.ShipCargoBehavior.RenderCargo();
+
+            if (EventIndex > Level.Events.Count)
+            {
+                //ERROR
+            }
+            nextEvent = Level.Events[EventIndex];
+
+            InitEvents();
+
+            this.isStarted = true;
         }
-
-        this.ShipCargoBehavior.RenderCargo();
-
-        if (EventIndex > Level.Events.Count)
-        {
-            //ERROR
-        }
-        nextEvent = Level.Events[EventIndex];
-
-        InitEvents();
     }
 
 
@@ -108,6 +125,7 @@ public class GameRun : MonoBehaviour
     private void LevelCompleted()
     {
         Core.ChangeScene(SceneNames.Port);
+        Core.GameState.Ship.ShipLoad = new ShipLoad();
         Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
     }
 
@@ -157,7 +175,7 @@ public class GameRun : MonoBehaviour
         for (int i = CurrentEvents.Count - 1; i >= 0; i--)
         {
             SeaEvent currentEvent = CurrentEvents[i];
-//            Debug.Log("Executing Event: " + currentEvent.EventName);
+            //            Debug.Log("Executing Event: " + currentEvent.EventName);
             if (currentEvent.ExecuteEvent(ShipBehaviour, timeCounter))
             {
                 CurrentEvents.RemoveAt(i);
