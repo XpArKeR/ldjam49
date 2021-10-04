@@ -164,18 +164,15 @@ public class Port : MonoBehaviour
         var newSlot = CloneSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
 
         newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
-        //newSlot.transform.Translate(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
     }
 
-    private ShipContainerSlotBehavior CloneSlot(Vector2 offset, Transform relativeTo)
+    private ShipContainerSlotBehavior CloneSlot(Vector2 shipOffset, Transform relativeTo)
     {
-        var newSlot = GameObject.Instantiate<ShipContainerSlotBehavior>(this.ShipContainerTemplate);
+        var newSlot = GameObject.Instantiate<ShipContainerSlotBehavior>(this.ShipContainerTemplate, ShipContainer.gameObject.transform);
 
-        newSlot.transform.SetParent(ShipContainer.gameObject.transform);
-
-        newSlot.Offset = offset;
-
-        newSlot.transform.Translate(offset, relativeTo);
+        newSlot.Offset = shipOffset;
+                
+        newSlot.transform.Translate(shipOffset, relativeTo);
 
         this.ShipContainer.Slots.Add(newSlot);
 
