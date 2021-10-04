@@ -307,7 +307,6 @@ public class BasicShip
 
     [SerializeField]
     private float draftDrawingFactor;
-    [JsonIgnore]
     public float DraftDrawingFactor
     {
         get
