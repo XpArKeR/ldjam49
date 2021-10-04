@@ -349,7 +349,7 @@ public class BasicShip
         //float hm = Ship.Height * Ship.EffectiveMassPoint.y;
         float hm = Height * RelativeCenterOfMass.y;
         float mdhdsq = Mathf.Pow(MaxDraft - hm, 2);
-        float dhm = Draft * DraftDrawingFactor - hm;
+        float dhm = Draft - hm;
 
         //float wm = Ship.Width * Ship.EffectiveMassPoint.x;
         float wm = Width * RelativeCenterOfMass.x;

@@ -67,7 +67,6 @@ public class Port : MonoBehaviour
                 CurrentScene = SceneNames.Port,
                 Ship = ShipManager.GetDefaultShip()
             };
-            gameState.Ship.SetDefaultValues();
             Core.StartGame(gameState);
         }
 #endif
@@ -108,7 +107,7 @@ public class Port : MonoBehaviour
 
         try
         {
-            ShipBehaviour.CheckShipStatus(20f);
+            ShipBehaviour.CheckShipStatus(60f);
         }
         catch (ShipDownException e)
         {
