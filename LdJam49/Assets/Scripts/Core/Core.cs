@@ -187,7 +187,7 @@ namespace Assets.Scripts
                 {
                     AreAnimationsEnabled = true,
                     EffectsVolume = 1f,
-                    BackgroundVolume = 1.125f,
+                    BackgroundVolume = 0.125f,
                     AmbienceVolume = 0.125f,
                 };
             }
