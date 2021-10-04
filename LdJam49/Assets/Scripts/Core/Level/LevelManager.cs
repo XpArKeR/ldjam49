@@ -35,7 +35,7 @@ public class LevelManager
     {
         if (name == default)
         {
-            var level = GetLevels()[0];
+            var level = GetLevels()[3];
 
             if (GetLevels().Count == 1)
             {
