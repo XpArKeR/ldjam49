@@ -90,7 +90,8 @@ public class GameRun : MonoBehaviour
 
         if (levelCompletedTime == 0 && timeCounter > Level.Length)
         {
-            //StartCoroutine(FadeImage(this.ArrivalImage, false));
+            this.ArrivalImage.gameObject.SetActive(true);
+            StartCoroutine(FadeImage(this.ArrivalImage, false));
 
             levelCompletedTime = timeCounter + 3f;
             LevelCompletedDisplay.gameObject.SetActive(true);
