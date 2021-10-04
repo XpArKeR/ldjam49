@@ -18,6 +18,10 @@ public class ShipBehaviour : MonoBehaviour
     public float ShipAngle { get; private set; }
     private float Acceleration = 0f;
     private float Velocity = 0f;
+    //Draft Calculation States
+    private float Draft = 0f;
+    private float DraftVelocity = 0f;
+    private float DraftAcceleration = 0f;
 
 
     public float MaxAngle { get; private set; }
@@ -68,6 +72,8 @@ public class ShipBehaviour : MonoBehaviour
         //MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
+        Draft = Ship.Draft;
+
         //ShipTransform.parent.transform.position = Offset;
         if(this.MassMiddle != default)
             this.MassMiddle.transform.position = MassMiddleVector + Offset;
@@ -106,6 +112,7 @@ public class ShipBehaviour : MonoBehaviour
             this.MassMiddle.transform.position = MassMiddleVector;
         }
         ShipTransform.RotateAround(MassMiddleVector, RotationAxis, Velocity * Time.deltaTime);
+
         //ShipTransform.Rotate(RotationAxis, Velocity * Time.deltaTime);
 
         if (Sinking)
@@ -164,5 +171,15 @@ public class ShipBehaviour : MonoBehaviour
 
 
         return Mathf.Max(reaction, 0);
+    }
+
+    private void UpdateDraftValue()
+    {
+        //Calculation like a Spring-Damper-System
+//        Debug.Log("Ship Draft = " + (Ship.Draft - lastDraft));
+
+//        lastDraft = Ship.Draft;
+
+        float draftForce = -Ship.Buoyancy * Draft - 20 * DraftVelocity + ( Ship.Mass + 
     }
 }

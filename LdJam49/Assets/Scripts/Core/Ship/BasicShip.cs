@@ -93,10 +93,10 @@ public class BasicShip
     {
         get
         {
-            if (draft == default)
-            {
+//            if (draft == default)
+//            {
                 draft = (Mass + ShipLoad.Weight) / Buoyancy;
-            }
+//            }
 
             return draft;
         }
@@ -292,12 +292,9 @@ public class BasicShip
     {
         get
         {
-            if (offset == default)
-            {
-                float offsetX = (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) / 0.5f;
-                offset = 20 * offsetX; //TODO: Define Max Offset
-//                offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
-            }
+            float offsetX = (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) / 0.5f;
+            offset = 20 * offsetX; //TODO: Define Max Offset
+//          offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
             return this.offset;
         }
 
@@ -324,4 +321,6 @@ public class BasicShip
             Weight = 300f
         };*/
     }
+
+
 }
