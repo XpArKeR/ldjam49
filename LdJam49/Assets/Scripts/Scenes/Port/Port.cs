@@ -58,22 +58,16 @@ public class Port : MonoBehaviour
 
         if (Core.GameState == default)
         {
-            Core.StartGame(new GameState()
+            var gameState = new GameState()
             {
+                CurrentScene = SceneNames.Port,
                 Ship = new BasicShip()
                 {
                     ShipLoad = new ShipLoad()
                 }
-            });
-        }
-
-        if (Core.GameState.Ship == default)
-        {
-            // this should be removed ;)
-            Core.GameState.Ship = new BasicShip()
-            {
-                ShipLoad = new ShipLoad()
             };
+            gameState.Ship.SetDefaultValues();
+            Core.StartGame(gameState);
         }
 #endif
         var containerAmount = Core.GameState.Ship.ContainerCapacity;
@@ -161,8 +155,7 @@ public class Port : MonoBehaviour
             container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);
             this.seletedLandContainer = default;
 
-            Core.GameState.Ship.ShipLoad.Containers.Add(container.LoadedContainer);
-            Core.GameState.Ship.ShipLoad.Weight += container.LoadedContainer.Container.Weight;
+            Core.GameState.Ship.ShipLoad.AddContainer(container.LoadedContainer);
         }
     }
 

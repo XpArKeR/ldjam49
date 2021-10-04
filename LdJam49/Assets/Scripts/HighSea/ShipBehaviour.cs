@@ -47,7 +47,7 @@ public class ShipBehaviour : MonoBehaviour
         RotationAxis = new Vector3(0, 0, 1);
 
 
-        StartShip(null, 0);
+        StartShip(Core.GameState.Ship, 0);
 
     }
 
@@ -141,7 +141,8 @@ public class ShipBehaviour : MonoBehaviour
     {
 
         // float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
-        float radians = (Mathf.PI / 180) * (ShipAngle + Ship.Offset);
+        float radians = (Mathf.PI / 180) * (ShipAngle - Ship.Offset);
+        Debug.Log(Ship.Offset);
         return Ship.ShipLoad.Weight * Mathf.Sin(radians);
     }
 

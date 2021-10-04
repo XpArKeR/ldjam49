@@ -11,7 +11,7 @@
         "$values": [
           {
             "$type": "WindEvent, Assembly-CSharp",
-            "Strength": 100.0,
+            "Strength": 200.0,
             "Direction": 1.0,
             "EventName": "Blast",
             "Duration": 2.0,

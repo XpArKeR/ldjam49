@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using Assets.Scripts;
 using Newtonsoft.Json;
 
 using UnityEngine;
@@ -52,6 +52,7 @@ public class ShipLoad
             {
                 centerOfMassX = value.x;
                 centerOfMassY = value.y;
+                centerOfMass = value;
             }
         }
     }
@@ -71,5 +72,20 @@ public class ShipLoad
                 this.containers = value;
             }
         }
+    }
+
+    public void AddContainer(LoadedContainer container)
+    {
+        Weight += container.Container.Weight;
+
+        this.Containers.Add(container);
+
+        float offSum = 0;
+        foreach (var cont in this.Containers)
+        {
+            offSum += cont.Container.Weight * (cont.Offset.x - (Core.GameState.Ship.ContainerCapacity - 1f) / 2f);
+        }
+
+        CenterOfMass = new Vector2(offSum / Weight, CenterOfMass.y);
     }
 }

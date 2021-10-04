@@ -7,6 +7,11 @@ using UnityEngine;
 public class BasicShip
 {
 
+    public BasicShip()
+    {
+
+    }
+
     [SerializeField]
     private float width;
     public float Width
@@ -311,10 +316,10 @@ public class BasicShip
         Mass = 4f;
         Damping = 3f;
 
-        ShipLoad = new ShipLoad()
+ /*       ShipLoad = new ShipLoad()
         {
             CenterOfMass = new Vector2(.5f, 0.4f),
             Weight = 300f
-        };
+        };*/
     }
 }

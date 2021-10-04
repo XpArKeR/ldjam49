@@ -41,14 +41,16 @@ public class GameRun : MonoBehaviour
 #if UNITY_EDITOR
             if (Core.GameState == default)
             {
-                Core.StartGame(new GameState()
+                var gameState = new GameState()
                 {
                     CurrentScene = SceneNames.HighSea,
                     Ship = new BasicShip()
                     {
                         ShipLoad = new ShipLoad()
                     }
-                });
+                };
+                gameState.Ship.SetDefaultValues();
+                Core.StartGame(gameState);
             }
 #endif
 
