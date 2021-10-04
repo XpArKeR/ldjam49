@@ -29,6 +29,7 @@ public class ShipBehaviour : MonoBehaviour
 
     //Enironment State Variables
     private float WaterDepth = 1000.0f;
+    private bool playedHitGround = false;
 
     public void SinkShip()
     {
@@ -96,10 +97,13 @@ public class ShipBehaviour : MonoBehaviour
                     SinkingDepth += dSink;
                     ShipTransform.Translate(new Vector3(0f, dSink, 0));
                     Debug.Log("SinkingDepth: " + SinkingDepth);
-                } else
-                {
-                    Debug.Log("SinkingDepth:");
-                    Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
+
+                    if (Mathf.Abs(SinkingDepth) >= WaterDepth * 0.5 && !playedHitGround)
+                    {
+                        Debug.Log("SinkingDepth:");
+                        Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipOnGround"));
+                        playedHitGround = true;
+                    }
                 }
 //                ShipTransform.parent.transform.position -= new Vector3(0f, 3f * Time.deltaTime, 0);
                 SinkingTimer = SinkingTimer - Time.deltaTime;
