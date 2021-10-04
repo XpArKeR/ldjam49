@@ -1,5 +1,4 @@
 Todo:
- - Weight on reset
  - Credits
  - Port GameOver screen
  
