@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 using Assets.Scripts;
 
+using UnityEngine;
+
 public class LevelManager
 {
     private static List<Level> levels;
@@ -19,7 +21,7 @@ public class LevelManager
     {
         if (Core.IsFileAccessPossible)
         {
-            var filePath = System.IO.Path.Combine("Resources", "Data", "Levels.json");
+            var filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Data", "Levels.json");
 
             return JasonHandler.DeserializeObjectFromFile<List<Level>>(filePath);
         }

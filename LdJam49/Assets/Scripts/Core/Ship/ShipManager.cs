@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using UnityEngine;
+
 namespace Assets.Scripts
 {
     public static class ShipManager
@@ -39,7 +41,7 @@ namespace Assets.Scripts
             {
                 if (Core.IsFileAccessPossible)
                 {
-                    var filePath = System.IO.Path.Combine("Resources", "Data", "Ships.json");
+                    var filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Data", "Ships.json");
 
                     ships = JasonHandler.DeserializeObjectFromFile<List<BasicShip>>(filePath);
                 }
