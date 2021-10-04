@@ -74,21 +74,4 @@ public class ShipLoad
         }
     }
 
-    public void AddContainer(LoadedContainer container)
-    {
-        Weight += container.Container.Weight;
-
-        this.Containers.Add(container);
-
-        float offSumX = 0;
-        float offSumY = 0;
-        foreach (var cont in this.Containers)
-        {
-            offSumX += cont.Container.Weight * (cont.Offset.x / (Core.GameState.Ship.ContainerCapacity - 1f));
-            offSumY += cont.Container.Weight * (cont.Offset.y * 0.2f); //TODO: Define Container Height?
-        }
-
-        CenterOfMass = new Vector2(offSumX / Weight, offSumY / Weight);
-//        Debug.Log("ShipLoad: x= " + (offSumX / Weight) + " y = " + (offSumY / Weight) + " CenterOfMass = " + CenterOfMass.x);
-    }
 }

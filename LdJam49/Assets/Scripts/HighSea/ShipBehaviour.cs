@@ -23,10 +23,6 @@ public class ShipBehaviour : MonoBehaviour
     private float DraftVelocity = 0f;
     private float DraftAcceleration = 0f;
 
-
-    public float MaxAngle { get; private set; }
-    public float MinAngle { get; private set; }
-
     private float SinkingTimer = -1;
     private bool Sinking = false;
 
@@ -72,41 +68,32 @@ public class ShipBehaviour : MonoBehaviour
         //MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
-        Draft = Ship.Draft;
-        TranslateByDraftDelta(-Draft);
+        Draft = 0;
+//        TranslateByDraftDelta(-Draft);
+//        Debug.Log("Set Draft = " + Draft);
 
 
         //ShipTransform.parent.transform.position = Offset;
         if (this.MassMiddle != default)
             this.MassMiddle.transform.position = MassMiddleVector + Offset;
 
-        CalculateBoundingAngles();
-    }
-
-    void CalculateBoundingAngles()
-    {
-        //float hm = Ship.Height * 0.5f;
-        //float hm = Ship.Height * Ship.EffectiveMassPoint.y;
-        float hm = Ship.Height * Ship.RelativeCenterOfMass.y;
-        float mdhdsq = Mathf.Pow(Ship.MaxDraft - hm, 2);
-        float dhm = Ship.Draft - hm;
-
-        //float wm = Ship.Width * Ship.EffectiveMassPoint.x;
-        float wm = Ship.Width * Ship.RelativeCenterOfMass.x;
-        //float wm = Ship.Width * 0.5f;
-        MaxAngle = CalculateAngle(mdhdsq, dhm, wm);
-        MinAngle = -CalculateAngle(mdhdsq, dhm, Ship.Width - wm);
-    }
-
-    private static float CalculateAngle(float mdhdsq, float dhm, float wm)
-    {
-        float r = Mathf.Sqrt(Mathf.Pow(wm, 2) + mdhdsq);
-        float angle = Mathf.Acos(wm / r) - Mathf.Asin(dhm / r);
-        return (180 / Mathf.PI) * angle;
     }
 
     void Update()
     {
+
+        if (Sinking)
+        {
+            if (SinkingTimer > 0)
+            {
+                ShipTransform.parent.transform.position -= new Vector3(0f, 3f * Time.deltaTime, 0);
+                SinkingTimer = SinkingTimer - Time.deltaTime;
+            }
+            else
+            {
+                Core.ChangeScene(SceneNames.GameOver);
+            }
+        }
 
         //ShipTransform.parent.transform.position = Offset;
         if (this.MassMiddle != default)
@@ -118,29 +105,11 @@ public class ShipBehaviour : MonoBehaviour
         //ShipTransform.Rotate(RotationAxis, Velocity * Time.deltaTime);
         UpdateDraftValue();
 
-        if (Sinking)
-        {
-            if (SinkingTimer > 0)
-            {
-                ShipTransform.parent.transform.position -= new Vector3(0f, -10f * Time.deltaTime, 0);
-                SinkingTimer = SinkingTimer - Time.deltaTime;
-            }
-            else
-            {
-                Core.ChangeScene(SceneNames.GameOver);
-            }
-        }
-        else
-        {
-            ShipAngle += Velocity * Time.deltaTime;
-            Velocity += Acceleration * Time.deltaTime;
+        ShipAngle += Velocity * Time.deltaTime;
+        Velocity += Acceleration * Time.deltaTime;
 
-            float RotationAcceleration = CalculateRotationAcceleration();
-            Acceleration = RotationAcceleration;
-        }
-
-
-
+        float RotationAcceleration = CalculateRotationAcceleration();
+        Acceleration = RotationAcceleration;
 
     }
 
@@ -198,6 +167,6 @@ public class ShipBehaviour : MonoBehaviour
 
     private void TranslateByDraftDelta(float delta)
     {
-        ShipTransform.Translate(new Vector3(0, -(delta) / 20f, 0)); // Division by Twenty is just a try
+        ShipTransform.Translate(new Vector3(0, -(delta) / Ship.DraftDrawingFactor, 0)); // Division by Twenty is just a try
     }
 }
