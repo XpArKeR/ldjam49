@@ -82,7 +82,7 @@ public class WindEvent : SeaEvent
 
         if(!playedSound)
         {
-//TODO:            Core.EffectsAudioManager.Play(Sound);
+            Core.EffectsAudioManager.Play(Sound);
             playedSound = true;
         }
 

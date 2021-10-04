@@ -19,9 +19,9 @@ namespace Assets.Scripts.Audio
         {
             if (audioClip != default)
             {
-                Core.BackgroundAudioManager.AudioSource.loop = isLooped;
-                Core.BackgroundAudioManager.AudioSource.clip = audioClip;
-                Core.BackgroundAudioManager.AudioSource.Play();
+                this.AudioSource.loop = isLooped;
+                this.AudioSource.clip = audioClip;
+                this.AudioSource.Play();
             }
             else
             {

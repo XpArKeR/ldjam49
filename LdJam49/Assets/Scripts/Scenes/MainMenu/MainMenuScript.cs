@@ -88,6 +88,8 @@ public class MainMenuScript : MonoBehaviour
             Core.BackgroundAudioManager.AudioSource.clip = Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"));
             Core.BackgroundAudioManager.AudioSource.Play();
         }
+
+        Core.EffectsAudioManager.Play(Path.Combine("Audio", "Effects", "Wind","Wind3"));
     }
 
     // Update is called once per frame

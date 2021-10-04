@@ -51,40 +51,24 @@ namespace Assets.Scripts
             }
         }
         
-        private static EffectsAudioManager foregroundMusicManager;
+        private static EffectsAudioManager effectsAudioManager;
         public static EffectsAudioManager EffectsAudioManager
         {
             get
             {
-                return foregroundMusicManager;
+                return effectsAudioManager;
             }
             set
             {
-                if (foregroundMusicManager != value)
+                if (effectsAudioManager != value)
                 {
-                    foregroundMusicManager = value;
+                    effectsAudioManager = value;
                 }
             }
         }
 
-        private static BackgroundAudioManager ambienceMusicManager;
+        private static BackgroundAudioManager backgroundAudioManager;
         public static BackgroundAudioManager BackgroundAudioManager
-        {
-            get
-            {
-                return ambienceMusicManager;
-            }
-            set
-            {
-                if (ambienceMusicManager != value)
-                {
-                    ambienceMusicManager = value;
-                }
-            }
-        }
-
-        private static AmbienceAudioManager backgroundAudioManager;
-        public static AmbienceAudioManager AmbienceAudioManager
         {
             get
             {
@@ -95,6 +79,22 @@ namespace Assets.Scripts
                 if (backgroundAudioManager != value)
                 {
                     backgroundAudioManager = value;
+                }
+            }
+        }
+
+        private static AmbienceAudioManager ambienceAudioManager;
+        public static AmbienceAudioManager AmbienceAudioManager
+        {
+            get
+            {
+                return ambienceAudioManager;
+            }
+            set
+            {
+                if (ambienceAudioManager != value)
+                {
+                    ambienceAudioManager = value;
                 }
             }
         }
