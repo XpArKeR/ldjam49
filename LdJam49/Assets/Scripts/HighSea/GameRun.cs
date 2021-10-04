@@ -113,7 +113,6 @@ public class GameRun : MonoBehaviour
             GameOverDisplay.gameObject.SetActive(true);
             ShipBehaviour.SinkShip();
         }
-
     }
 
     private void LevelCompleted()

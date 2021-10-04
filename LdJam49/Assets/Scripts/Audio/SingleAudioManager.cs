@@ -10,23 +10,63 @@ namespace Assets.Scripts.Audio
         public AudioSource AudioSource;
         private Single pauseTime;
 
-        public void Play(String resourceKey, Boolean isLooped = false)
+        public virtual void Play(String resourceKey, Boolean isLooped = false)
         {
             this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped);
         }
 
-        public void Play(AudioClip audioClip, Boolean isLooped = false)
+        public virtual void Play(AudioClip audioClip, Boolean isLooped = false)
         {
             if (audioClip != default)
             {
+                this.IsPlaying = true;
+
                 this.AudioSource.loop = isLooped;
                 this.AudioSource.clip = audioClip;
                 this.AudioSource.Play();
+
+                if (!isLooped)
+                {
+                    StartCoroutine(this.AudioSource.WaitForFinished(OnPlayBackFinishedCallback));
+                }
             }
             else
             {
                 throw new ArgumentNullException(nameof(audioClip));
             }
+        }
+
+        public virtual void PlayDelayed(String resourceKey, Single delay, Boolean isLooped = false)
+        {
+            this.PlayDelayed(Core.ResourceCache.GetAudioClip(resourceKey), delay, isLooped);
+        }
+
+        public virtual void PlayDelayed(AudioClip audioClip, Single delay, Boolean isLooped = false)
+        {
+            if (audioClip != default)
+            {
+                this.IsPlaying = true;
+
+                this.AudioSource.loop = isLooped;
+                this.AudioSource.clip = audioClip;
+                this.AudioSource.time = delay;
+                this.AudioSource.Play();
+
+                if (!isLooped)
+                {
+                    this.AudioSource.WaitForFinished(OnPlayBackFinishedCallback);
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(audioClip));
+            }
+        }
+
+        private void OnPlayBackFinishedCallback()
+        {
+            Debug.Log("OnPlaybackFinished triggered");
+            this.IsPlaying = false;
         }
 
         public void PlayAndWaitForSound(String audioClipPath, Action onEffectFinished)

@@ -24,9 +24,6 @@ public class Port : MonoBehaviour
 
     private LandContainerSlotBehaviour seletedLandContainer;
 
-    private bool LoadHighSeasStarted = false;
-    private float LoadSecondsLeft = 0;
-
     public void SelectContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
         if (this.seletedLandContainer != default)
@@ -50,9 +47,7 @@ public class Port : MonoBehaviour
         if (Core.EffectsAudioManager != default)
         {
             Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShortShort"));
-            //            StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
-            //StartCoroutine(DelayChangeScene(1f));
-            Core.ChangeScene(SceneNames.HighSea2);
+            StartCoroutine(DelayChangeScene(1f));
         }
         else
         {
@@ -60,17 +55,16 @@ public class Port : MonoBehaviour
         }
     }
 
-/*    IEnumerator DelayChangeScene(float seconds)
+    IEnumerator DelayChangeScene(float seconds)
     {
-        LoadHighSeasStarted = true;
-        LoadSecondsLeft = seconds;
+        float loadSecondsLeft = seconds;
         do
         {
             yield return new WaitForSeconds(1);
-        } while (--LoadSecondsLeft > 0);
+        } while (--loadSecondsLeft > 0);
 
         Core.ChangeScene(SceneNames.HighSea2);
-    }*/
+    }
 
     private void onEffectFinished()
     {
@@ -145,12 +139,11 @@ public class Port : MonoBehaviour
 
     private void SpawnContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
-        //        float weight = UnityEngine.Random.Range(0, 80f);
-        float weight = 30;
+        float weight = UnityEngine.Random.Range(0, 80f);
         var container = new BasicContainer()
         {
             Weight = weight,
-            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.5f, 0.5f))*100000f),
+            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.3f, 0.3f))*100000f),
             Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 
