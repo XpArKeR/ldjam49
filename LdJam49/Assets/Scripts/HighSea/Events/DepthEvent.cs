@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class DepthEvent : SeaEvent
 {
+    private float depth;
+    private float timeMinDepth;
+
+    [SerializeField]
+    private float depthZero;
+    public float DepthZero
+    {
+        get
+        {
+            return this.depthZero;
+        }
+        set
+        {
+            if (this.depthZero != value)
+            {
+                this.depthZero = value;
+            }
+        }
+    }
 
     [SerializeField]
     private float gradientUp;
@@ -82,6 +101,21 @@ public class DepthEvent : SeaEvent
             return true;
         }
 
+        if(timeMinDepth == default && depth <= MinWaterDepth)
+        {
+            depth = depthZero + relativeEventTime * GradientUp;
+            if (depth <= MinWaterDepth)
+            {
+                depth = MinWaterDepth;
+                timeMinDepth = relativeEventTime;
+            }
+        } else if(relativeEventTime < timeMinDepth + MinDepthDuration)
+        {
+            depth = MinWaterDepth;
+        } else
+        {
+            depth = Mathf.Max(MinWaterDepth + (relativeEventTime - (timeMinDepth + MinDepthDuration)) * GradientDown, 0);
+        }
         //TODO
         return false;
     }
