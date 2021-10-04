@@ -61,10 +61,7 @@ public class Port : MonoBehaviour
             var gameState = new GameState()
             {
                 CurrentScene = SceneNames.Port,
-                Ship = new BasicShip()
-                {
-                    ShipLoad = new ShipLoad()
-                }
+                Ship = ShipManager.GetDefaultShip()
             };
             gameState.Ship.SetDefaultValues();
             Core.StartGame(gameState);

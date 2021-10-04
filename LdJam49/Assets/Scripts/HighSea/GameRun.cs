@@ -44,10 +44,7 @@ public class GameRun : MonoBehaviour
                 var gameState = new GameState()
                 {
                     CurrentScene = SceneNames.HighSea,
-                    Ship = new BasicShip()
-                    {
-                        ShipLoad = new ShipLoad()
-                    }
+                    Ship = ShipManager.GetDefaultShip()
                 };
                 gameState.Ship.SetDefaultValues();
                 Core.StartGame(gameState);
