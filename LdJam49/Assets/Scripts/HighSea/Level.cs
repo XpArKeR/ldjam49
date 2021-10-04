@@ -24,6 +24,40 @@ public class Level
     }
 
     [SerializeField]
+    private string start;
+    public string Start
+    {
+        get
+        {
+            return this.start;
+        }
+        set
+        {
+            if (this.start != value)
+            {
+                this.start = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private string destination;
+    public string Destination
+    {
+        get
+        {
+            return this.destination;
+        }
+        set
+        {
+            if (this.destination != value)
+            {
+                this.destination = value;
+            }
+        }
+    }
+
+    [SerializeField]
     private List<SeaEvent> events;
     public List<SeaEvent> Events
     {

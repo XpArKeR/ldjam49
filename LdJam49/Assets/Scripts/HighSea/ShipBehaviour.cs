@@ -201,7 +201,6 @@ public class ShipBehaviour : MonoBehaviour
 
     private void CheckIfAfloat()
     {
-        Debug.Log("CheckIfFloat: "+WaterDepth+" Draft: "+Ship.Draft);
         if (Ship.Draft > WaterDepth)
         {
             throw new ShipDownException("Scratch: " + Ship.Draft + " : " + WaterDepth);
