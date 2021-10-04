@@ -10,8 +10,6 @@ namespace Assets.Scripts
 {
     public class Core
     {
-        private static Sprite currentBackground;
-
         private readonly static ResourceCache resourceCache = new ResourceCache();
         public static ResourceCache ResourceCache
         {
@@ -163,26 +161,7 @@ namespace Assets.Scripts
             {
                 effectiveGameState = new GameState()
                 {
-                    Ship = new BasicShip()
-                    {
-                        Width = 195,
-                        Height = 170,
-                        MaxDraft = 118,
-                        Buoyancy = 40,
-                        RelativeCenterOfMass = new Vector2(0.5f, 0.5f),
-
-                        StabilityConstant1 = 1.2f,
-                        StabilityConstant2 = -10f,
-                        TiltingAngle = 20f,
-
-                        Mass = 4f,
-                        Damping = 3f,
-
-                        ShipLoad = new ShipLoad()
-                        {
-                            Containers = new System.Collections.Generic.List<LoadedContainer>()
-                        }
-                    }
+                    Ship = ShipManager.GetDefaultShip()
                 };
 
                 effectiveGameState.CurrentScene = SceneNames.Port;
