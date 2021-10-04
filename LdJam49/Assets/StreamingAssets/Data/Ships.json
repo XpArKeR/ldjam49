@@ -3,8 +3,8 @@
   "$values": [
     {
       "$type": "BasicShip, Assembly-CSharp",
-      "relativeCenterOfMassX": 0.5,
-      "relativeCenterOfMassY": 0.2,
+      "relativeCenterOfMassX": 0.0,
+      "relativeCenterOfMassY": 0.0,
       "Width": 195.0,
       "Height": 170.0,
       "MaxDraft": 118.0,
@@ -15,10 +15,7 @@
       "Mass": 4.0,
       "Damping": 3.0,
       "ShipLoad": {
-        "$type": "ShipLoad, Assembly-CSharp",
-        "Weight": 300.0,
-        "centerOfMassX": 0.6,
-        "centerOfMassY": 0.4
+        "$type": "ShipLoad, Assembly-CSharp"
       }
     }
   ]
