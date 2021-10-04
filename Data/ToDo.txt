@@ -1,7 +1,9 @@
 Todo:
- - RotationPoint ignores draft
- - Sink ship
-
+ - Weight on reset
+ - Credits
+ - Port GameOver screen
+ 
+ 
 Nice to have:
 
  - Easter-egg with small button that triggers an event / sound

@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 
 using Assets.Scripts;
 using Assets.Scripts.Constants;
+using Assets.Scripts.Extensions;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,8 +76,6 @@ public class GameRun : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
         timeCounter += Time.deltaTime;
@@ -91,7 +89,7 @@ public class GameRun : MonoBehaviour
         if (levelCompletedTime == 0 && timeCounter > Level.Length)
         {
             this.ArrivalImage.gameObject.SetActive(true);
-            StartCoroutine(FadeImage(this.ArrivalImage, false));
+            StartCoroutine(this.ArrivalImage.Fade(false));
 
             levelCompletedTime = timeCounter + 3f;
             LevelCompletedDisplay.gameObject.SetActive(true);
@@ -177,32 +175,6 @@ public class GameRun : MonoBehaviour
             if (currentEvent.ExecuteEvent(ShipBehaviour, timeCounter))
             {
                 CurrentEvents.RemoveAt(i);
-            }
-        }
-    }
-
-    private IEnumerator FadeImage(Image image, bool fadeAway)
-    {
-        // fade from opaque to transparent
-        if (fadeAway)
-        {
-            // loop over 1 second backwards
-            for (float i = 1; i >= 0; i -= Time.deltaTime)
-            {
-                // set color with i as alpha
-                image.color = new Color(1, 1, 1, i);
-                yield return null;
-            }
-        }
-        // fade from transparent to opaque
-        else
-        {
-            // loop over 1 second
-            for (float i = 0; i <= 1; i += Time.deltaTime)
-            {
-                // set color with i as alpha
-                image.color = new Color(1, 1, 1, i);
-                yield return null;
             }
         }
     }
