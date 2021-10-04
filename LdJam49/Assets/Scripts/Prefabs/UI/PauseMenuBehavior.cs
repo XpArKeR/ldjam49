@@ -28,13 +28,13 @@ public class PauseMenuBehavior : MonoBehaviour
                 Hide();
 
                 Time.timeScale = 1;
-                Core.EffectsAudioManager.Resume();
+                Core.EffectsAudioManager?.Resume();
             }
         }
         else
         {
             Time.timeScale = 0;
-            Core.EffectsAudioManager.Pause();
+            Core.EffectsAudioManager?.Pause();
 
             Show();
         }
