@@ -4,6 +4,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Rotterdam-Hamburg",
+	  "Start": "Rotterdam",
+	  "Destination": "Hamburg",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -71,6 +73,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Hamburg-Felixstowe",
+	  "Start": "Hamburg",
+	  "Destination": "Felixstowe",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -138,6 +142,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Felixstowe-New York",
+	  "Start": "Felixstowe",
+	  "Destination": "New York",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -224,6 +230,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "New York-Los Angeles",
+	  "Start": "New York",
+	  "Destination": "Los Angeles",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -315,6 +323,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Los Angeles-Balboa",
+	  "Start": "Los Angeles",
+	  "Destination": "Balboa",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -397,6 +407,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Balboa-Shanghai",
+	  "Start": "Balboa",
+	  "Destination": "Shanghai",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -488,6 +500,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Dodo",
+	  "Start": "Hier",
+	  "Destination": "Da",
       "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
@@ -543,6 +557,8 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Pogo",
+	  "Start": "Dort",
+	  "Destination": "Drüben",
       "WaterDepth": 100.0,
       "Length": 30.0,
       "Events": {

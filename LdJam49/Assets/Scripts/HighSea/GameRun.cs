@@ -80,8 +80,7 @@ public class GameRun : MonoBehaviour
     void Update()
     {
         timeCounter += Time.deltaTime;
-        TimeDisplay.text = timeCounter.ToString("#0.0");
-        ProgressDisplay.transform.Translate(new Vector3(0.3f * Time.deltaTime, 0, 0));
+        ProgressDisplay.transform.Translate(new Vector3(0.28f * Time.deltaTime, 0, 0));
         if (Level == null)
         {
             return;
@@ -153,7 +152,9 @@ public class GameRun : MonoBehaviour
             Level.Events = new List<SeaEvent>();
         }
 
-        LevelDisplay.text = Level.Name;
+        //        LevelDisplay.text = Level.Name;
+        LevelDisplay.text = Level.Start;
+        TimeDisplay.text = Level.Destination;
     }
 
     private void CheckForNewEvents()
