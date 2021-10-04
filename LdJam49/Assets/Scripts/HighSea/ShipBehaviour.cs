@@ -221,7 +221,7 @@ public class ShipBehaviour : MonoBehaviour
         //    throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
         //}
 
-        if (ShipAngle < Ship.MinAngle || ShipAngle > Ship.MaxAngle)
+        if (ShipAngle < Ship.MinAngle*0.9 || ShipAngle > Ship.MaxAngle*0.9) //REMARK: Dirty
         {
             throw new ShipDownException("Tilted!! with angle  " + Ship.MaxAngle);
         }
