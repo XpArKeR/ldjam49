@@ -180,6 +180,6 @@ public class ShipBehaviour : MonoBehaviour
 
 //        lastDraft = Ship.Draft;
 
-        float draftForce = -Ship.Buoyancy * Draft - 20 * DraftVelocity + ( Ship.Mass + 
+//        float draftForce = -Ship.Buoyancy * Draft - 20 * DraftVelocity + ( Ship.Mass + 
     }
 }
