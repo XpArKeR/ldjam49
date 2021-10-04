@@ -19,7 +19,9 @@ public class LevelManager
     {
         if (Core.IsFileAccessPossible)
         {
-            return JasonHandler.DeserializeObjectFromFile<List<Level>>(System.IO.Path.Combine("Resources", "Data", "Levels.json"));
+            var filePath = System.IO.Path.Combine("Resources", "Data", "Levels.json");
+
+            return JasonHandler.DeserializeObjectFromFile<List<Level>>(filePath);
         }
         else
         {

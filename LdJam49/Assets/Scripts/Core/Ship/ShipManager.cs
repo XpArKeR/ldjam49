@@ -35,11 +35,13 @@ namespace Assets.Scripts
 
         public static BasicShip GetDefaultShip()
         {
-            if (ships == null ||ships.Count < 1)
+            if (ships == null || ships.Count < 1)
             {
                 if (Core.IsFileAccessPossible)
                 {
-                    ships = JasonHandler.DeserializeObjectFromFile<List<BasicShip>>(System.IO.Path.Combine("Resources", "Data", "Ships.json"));
+                    var filePath = System.IO.Path.Combine("Resources", "Data", "Ships.json");
+
+                    ships = JasonHandler.DeserializeObjectFromFile<List<BasicShip>>(filePath);
                 }
                 else
                 {
@@ -47,7 +49,7 @@ namespace Assets.Scripts
                 }
             }
 
-            if (ships?.Count < 1)
+            if (ships == null || ships.Count < 1)
             {
                 throw new InvalidOperationException("No ships could be loaded!");
             }
