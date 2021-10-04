@@ -5,23 +5,23 @@
       "$type": "Level, Assembly-CSharp",
       "Name": "Dodo",
       "WaterDepth": 2000.0,
-      "Length": 33.3,
+      "Length": 30,
       "Events": {
         "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
         "$values": [
           {
             "$type": "WaveEvent, Assembly-CSharp",
-            "Strength": 20.0,
+            "Strength": 50.0,
             "Direction": -1.0,
-	    "Frequency": 20,
+	    "Frequency": 0.2,
             "EventName": "Continous Waves",
             "Duration": 30.0,
             "StartingTime": 0.0,
           },
           {
             "$type": "WaveEvent, Assembly-CSharp",
-            "Strength": 40.0,
-	    "Frequency": 30,
+            "Strength": 100.0,
+	    "Frequency": 1,
             "Direction": 1.0,
             "EventName": "Continous Waves",
             "Duration": 4.0,

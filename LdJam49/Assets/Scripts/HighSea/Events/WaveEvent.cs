@@ -78,14 +78,6 @@ public class WaveEvent : SeaEvent
 
     private float DurationPI;
 
-    private float GetDurationPI()
-    {
-        if (DurationPI == default)
-        {
-            DurationPI = Duration / Mathf.PI;
-        }
-        return DurationPI;
-    }
 
     public override bool ExecuteEvent(ShipBehaviour ShipBehaviour, float time)
     {
@@ -101,8 +93,9 @@ public class WaveEvent : SeaEvent
             playedSound = true;
         }
 
-        float strength = Strength * Mathf.Sin(Frequency * relativeEventTime / GetDurationPI());
+        float strength = Strength * Mathf.Sin(Frequency * relativeEventTime);
         ShipBehaviour.PushSide(Direction, strength);
+        Debug.Log("Push side: " + strength);
         return false;
     }
 

@@ -96,8 +96,10 @@ public class ShipBehaviour : MonoBehaviour
                 {
                     float dSink = -3f * Time.deltaTime;
                     SinkingDepth += dSink * Ship.DraftDrawingFactor;
+                    ShipTransform.Rotate(new Vector3(0, 0, 1f), -ShipAngle);
                     ShipTransform.Translate(new Vector3(0f, dSink, 0));
-//                    Debug.Log("SinkingDepth: " + SinkingDepth);
+                    ShipTransform.Rotate(new Vector3(0, 0, 1f), ShipAngle);
+                    //                    Debug.Log("SinkingDepth: " + SinkingDepth);
 
                     if (Mathf.Abs(SinkingDepth) >= WaterDepth * 0.5 && !playedHitGround)
                     {
