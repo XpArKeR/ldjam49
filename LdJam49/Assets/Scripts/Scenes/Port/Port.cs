@@ -45,7 +45,7 @@ public class Port : MonoBehaviour
 
         if (Core.EffectsAudioManager != default)
         {
-            Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
+            Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShortShort"));
             StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
         }
         else
