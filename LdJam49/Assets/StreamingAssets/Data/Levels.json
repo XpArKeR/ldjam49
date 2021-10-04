@@ -3,8 +3,75 @@
   "$values": [
     {
       "$type": "Level, Assembly-CSharp",
+      "Name": "Rotterdam-Hamburg",
+      "WaterDepth": 200.0,
+      "Length": 30,
+      "Events": {
+        "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
+        "$values": [
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 5.0,
+            "Direction": -1.0,
+			"Frequency": 0.8,
+            "EventName": "Continous Waves",
+            "Duration": 30.0,
+            "StartingTime": 0.0,
+          },
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 10.0,
+			"Frequency": 1,
+            "Direction": 1.0,
+            "EventName": "Continous Waves",
+            "Duration": 10.0,
+            "StartingTime": 4.0,
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 120.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 10,
+            "StartingTime": 6.0,
+			"Sound": "Audio/Effects/Wind/Wind1"
+          },
+          {
+            "$type": "DepthEvent, Assembly-CSharp",
+            "DepthZero": 200.0,
+            "GradientUp": 50.0,
+            "GradientDown": 50.0,
+            "MinWaterDepth": 100.0,
+            "MinDepthDuration": 3.0,
+            "EventName": "Not Enough Depth",
+            "Duration": 15,
+            "StartingTime": 2.0
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 150.0,
+            "Direction": -1.0,
+            "EventName": "Blast",
+            "Duration": 4.5,
+            "StartingTime": 17.0,
+			"Sound": "Audio/Effects/Wind/Wind2"
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 180.0,
+            "Direction": -1.0,
+            "EventName": "Blast",
+            "Duration": 4.5,
+            "StartingTime": 23.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          },
+        ]
+      }
+    },
+    {
+      "$type": "Level, Assembly-CSharp",
       "Name": "Dodo",
-      "WaterDepth": 2000.0,
+      "WaterDepth": 200.0,
       "Length": 30,
       "Events": {
         "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
