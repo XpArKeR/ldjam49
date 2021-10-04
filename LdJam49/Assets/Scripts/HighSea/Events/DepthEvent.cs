@@ -5,13 +5,12 @@ using UnityEngine;
 public class DepthEvent : SeaEvent
 {
     [JsonIgnore]
-    private GameObject parent;
-    [JsonIgnore]
-    private GameObject ground;
+    private GameObject Ground;
 
 
-    private float depth;
-    private float timeMinDepth = 0;
+    private float Depth;
+    private float LastDepth;
+    private float TimeMinDepth = 0;
 
     [SerializeField]
     private float depthZero;
@@ -102,38 +101,40 @@ public class DepthEvent : SeaEvent
     public override bool ExecuteEvent(ShipBehaviour ShipBehaviour, float time)
     {
         float relativeEventTime = time - StartingTime;
-        if (relativeEventTime > Duration)
+        if (relativeEventTime > Duration || ShipBehaviour.Sinking)
         {
             return true;
         }
 
-        if (timeMinDepth == default && depth >= MinWaterDepth)
+        if (TimeMinDepth == default && Depth >= MinWaterDepth)
         {
-            depth = depthZero - relativeEventTime * GradientUp;
-            if (depth <= MinWaterDepth)
+            Depth = depthZero - relativeEventTime * GradientUp;
+            if (Depth <= MinWaterDepth)
             {
-                depth = MinWaterDepth;
-                timeMinDepth = relativeEventTime;
+                Depth = MinWaterDepth;
+                TimeMinDepth = relativeEventTime;
             }
         }
-        else if (relativeEventTime < timeMinDepth + MinDepthDuration)
+        else if (relativeEventTime < TimeMinDepth + MinDepthDuration)
         {
-            depth = MinWaterDepth;
+            Depth = MinWaterDepth;
         }
         else
         {
-            depth = Mathf.Min(MinWaterDepth + (relativeEventTime - (timeMinDepth + MinDepthDuration)) * GradientDown, depthZero);
+            Depth = Mathf.Min(MinWaterDepth + (relativeEventTime - (TimeMinDepth + MinDepthDuration)) * GradientDown, depthZero);
         }
-        Debug.Log(this.EventName + " Depth: " + depth);
-        //TODO
+        Ground.transform.Translate(new Vector3(0, -(Depth - LastDepth) / 70f, 0));
+        ShipBehaviour.WaterDepth = Depth;
+        LastDepth = Depth;
         return false;
     }
 
-    public override void init(GameObject parent)
+    public override void init(GameObject ground)
     {
-        this.parent = parent;
+        Ground = ground;
 
-        ground = parent;
+        LastDepth = DepthZero;
+        Depth = DepthZero;
     }
 
 }
