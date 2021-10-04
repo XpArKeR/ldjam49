@@ -139,12 +139,11 @@ public class Port : MonoBehaviour
 
     private void SpawnContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
-        //        float weight = UnityEngine.Random.Range(0, 80f);
-        float weight = 30;
+        float weight = UnityEngine.Random.Range(0, 80f);
         var container = new BasicContainer()
         {
             Weight = weight,
-            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.5f, 0.5f))*100000f),
+            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.3f, 0.3f))*100000f),
             Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 

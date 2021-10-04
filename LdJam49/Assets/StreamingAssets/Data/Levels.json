@@ -314,6 +314,179 @@
     },
     {
       "$type": "Level, Assembly-CSharp",
+      "Name": "Los Angeles-Balboa",
+      "WaterDepth": 200.0,
+      "Length": 30,
+      "Events": {
+        "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
+        "$values": [
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 50.0,
+            "Direction": -1.0,
+			"Frequency": 0.8,
+            "EventName": "Continous Waves",
+            "Duration": 30.0,
+            "StartingTime": 0.0,
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 160.0,
+            "Direction": -1.0,
+            "EventName": "Blast",
+            "Duration": 10,
+            "StartingTime": 4.1,
+			"Sound": "Audio/Effects/Wind/Wind2"
+          },
+          {
+            "$type": "ThunderStormEvent, Assembly-CSharp",
+            "EventName": "Thanderman",
+            "Duration": 10.0,
+            "StartingTime": 8.0
+          },
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 20.0,
+			"Frequency": 1,
+            "Direction": 1.0,
+            "EventName": "Continous Waves",
+            "Duration": 10.0,
+            "StartingTime": 8.2,
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 200.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 5.0,
+            "StartingTime": 12.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          },
+          {
+            "$type": "DepthEvent, Assembly-CSharp",
+            "DepthZero": 200.0,
+            "GradientUp": 50.0,
+            "GradientDown": 50.0,
+            "MinWaterDepth": 60,
+            "MinDepthDuration": 3.0,
+            "EventName": "Not Enough Depth",
+            "Duration": 15,
+            "StartingTime": 18.0
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 150.0,
+            "Direction": -1.0,
+            "EventName": "Blast",
+            "Duration": 6.0,
+            "StartingTime": 18.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 80.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 5.0,
+            "StartingTime": 25.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Level, Assembly-CSharp",
+      "Name": "Balboa-Shanghai",
+      "WaterDepth": 200.0,
+      "Length": 30,
+      "Events": {
+        "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
+        "$values": [
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 40.0,
+            "Direction": -1.0,
+			"Frequency": 1.5,
+            "EventName": "Continous Waves",
+            "Duration": 30.0,
+            "StartingTime": 0.0,
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 160.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 10,
+            "StartingTime": 4.1,
+			"Sound": "Audio/Effects/Wind/Wind2"
+          },
+          {
+            "$type": "ThunderStormEvent, Assembly-CSharp",
+            "EventName": "Thanderman",
+            "Duration": 10.0,
+            "StartingTime": 4.2
+          },
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 30.0,
+			"Frequency": 1,
+            "Direction": 1.0,
+            "EventName": "Continous Waves",
+            "Duration": 10.0,
+            "StartingTime": 4.3,
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 150.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 5.0,
+            "StartingTime": 6.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          },
+          {
+            "$type": "DepthEvent, Assembly-CSharp",
+            "DepthZero": 200.0,
+            "GradientUp": 50.0,
+            "GradientDown": 50.0,
+            "MinWaterDepth": 80,
+            "MinDepthDuration": 3.0,
+            "EventName": "Not Enough Depth",
+            "Duration": 15,
+            "StartingTime": 10.0
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 170.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 10,
+            "StartingTime": 12.0,
+			"Sound": "Audio/Effects/Wind/Wind2"
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 150.0,
+            "Direction": -1.0,
+            "EventName": "Blast",
+            "Duration": 6.0,
+            "StartingTime": 18.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          },
+          {
+            "$type": "WindEvent, Assembly-CSharp",
+            "Strength": 80.0,
+            "Direction": 1.0,
+            "EventName": "Blast",
+            "Duration": 5.0,
+            "StartingTime": 25.0,
+			"Sound": "Audio/Effects/Wind/Wind3"
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Level, Assembly-CSharp",
       "Name": "Dodo",
       "WaterDepth": 200.0,
       "Length": 30,
