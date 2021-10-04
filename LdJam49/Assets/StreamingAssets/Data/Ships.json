@@ -17,7 +17,7 @@
       "ShipLoad": {
         "$type": "ShipLoad, Assembly-CSharp"
       },
-      "draftDrawingFactor": 100.0
+      "draftDrawingFactor": 105.0
     }
   ]
 }
