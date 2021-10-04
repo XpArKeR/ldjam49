@@ -3,7 +3,7 @@
   "$values": [
     {
       "$type": "BasicShip, Assembly-CSharp",
-      "relativeCenterOfMassX": 0.0,
+      "relativeCenterOfMassX": 0.5,
       "relativeCenterOfMassY": 0.0,
       "Width": 195.0,
       "Height": 170.0,
