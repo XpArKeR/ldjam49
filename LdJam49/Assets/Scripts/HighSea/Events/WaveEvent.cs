@@ -95,7 +95,6 @@ public class WaveEvent : SeaEvent
 
         float strength = Strength * Mathf.Sin(Frequency * relativeEventTime);
         ShipBehaviour.PushSide(Direction, strength);
-        Debug.Log("Push side: " + strength);
         return false;
     }
 
