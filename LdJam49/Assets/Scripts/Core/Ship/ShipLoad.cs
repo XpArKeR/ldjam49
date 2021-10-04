@@ -80,12 +80,14 @@ public class ShipLoad
 
         this.Containers.Add(container);
 
-        float offSum = 0;
+        float offSumX = 0;
+        float offSumY = 0;
         foreach (var cont in this.Containers)
         {
-            offSum += cont.Container.Weight * (cont.Offset.x - (Core.GameState.Ship.ContainerCapacity - 1f) / 2f);
+            offSumX += cont.Container.Weight * (cont.Offset.x / (Core.GameState.Ship.ContainerCapacity - 1f));
+            offSumY += cont.Container.Weight * (cont.Offset.y * 0.2f); //TODO: Define Container Height?
         }
 
-        CenterOfMass = new Vector2(offSum / Weight, CenterOfMass.y);
+        CenterOfMass = new Vector2(offSumX / Weight, offSumY / Weight);
     }
 }

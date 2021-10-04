@@ -294,7 +294,9 @@ public class BasicShip
         {
             if (offset == default)
             {
-                offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
+                float offsetX = (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) / 0.5f;
+                offset = 20 * offsetX; //TODO: Define Max Offset
+//                offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
             }
             return this.offset;
         }
