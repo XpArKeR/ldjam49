@@ -118,11 +118,18 @@ public class GameRun : MonoBehaviour
 
     private void LevelCompleted()
     {
-        Core.ChangeScene(SceneNames.Port);
+        if (Level.IsLast)
+        {
+            Core.ChangeScene(SceneNames.EndScene);
+        }
+        else
+        {
+            Core.ChangeScene(SceneNames.Port);
 
-        Core.GameState.Ship.Unload();
+            Core.GameState.Ship.Unload();
 
-        Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
+            Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
+        }
     }
 
     private void InitEvents()

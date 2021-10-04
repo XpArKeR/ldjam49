@@ -9,5 +9,6 @@ namespace Assets.Scripts.Constants
         public const String HighSea2 = "HighSea2";
         public const String Port = "Port";
         public const String GameOver = "GameOverScene";
+        public const String EndScene = "EndScene";
     }
 }
