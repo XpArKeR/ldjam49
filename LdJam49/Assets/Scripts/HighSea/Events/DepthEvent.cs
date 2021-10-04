@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class DepthEvent : SeaEvent
 {
+    [SerializeField]
+    private float depthZero;
+    public float DepthZero
+    {
+        get
+        {
+            return this.depthZero;
+        }
+        set
+        {
+            if (this.depthZero != value)
+            {
+                this.depthZero = value;
+            }
+        }
+    }
 
     [SerializeField]
     private float gradientUp;
@@ -82,6 +98,7 @@ public class DepthEvent : SeaEvent
             return true;
         }
 
+        
         //TODO
         return false;
     }
