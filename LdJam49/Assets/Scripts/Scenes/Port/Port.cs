@@ -28,10 +28,20 @@ public class Port : MonoBehaviour
 
     public void SetSail()
     {
-        Core.BackgroundAudioManager.Stop();
+        if (Core.BackgroundAudioManager?.IsPlaying == true)
+        {
+            Core.BackgroundAudioManager?.Stop();
+        }
 
-        Core.EffectsAudioManager.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
-        StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
+        if (Core.EffectsAudioManager != default)
+        {
+            Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
+            StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
+        }
+        else
+        {
+            onEffectFinished();
+        }
     }
 
     private void onEffectFinished()
@@ -44,28 +54,36 @@ public class Port : MonoBehaviour
     {
         Core.BackgroundAudioManager?.Play(Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "Port", "Background_Slow")), true);
 
-        var ship = Core.GameState?.Ship;
+#if UNITY_EDITOR
 
-        if (ship == default)
+        if (Core.GameState == default)
         {
-            // this should be removed ;)
-            ship = new BasicShip()
+            Core.StartGame(new GameState()
             {
-
-            };
+                Ship = new BasicShip()
+                {
+                    ShipLoad = new ShipLoad()
+                }
+            });
         }
 
-        if (ship != default)
+        if (Core.GameState.Ship == default)
         {
-            var containerAmount = 6;
-
-            for (int i = 0; i < containerAmount; i++)
+            // this should be removed ;)
+            Core.GameState.Ship = new BasicShip()
             {
-                var newSlot = CloneSlot(new Vector2(i, 0), this.ShipContainerTemplate.transform);
+                ShipLoad = new ShipLoad()
+            };
+        }
+#endif
+        var containerAmount = Core.GameState.Ship.ContainerCapacity;
 
-                newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
-                //newSlot.transform.Translate(new Vector2(i, 0), this.ShipContainerTemplate.transform);
-            }
+        for (int i = 0; i < containerAmount; i++)
+        {
+            var newSlot = CloneSlot(new Vector2(i, 0), this.ShipContainerTemplate.transform);
+
+            newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
+            //newSlot.transform.Translate(new Vector2(i, 0), this.ShipContainerTemplate.transform);
         }
     }
 

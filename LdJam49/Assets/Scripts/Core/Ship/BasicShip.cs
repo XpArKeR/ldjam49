@@ -1,4 +1,6 @@
 
+using System;
+
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -228,6 +230,23 @@ public class BasicShip
         }
     }
 
+    [SerializeField]
+    private Int32 containerCapacity = 6;
+    public Int32 ContainerCapacity
+    {
+        get
+        {
+            return this.containerCapacity;
+        }
+        set
+        {
+            if (this.containerCapacity != value)
+            {
+                this.containerCapacity = value;
+            }
+        }
+    }
+
     [JsonIgnore]
     private float stabilityOffset;
     [JsonIgnore]
@@ -276,7 +295,7 @@ public class BasicShip
         }
 
     }
-
+        
     public void SetDefaultValues()
     {
         Width = 195;

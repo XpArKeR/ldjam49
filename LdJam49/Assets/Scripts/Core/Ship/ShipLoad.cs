@@ -1,10 +1,16 @@
-using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
+
+using Newtonsoft.Json;
+
 using UnityEngine;
 
-public class ShipLoad 
+public class ShipLoad
 {
+    public ShipLoad()
+    {
+        this.Containers = new List<LoadedContainer>();
+    }
+
     [SerializeField]
     private float weight;
     public float Weight
