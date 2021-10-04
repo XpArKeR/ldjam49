@@ -4,14 +4,14 @@
     {
       "$type": "Level, Assembly-CSharp",
       "Name": "Dodo",
-      "WaterDepth": 100.0,
+      "WaterDepth": 2000.0,
       "Length": 30.0,
       "Events": {
         "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
         "$values": [
           {
             "$type": "WindEvent, Assembly-CSharp",
-            "Strength": 200.0,
+            "Strength": 220.0,
             "Direction": 1.0,
             "EventName": "Blast",
             "Duration": 2.0,

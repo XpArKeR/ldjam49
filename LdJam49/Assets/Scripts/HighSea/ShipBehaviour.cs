@@ -73,8 +73,8 @@ public class ShipBehaviour : MonoBehaviour
         //MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
-        Draft = 0;
-//        TranslateByDraftDelta(-Draft);
+        Draft = Ship.Draft;
+        TranslateByDraftDelta(Draft);
 //        Debug.Log("Set Draft = " + Draft);
 
 
@@ -91,14 +91,14 @@ public class ShipBehaviour : MonoBehaviour
         {
             if (SinkingTimer > 0)
             {
-                if (Mathf.Abs(SinkingDepth) < WaterDepth / Ship.DraftDrawingFactor)
+                if (Mathf.Abs(SinkingDepth) < WaterDepth)
                 {
                     float dSink = -3f * Time.deltaTime;
-                    SinkingDepth += dSink;
+                    SinkingDepth += dSink * Ship.DraftDrawingFactor;
                     ShipTransform.Translate(new Vector3(0f, dSink, 0));
 //                    Debug.Log("SinkingDepth: " + SinkingDepth);
 
-                    if (Mathf.Abs(SinkingDepth) >= WaterDepth / Ship.DraftDrawingFactor * 0.5 && !playedHitGround)
+                    if (Mathf.Abs(SinkingDepth) >= WaterDepth * 0.5 && !playedHitGround)
                     {
 //                        Debug.Log("SinkingDepth:");
                         Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipOnGround"));
