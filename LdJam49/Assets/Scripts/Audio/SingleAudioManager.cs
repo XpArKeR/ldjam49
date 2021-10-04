@@ -38,7 +38,7 @@ namespace Assets.Scripts.Audio
 
         public virtual void PlayDelayed(String resourceKey, Single delay, Boolean isLooped = false)
         {
-            this.PlayDelayed(Core.ResourceCache.GetAudioClip(resourceKey), delay);
+            this.PlayDelayed(Core.ResourceCache.GetAudioClip(resourceKey), delay, isLooped);
         }
 
         public virtual void PlayDelayed(AudioClip audioClip, Single delay, Boolean isLooped = false)
