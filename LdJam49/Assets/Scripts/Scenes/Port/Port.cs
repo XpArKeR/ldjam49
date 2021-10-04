@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -23,6 +24,9 @@ public class Port : MonoBehaviour
 
     private LandContainerSlotBehaviour seletedLandContainer;
 
+    private bool LoadHighSeasStarted = false;
+    private float LoadSecondsLeft = 0;
+
     public void SelectContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
         if (this.seletedLandContainer != default)
@@ -46,12 +50,25 @@ public class Port : MonoBehaviour
         if (Core.EffectsAudioManager != default)
         {
             Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShortShort"));
-            StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
+            //            StartCoroutine(Core.EffectsAudioManager.WaitForSound(onEffectFinished));
+            StartCoroutine(DelayChangeScene(1f));
         }
         else
         {
             onEffectFinished();
         }
+    }
+
+    IEnumerator DelayChangeScene(float seconds)
+    {
+        LoadHighSeasStarted = true;
+        LoadSecondsLeft = seconds;
+        do
+        {
+            yield return new WaitForSeconds(1);
+        } while (--LoadSecondsLeft > 0);
+
+        Core.ChangeScene(SceneNames.HighSea2);
     }
 
     private void onEffectFinished()
