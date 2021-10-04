@@ -13,7 +13,7 @@ namespace Assets.Scripts.Audio
         {
             base.Initialize();
 
-            this.Volume = Core.EffectsAudioManager.Volume;
+            this.Volume = Core.Options.EffectsVolume;
         }
 
         protected override void OnVolumeChanged(System.Single volume)
