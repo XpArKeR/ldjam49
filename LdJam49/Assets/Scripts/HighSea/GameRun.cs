@@ -20,6 +20,7 @@ public class GameRun : MonoBehaviour
     public Image ArrivalImage;
 
     public GameObject ThunderStorm;
+    public GameObject Ground;
 
     private Level Level;
     private List<SeaEvent> CurrentEvents;
@@ -128,6 +129,10 @@ public class GameRun : MonoBehaviour
         foreach (SeaEvent seaEvent in Level.Events)
         {
             if (typeof(ThunderStormEvent) == seaEvent.GetType())
+            {
+                seaEvent.init(ThunderStorm);
+            }
+            else if (typeof(DepthEvent) == seaEvent.GetType())
             {
                 seaEvent.init(ThunderStorm);
             }

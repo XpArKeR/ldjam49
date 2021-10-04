@@ -917,6 +917,7 @@ MonoBehaviour:
   LevelCompletedDisplay: {fileID: 1983640981}
   ArrivalImage: {fileID: 1351268332}
   ThunderStorm: {fileID: 1383151586}
+  Ground: {fileID: 193472436}
 --- !u!1001 &1263404687
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
 using Newtonsoft.Json;
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DepthEvent : SeaEvent
@@ -109,7 +107,7 @@ public class DepthEvent : SeaEvent
             return true;
         }
 
-        if(timeMinDepth == default && depth >= MinWaterDepth)
+        if (timeMinDepth == default && depth >= MinWaterDepth)
         {
             depth = depthZero - relativeEventTime * GradientUp;
             if (depth <= MinWaterDepth)
@@ -117,14 +115,16 @@ public class DepthEvent : SeaEvent
                 depth = MinWaterDepth;
                 timeMinDepth = relativeEventTime;
             }
-        } else if(relativeEventTime < timeMinDepth + MinDepthDuration)
+        }
+        else if (relativeEventTime < timeMinDepth + MinDepthDuration)
         {
             depth = MinWaterDepth;
-        } else
+        }
+        else
         {
             depth = Mathf.Min(MinWaterDepth + (relativeEventTime - (timeMinDepth + MinDepthDuration)) * GradientDown, depthZero);
         }
-        Debug.Log(this.EventName+" Depth: " + depth);
+        Debug.Log(this.EventName + " Depth: " + depth);
         //TODO
         return false;
     }
@@ -133,7 +133,7 @@ public class DepthEvent : SeaEvent
     {
         this.parent = parent;
 
-        ground = parent.transform.Find("Ground").gameObject;
+        ground = parent;
     }
 
 }
