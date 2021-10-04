@@ -114,6 +114,7 @@ public class ShipBehaviour : MonoBehaviour
         ShipTransform.RotateAround(MassMiddleVector, RotationAxis, Velocity * Time.deltaTime);
 
         //ShipTransform.Rotate(RotationAxis, Velocity * Time.deltaTime);
+        UpdateDraftValue();
 
         if (Sinking)
         {
@@ -175,11 +176,22 @@ public class ShipBehaviour : MonoBehaviour
 
     private void UpdateDraftValue()
     {
+        DraftVelocity += Time.deltaTime * DraftAcceleration;
+        float lastDraft = Draft;
+        Draft += Time.deltaTime * DraftVelocity;
+
+        ShipTransform.Translate(new Vector3(0, -(Draft - lastDraft) / 20f, 0)); // Division by Twenty is just a try
+
         //Calculation like a Spring-Damper-System
-//        Debug.Log("Ship Draft = " + (Ship.Draft - lastDraft));
 
-//        lastDraft = Ship.Draft;
+        var delta = Ship.Draft - Draft;
+        var totalShipMass = (Ship.Mass + Ship.ShipLoad.Weight);
+        var dampingFactor = 1f * totalShipMass; //Experimental
 
-//        float draftForce = -Ship.Buoyancy * Draft - 20 * DraftVelocity + ( Ship.Mass + 
+        float draftForce = Ship.Buoyancy * delta - 1.5f * totalShipMass * DraftVelocity;
+        DraftAcceleration = draftForce / totalShipMass;
+
+        Debug.Log("Ship Draft:  Draft = " + Draft + " Delta = " + delta + " mass = " + totalShipMass + " buoyancy = "+Ship.Buoyancy + " Force = " + draftForce + " Acceleration = " + DraftAcceleration);
+
     }
 }
