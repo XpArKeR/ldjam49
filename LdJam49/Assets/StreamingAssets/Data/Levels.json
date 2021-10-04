@@ -11,16 +11,16 @@
         "$values": [
           {
             "$type": "WaveEvent, Assembly-CSharp",
-            "Strength": 50.0,
+            "Strength": 10.0,
             "Direction": -1.0,
-	    "Frequency": 0.2,
+	    "Frequency": 0.8,
             "EventName": "Continous Waves",
             "Duration": 30.0,
             "StartingTime": 0.0,
           },
           {
             "$type": "WaveEvent, Assembly-CSharp",
-            "Strength": 100.0,
+            "Strength": 10.0,
 	    "Frequency": 1,
             "Direction": 1.0,
             "EventName": "Continous Waves",
@@ -29,7 +29,7 @@
           },
           {
             "$type": "WindEvent, Assembly-CSharp",
-            "Strength": 220.0,
+            "Strength": 250.0,
             "Direction": 1.0,
             "EventName": "Blast",
             "Duration": 4.5,
