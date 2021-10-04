@@ -64,7 +64,7 @@ public class ShipBehaviour : MonoBehaviour
         Offset = new Vector2(0, (Ship.Height / 2 - Ship.Draft) / Ship.Height * ShipTransform.rect.height);
         //Offset = ScaleByLocal(PositionOffset);
 
-        MassMiddleVector = new Vector2(Ship.RelativeCenterOfMass.x, Ship.RelativeCenterOfMass.y);
+        MassMiddleVector = new Vector2(Ship.RelativeCenterOfMass.x + ShipTransform.position.x, Ship.RelativeCenterOfMass.y);
         //MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
