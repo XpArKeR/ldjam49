@@ -349,14 +349,14 @@ public class BasicShip
         //float hm = Ship.Height * Ship.EffectiveMassPoint.y;
         float hm = Height * RelativeCenterOfMass.y;
         float mdhdsq = Mathf.Pow(MaxDraft - hm, 2);
-        float dhm = Draft * DraftDrawingFactor - hm;
+        float dhm = Draft - hm;
 
         //float wm = Ship.Width * Ship.EffectiveMassPoint.x;
         float wm = Width * RelativeCenterOfMass.x;
         //float wm = Ship.Width * 0.5f;
         MaxAngle = CalculateAngle(mdhdsq, dhm, wm);
         MinAngle = -CalculateAngle(mdhdsq, dhm, Width - wm);
-        Debug.Log("Limit Angles: " + MinAngle + " " + MaxAngle);
+        Debug.Log("Draft: " + Draft + ", Limit Angles: " + MinAngle + " " + MaxAngle);
     }
 
     private static float CalculateAngle(float mdhdsq, float dhm, float wm)

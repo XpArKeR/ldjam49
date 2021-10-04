@@ -28,7 +28,9 @@ public class ShipCargoBehaviour : MonoBehaviour
         {
             foreach (var container in Core.GameState.Ship.ShipLoad.Containers)
             {
-                GenerateShipSlot(container);
+                var generatedSlot = GenerateShipSlot(container);
+
+                generatedSlot.LoadedContainer = container;
             }
         }
     }

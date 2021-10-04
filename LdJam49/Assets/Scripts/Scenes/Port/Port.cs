@@ -50,7 +50,7 @@ public class Port : MonoBehaviour
 
     private void onEffectFinished()
     {
-        Core.ChangeScene(SceneNames.HighSea);
+        Core.ChangeScene(SceneNames.HighSea2);
     }
 
     // Start is called before the first frame update
@@ -67,7 +67,6 @@ public class Port : MonoBehaviour
                 CurrentScene = SceneNames.Port,
                 Ship = ShipManager.GetDefaultShip()
             };
-            gameState.Ship.SetDefaultValues();
             Core.StartGame(gameState);
         }
 #endif
@@ -108,7 +107,7 @@ public class Port : MonoBehaviour
 
         try
         {
-            ShipBehaviour.CheckShipStatus(20f);
+            ShipBehaviour.CheckShipStatus(80f);
         }
         catch (ShipDownException e)
         {
@@ -121,10 +120,11 @@ public class Port : MonoBehaviour
 
     private void SpawnContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
+        float weight = UnityEngine.Random.Range(0, 80f);
         var container = new BasicContainer()
         {
-            Weight = UnityEngine.Random.Range(0, 125f),
-            Value = System.Convert.ToDecimal(UnityEngine.Random.Range(0f, 1000000f)),
+            Weight = weight,
+            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.5f, 0.5f))*100000f),
             Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 
