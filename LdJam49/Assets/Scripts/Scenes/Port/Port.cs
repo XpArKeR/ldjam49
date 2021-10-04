@@ -110,9 +110,10 @@ public class Port : MonoBehaviour
         {
             ShipBehaviour.CheckShipStatus(20f);
         }
-        catch (ShipDownException)
+        catch (ShipDownException e)
         {
             GameOverDisplay.gameObject.SetActive(true);
+            GameOverDisplay.text = "Game Over: " + e.Message;
             ShipBehaviour.SinkShip();
         }
 
