@@ -28,7 +28,7 @@ public class ShipBehaviour : MonoBehaviour
     private bool Sinking = false;
 
     //Enironment State Variables
-    private float WaterDepth = 1000.0f;
+    public float WaterDepth = 1000.0f;
     private bool playedHitGround = false;
 
     public void SinkShip()
@@ -192,17 +192,16 @@ public class ShipBehaviour : MonoBehaviour
         ShipTransform.Translate(new Vector3(0, -(delta) / Ship.DraftDrawingFactor, 0)); // Division by Twenty is just a try
     }
 
-    public void CheckShipStatus(float waterDepth)
+    public void CheckShipStatus()
     {
-        WaterDepth = waterDepth;
-        CheckIfAfloat(waterDepth);
+        CheckIfAfloat();
     }
 
-    private void CheckIfAfloat(float waterDepth)
+    private void CheckIfAfloat()
     {
-        if (Ship.Draft > waterDepth)
+        if (Ship.Draft > WaterDepth)
         {
-            throw new ShipDownException("Scratch: " + Ship.Draft + " : " + waterDepth);
+            throw new ShipDownException("Scratch: " + Ship.Draft + " : " + WaterDepth);
         }
 
         CheckDraftAngle();

@@ -113,7 +113,8 @@ public class Port : MonoBehaviour
 
         try
         {
-            ShipBehaviour.CheckShipStatus(130f);
+            ShipBehaviour.WaterDepth = 130f;
+            ShipBehaviour.CheckShipStatus();
         }
         catch (ShipDownException e)
         {

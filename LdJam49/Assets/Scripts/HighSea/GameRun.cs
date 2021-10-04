@@ -107,7 +107,7 @@ public class GameRun : MonoBehaviour
         try
         {
 
-            ShipBehaviour.CheckShipStatus(Level.WaterDepth);
+            ShipBehaviour.CheckShipStatus();
         }
         catch (ShipDownException)
         {
@@ -134,7 +134,7 @@ public class GameRun : MonoBehaviour
             }
             else if (typeof(DepthEvent) == seaEvent.GetType())
             {
-                seaEvent.init(ThunderStorm);
+                seaEvent.init(Ground);
             }
         }
     }
@@ -144,6 +144,7 @@ public class GameRun : MonoBehaviour
         EventIndex = 0;
         levelCompletedTime = 0;
         CurrentEvents = new List<SeaEvent>();
+        ShipBehaviour.WaterDepth = Level.WaterDepth;
 
         if (Level.Events == null)
         {

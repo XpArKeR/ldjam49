@@ -29,7 +29,7 @@
           },
           {
             "$type": "WindEvent, Assembly-CSharp",
-            "Strength": 250.0,
+            "Strength": 220.0,
             "Direction": 1.0,
             "EventName": "Blast",
             "Duration": 4.5,
@@ -38,10 +38,10 @@
           },
           {
             "$type": "DepthEvent, Assembly-CSharp",
-            "DepthZero": 300.0,
-            "GradientUp": 60.0,
-            "GradientDown": 60.0,
-            "MinWaterDepth": 150.0,
+            "DepthZero": 200.0,
+            "GradientUp": 20.0,
+            "GradientDown": 20.0,
+            "MinWaterDepth": 100.0,
             "MinDepthDuration": 3.0,
             "EventName": "Not Enough Depth",
             "Duration": 10,

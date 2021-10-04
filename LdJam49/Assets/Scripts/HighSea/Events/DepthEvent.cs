@@ -5,13 +5,12 @@ using UnityEngine;
 public class DepthEvent : SeaEvent
 {
     [JsonIgnore]
-    private GameObject parent;
-    [JsonIgnore]
-    private GameObject ground;
+    private GameObject Ground;
 
 
-    private float depth;
-    private float timeMinDepth = 0;
+    private float Depth;
+    private float LastDepth;
+    private float TimeMinDepth = 0;
 
     [SerializeField]
     private float depthZero;
@@ -107,33 +106,37 @@ public class DepthEvent : SeaEvent
             return true;
         }
 
-        if (timeMinDepth == default && depth >= MinWaterDepth)
+        if (TimeMinDepth == default && Depth >= MinWaterDepth)
         {
-            depth = depthZero - relativeEventTime * GradientUp;
-            if (depth <= MinWaterDepth)
+            Depth = depthZero - relativeEventTime * GradientUp;
+            if (Depth <= MinWaterDepth)
             {
-                depth = MinWaterDepth;
-                timeMinDepth = relativeEventTime;
+                Depth = MinWaterDepth;
+                TimeMinDepth = relativeEventTime;
             }
         }
-        else if (relativeEventTime < timeMinDepth + MinDepthDuration)
+        else if (relativeEventTime < TimeMinDepth + MinDepthDuration)
         {
-            depth = MinWaterDepth;
+            Depth = MinWaterDepth;
         }
         else
         {
-            depth = Mathf.Min(MinWaterDepth + (relativeEventTime - (timeMinDepth + MinDepthDuration)) * GradientDown, depthZero);
+            Depth = Mathf.Min(MinWaterDepth + (relativeEventTime - (TimeMinDepth + MinDepthDuration)) * GradientDown, depthZero);
         }
-        Debug.Log(this.EventName + " Depth: " + depth);
+        Ground.transform.Translate(new Vector3(0, -(Depth - LastDepth) / 20f, 0));
+//        Debug.Log(this.EventName + " Depth: " + Depth + " Delta: " + (Depth - LastDepth));
+        ShipBehaviour.WaterDepth = Depth;
+        LastDepth = Depth;
         //TODO
         return false;
     }
 
-    public override void init(GameObject parent)
+    public override void init(GameObject ground)
     {
-        this.parent = parent;
+        Ground = ground;
 
-        ground = parent;
+        LastDepth = DepthZero;
+        Depth = DepthZero;
     }
 
 }
