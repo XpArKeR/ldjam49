@@ -35,7 +35,7 @@ public class LevelManager
     {
         if (name == default)
         {
-            return GetLevels()[0];
+            return GetLevels()[3];
         }
 
         for (int i = 0; i < GetLevels().Count; i++)
