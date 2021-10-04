@@ -73,8 +73,8 @@ public class ShipBehaviour : MonoBehaviour
         //MassMiddleVector = new Vector2(Ship.EffectiveMassPoint.x * ShipTransform.rect.width - ShipTransform.rect.width / 2, Ship.EffectiveMassPoint.y * ShipTransform.rect.height - ShipTransform.rect.height / 2);
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
-        Draft = 0;
-//        TranslateByDraftDelta(-Draft);
+        Draft = Ship.Draft;
+        TranslateByDraftDelta(Draft);
 //        Debug.Log("Set Draft = " + Draft);
 
 
