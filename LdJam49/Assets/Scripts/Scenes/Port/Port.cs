@@ -154,6 +154,7 @@ public class Port : MonoBehaviour
 
             container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);
             this.seletedLandContainer = default;
+            this.UpdateContainerInfo();
 
             Core.GameState.Ship.ShipLoad.AddContainer(container.LoadedContainer);
         }
