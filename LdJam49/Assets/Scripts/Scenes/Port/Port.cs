@@ -107,7 +107,7 @@ public class Port : MonoBehaviour
 
         try
         {
-            ShipBehaviour.CheckShipStatus(80f);
+            ShipBehaviour.CheckShipStatus(130f);
         }
         catch (ShipDownException e)
         {
@@ -120,7 +120,8 @@ public class Port : MonoBehaviour
 
     private void SpawnContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
-        float weight = UnityEngine.Random.Range(0, 80f);
+        //        float weight = UnityEngine.Random.Range(0, 80f);
+        float weight = 30;
         var container = new BasicContainer()
         {
             Weight = weight,

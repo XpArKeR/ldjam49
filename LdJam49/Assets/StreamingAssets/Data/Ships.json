@@ -8,7 +8,7 @@
       "Width": 195.0,
       "Height": 170.0,
       "MaxDraft": 118.0,
-      "Buoyancy": 12.0,
+      "Buoyancy": 6.5,
       "StabilityConstant1": 1.2,
       "StabilityConstant2": -10.0,
       "TiltingAngle": 20.0,
@@ -17,7 +17,7 @@
       "ShipLoad": {
         "$type": "ShipLoad, Assembly-CSharp"
       },
-      "draftDrawingFactor": 120.0
+      "draftDrawingFactor": 100.0
     }
   ]
 }
