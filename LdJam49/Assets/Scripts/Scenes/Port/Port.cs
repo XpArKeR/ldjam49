@@ -153,7 +153,7 @@ public class Port : MonoBehaviour
             this.seletedLandContainer = default;
             this.UpdateContainerInfo();
 
-            Core.GameState.Ship.ShipLoad.AddContainer(container.LoadedContainer);
+            Core.GameState.Ship.AddContainer(container.LoadedContainer);
         }
     }
 

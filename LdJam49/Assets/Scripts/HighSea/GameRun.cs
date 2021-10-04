@@ -190,9 +190,9 @@ public class GameRun : MonoBehaviour
         //    throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
         //}
 
-        if (ShipBehaviour.ShipAngle < ShipBehaviour.MinAngle || ShipBehaviour.ShipAngle > ShipBehaviour.MaxAngle)
+        if (ShipBehaviour.ShipAngle < ShipBehaviour.Ship.MinAngle || ShipBehaviour.ShipAngle > ShipBehaviour.Ship.MaxAngle)
         {
-            throw new ShipDownException("Tilted!! with angle  " + ShipBehaviour.MaxAngle);
+            throw new ShipDownException("Tilted!! with angle  " + ShipBehaviour.Ship.MaxAngle);
         }
     }
 }

@@ -1,6 +1,6 @@
 
 using System;
-
+using Assets.Scripts;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -299,7 +299,74 @@ public class BasicShip
         }
 
     }
-        
+
+    [JsonIgnore]
+    public float MaxAngle { get; private set; }
+    [JsonIgnore]
+    public float MinAngle { get; private set; }
+
+    [SerializeField]
+    private float draftDrawingFactor;
+    [JsonIgnore]
+    public float DraftDrawingFactor
+    {
+        get
+        {
+            return this.draftDrawingFactor;
+        }
+        set
+        {
+            if (this.draftDrawingFactor != value)
+            {
+                this.draftDrawingFactor = value;
+            }
+        }
+    }
+
+
+    public void AddContainer(LoadedContainer container)
+    {
+        this.ShipLoad.Weight += container.Container.Weight;
+
+        this.ShipLoad.Containers.Add(container);
+
+        float offSumX = 0;
+        float offSumY = 0;
+        foreach (var cont in this.ShipLoad.Containers)
+        {
+            offSumX += cont.Container.Weight * (cont.Offset.x / (Core.GameState.Ship.ContainerCapacity - 1f));
+            offSumY += cont.Container.Weight * (cont.Offset.y * 0.2f); //TODO: Define Container Height?
+        }
+
+        this.ShipLoad.CenterOfMass = new Vector2(offSumX / this.ShipLoad.Weight, offSumY / this.ShipLoad.Weight);
+        //        Debug.Log("ShipLoad: x= " + (offSumX / Weight) + " y = " + (offSumY / Weight) + " CenterOfMass = " + CenterOfMass.x);
+
+        CalculateBoundingAngles();
+    }
+
+    void CalculateBoundingAngles()
+    {
+        //float hm = Ship.Height * 0.5f;
+        //float hm = Ship.Height * Ship.EffectiveMassPoint.y;
+        float hm = Height * RelativeCenterOfMass.y;
+        float mdhdsq = Mathf.Pow(MaxDraft - hm, 2);
+        float dhm = Draft * DraftDrawingFactor - hm;
+
+        //float wm = Ship.Width * Ship.EffectiveMassPoint.x;
+        float wm = Width * RelativeCenterOfMass.x;
+        //float wm = Ship.Width * 0.5f;
+        MaxAngle = CalculateAngle(mdhdsq, dhm, wm);
+        MinAngle = -CalculateAngle(mdhdsq, dhm, Width - wm);
+        Debug.Log("Limit Angles: " + MinAngle + " " + MaxAngle);
+    }
+
+    private static float CalculateAngle(float mdhdsq, float dhm, float wm)
+    {
+        float r = Mathf.Sqrt(Mathf.Pow(wm, 2) + mdhdsq);
+        float angle = Mathf.Acos(wm / r) - Mathf.Asin(dhm / r);
+        return (180 / Mathf.PI) * angle;
+    }
+
     public void SetDefaultValues()
     {
         Width = 195;
