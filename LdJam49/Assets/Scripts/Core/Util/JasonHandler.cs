@@ -12,8 +12,7 @@ public class JasonHandler
     {
         var json = Newtonsoft.Json.JsonConvert.SerializeObject(objectToSerialize, Newtonsoft.Json.Formatting.Indented, new Newtonsoft.Json.JsonSerializerSettings()
         {
-            TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All,
-            TypeNameAssemblyFormatHandling = Newtonsoft.Json.TypeNameAssemblyFormatHandling.Simple
+            TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All
         });
 
         return json;

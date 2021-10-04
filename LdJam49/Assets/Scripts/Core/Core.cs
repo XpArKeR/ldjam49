@@ -128,6 +128,7 @@ namespace Assets.Scripts
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void InitGame()
         {
+
             if (Application.platform == RuntimePlatform.WebGLPlayer || Application.platform == RuntimePlatform.Android)
             {
                 IsFileAccessPossible = false;
@@ -137,6 +138,7 @@ namespace Assets.Scripts
                 IsFileAccessPossible = true;
             }
 
+            IsFileAccessPossible = false;
             LoadPlayerOptions();
         }
 

@@ -12,12 +12,12 @@ namespace Assets.Scripts
   ""$values"": [
     {
       ""$type"": ""BasicShip, Assembly-CSharp"",
-      ""relativeCenterOfMassX"": 0.0,
+      ""relativeCenterOfMassX"": 0.5,
       ""relativeCenterOfMassY"": 0.0,
       ""Width"": 195.0,
       ""Height"": 170.0,
       ""MaxDraft"": 118.0,
-      ""Buoyancy"": 40.0,
+      ""Buoyancy"": 6.5,
       ""StabilityConstant1"": 1.2,
       ""StabilityConstant2"": -10.0,
       ""TiltingAngle"": 20.0,
@@ -25,7 +25,8 @@ namespace Assets.Scripts
       ""Damping"": 3.0,
       ""ShipLoad"": {
         ""$type"": ""ShipLoad, Assembly-CSharp""
-      }
+      },
+      ""draftDrawingFactor"": 105.0
     }
   ]
 }";
