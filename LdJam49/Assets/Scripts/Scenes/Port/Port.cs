@@ -50,7 +50,7 @@ public class Port : MonoBehaviour
 
     private void onEffectFinished()
     {
-        Core.ChangeScene(SceneNames.HighSea);
+        Core.ChangeScene(SceneNames.HighSea2);
     }
 
     // Start is called before the first frame update
