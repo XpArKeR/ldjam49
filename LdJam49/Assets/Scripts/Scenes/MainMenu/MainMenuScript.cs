@@ -92,10 +92,7 @@ public class MainMenuScript : MonoBehaviour
             Core.AmbienceAudioManager.Unmute();
         }
 
-        if (!Core.BackgroundAudioManager.IsPlaying)
-        {
-            Core.BackgroundAudioManager.Play(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"), true);
-        }
+        Core.BackgroundAudioManager.Play(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"), true);
     }
 
     // Update is called once per frame
