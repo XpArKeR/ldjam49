@@ -60,7 +60,7 @@ public class ShipBehaviour : MonoBehaviour
         Ship = newShip;
         if (Ship == null)
         {
-            Ship = JasonHandler.GetDefaultShip();
+            Ship = ShipManager.GetDefaultShip();
         }
 
         ShipAngle = startAngle;

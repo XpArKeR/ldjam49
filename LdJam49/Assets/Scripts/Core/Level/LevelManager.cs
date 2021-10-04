@@ -1,8 +1,6 @@
-using Assets.Scripts;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
+using Assets.Scripts;
 
 public class LevelManager
 {
@@ -21,7 +19,7 @@ public class LevelManager
     {
         if (Core.IsFileAccessPossible)
         {
-            return JasonHandler.DeserializeObjectFromFile<List<Level>>(System.IO.Path.Combine("Resources", "Levels.json"));
+            return JasonHandler.DeserializeObjectFromFile<List<Level>>(System.IO.Path.Combine("Resources", "Data", "Levels.json"));
         }
         else
         {
@@ -57,12 +55,13 @@ public class LevelManager
         for (int i = 0; i < GetLevels().Count; i++)
         {
             Level level = GetLevels()[i];
-            if (level.Name.Equals(name)) {
-                if (i == GetLevels().Count -1)
+            if (level.Name.Equals(name))
+            {
+                if (i == GetLevels().Count - 1)
                 {
                     return null;
                 }
-                return GetLevels()[i+1];
+                return GetLevels()[i + 1];
             }
         }
         throw new LevelNotFoundException("Level with name not found: " + name);
