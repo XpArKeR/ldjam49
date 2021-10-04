@@ -39,13 +39,13 @@
           {
             "$type": "DepthEvent, Assembly-CSharp",
             "DepthZero": 200.0,
-            "GradientUp": 20.0,
-            "GradientDown": 20.0,
-            "MinWaterDepth": 100.0,
+            "GradientUp": 50.0,
+            "GradientDown": 50.0,
+            "MinWaterDepth": 0.7,
             "MinDepthDuration": 3.0,
             "EventName": "Not Enough Depth",
-            "Duration": 10,
-            "StartingTime": 10.0
+            "Duration": 15,
+            "StartingTime": 3.0
           },
           {
             "$type": "ThunderStormEvent, Assembly-CSharp",

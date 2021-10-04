@@ -101,7 +101,7 @@ public class DepthEvent : SeaEvent
     public override bool ExecuteEvent(ShipBehaviour ShipBehaviour, float time)
     {
         float relativeEventTime = time - StartingTime;
-        if (relativeEventTime > Duration)
+        if (relativeEventTime > Duration || ShipBehaviour.Sinking)
         {
             return true;
         }
@@ -123,11 +123,9 @@ public class DepthEvent : SeaEvent
         {
             Depth = Mathf.Min(MinWaterDepth + (relativeEventTime - (TimeMinDepth + MinDepthDuration)) * GradientDown, depthZero);
         }
-        Ground.transform.Translate(new Vector3(0, -(Depth - LastDepth) / 20f, 0));
-//        Debug.Log(this.EventName + " Depth: " + Depth + " Delta: " + (Depth - LastDepth));
+        Ground.transform.Translate(new Vector3(0, -(Depth - LastDepth) / 70f, 0));
         ShipBehaviour.WaterDepth = Depth;
         LastDepth = Depth;
-        //TODO
         return false;
     }
 

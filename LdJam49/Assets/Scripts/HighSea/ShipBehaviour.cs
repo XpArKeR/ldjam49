@@ -25,11 +25,13 @@ public class ShipBehaviour : MonoBehaviour
 
     private float SinkingTimer = -1;
     private float SinkingDepth = 0;
-    private bool Sinking = false;
+    public bool Sinking = false;
 
     //Enironment State Variables
-    public float WaterDepth = 1000.0f;
     private bool playedHitGround = false;
+    public float WaterDepth = 1000.0f;
+
+
 
     public void SinkShip()
     {
@@ -199,6 +201,7 @@ public class ShipBehaviour : MonoBehaviour
 
     private void CheckIfAfloat()
     {
+        Debug.Log("CheckIfFloat: "+WaterDepth+" Draft: "+Ship.Draft);
         if (Ship.Draft > WaterDepth)
         {
             throw new ShipDownException("Scratch: " + Ship.Draft + " : " + WaterDepth);
