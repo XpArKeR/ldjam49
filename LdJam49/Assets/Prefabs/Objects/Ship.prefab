@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb40b8e21511604983f39fe200fcb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShipContainerTemplate: {fileID: 3700062919597045875}
+  ShipContainerTemplate: {fileID: 3200949427806268532}
   ShipContainer: {fileID: 706318666954077634}
 --- !u!1 &4949950462997291770
 GameObject:
@@ -207,7 +207,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6113023279462624259, guid: faa2c7ee7573f0a4eb30da0c31f8ab51, type: 3}
       propertyPath: m_Name
-      value: ShipContainerSlot
+      value: ShipContainerSlotTemplate
       objectReference: {fileID: 0}
     - target: {fileID: 6113023279462624259, guid: faa2c7ee7573f0a4eb30da0c31f8ab51, type: 3}
       propertyPath: m_IsActive
@@ -304,14 +304,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6734456488518656421, guid: faa2c7ee7573f0a4eb30da0c31f8ab51, type: 3}
   m_PrefabInstance: {fileID: 8157961288406122301}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3700062919597045875 stripped
+--- !u!114 &3200949427806268532 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4787226410881681230, guid: faa2c7ee7573f0a4eb30da0c31f8ab51, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6726944192782947145, guid: faa2c7ee7573f0a4eb30da0c31f8ab51, type: 3}
   m_PrefabInstance: {fileID: 8157961288406122301}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff00d3e41a6012f478794535e224a2d7, type: 3}
+  m_Script: {fileID: 11500000, guid: aa86b667c9bf13542aa2a4540f91a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,15 +1,13 @@
 
-using System;
-
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LandContainerSlotBehavior : MonoBehaviour
+public class ShipContainerSlotBehaviour : MonoBehaviour
 {
-    public UnityEvent<LandContainerSlotBehavior> ContainerClicked;
+    public UnityEvent<ShipContainerSlotBehaviour> ContainerClicked;
     public SpriteRenderer SpriteRenderer;
 
-    public BasicContainer Container;
+    public LoadedContainer LoadedContainer;
     public Vector2 Offset;
 
     // Start is called before the first frame update
@@ -21,11 +19,11 @@ public class LandContainerSlotBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.Container?.Color != default)
+        if (this.LoadedContainer?.Container?.Color != default)
         {
-            if (this.SpriteRenderer.color != this.Container.Color)
+            if (this.SpriteRenderer.color != this.LoadedContainer.Container.Color)
             {
-                this.SpriteRenderer.color = this.Container.Color;
+                this.SpriteRenderer.color = this.LoadedContainer.Container.Color;
             }
         }
     }

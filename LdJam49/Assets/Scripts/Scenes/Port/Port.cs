@@ -10,12 +10,12 @@ using UnityEngine.UI;
 public class Port : MonoBehaviour
 {
     public IList<ContainerBehaviour> AvailableContainers = new List<ContainerBehaviour>();
-    public LandContainerSlotBehavior ContainerSlot1;
-    public LandContainerSlotBehavior ContainerSlot2;
-    public LandContainerSlotBehavior ContainerSlot3;
+    public LandContainerSlotBehaviour ContainerSlot1;
+    public LandContainerSlotBehaviour ContainerSlot2;
+    public LandContainerSlotBehaviour ContainerSlot3;
     public ContainerDetailsBehaviour ContainerDetails;
 
-    public ShipCargoBehavior ShipCargo;
+    public ShipCargoBehaviour ShipCargo;
 
     public ShipBehaviour ShipBehaviour;
 
@@ -23,7 +23,7 @@ public class Port : MonoBehaviour
 
     private LandContainerSlotBehavior seletedLandContainer;
 
-    public void SelectContainer(LandContainerSlotBehavior containerSlotBehavior)
+    public void SelectContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
         this.seletedLandContainer = containerSlotBehavior;
 
@@ -78,17 +78,17 @@ public class Port : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ContainerSlot1.Container == default)
+        if (ContainerSlot1.Container == null)
         {
             SpawnContainer(ContainerSlot1);
         }
 
-        if (ContainerSlot2.Container == default)
+        if (ContainerSlot2.Container == null)
         {
             SpawnContainer(ContainerSlot2);
         }
 
-        if (ContainerSlot3.Container == default)
+        if (ContainerSlot3.Container == null)
         {
             SpawnContainer(ContainerSlot3);
         }
@@ -118,7 +118,7 @@ public class Port : MonoBehaviour
 
     }
 
-    private void SpawnContainer(LandContainerSlotBehavior containerSlotBehavior)
+    private void SpawnContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
         var container = new BasicContainer()
         {
@@ -143,7 +143,7 @@ public class Port : MonoBehaviour
         }
     }
 
-    private void ShipContainerSelceted(ShipContainerSlotBehavior container)
+    private void ShipContainerSelceted(ShipContainerSlotBehaviour container)
     {
         if (this.seletedLandContainer?.Container != default)
         {
@@ -155,7 +155,7 @@ public class Port : MonoBehaviour
 
             this.seletedLandContainer.Container = default;
 
-            var slot = this.ShipCargo.GenerateShipSlot(container);
+            var slot = this.ShipCargo.GenerateShipSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
             slot.ContainerClicked.AddListener(this.ShipContainerSelceted);
 
             container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);

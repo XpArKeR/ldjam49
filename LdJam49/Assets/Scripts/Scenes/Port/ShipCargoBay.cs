@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipCargoBay : MonoBehaviour
 {
-    public IList<ShipContainerSlotBehavior> Slots { get; } = new List<ShipContainerSlotBehavior>();
+    public IList<ShipContainerSlotBehaviour> Slots { get; } = new List<ShipContainerSlotBehaviour>();
 
     // Start is called before the first frame update
     void Start()

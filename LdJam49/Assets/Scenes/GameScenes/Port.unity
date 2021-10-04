@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036229bad146dcc4ea2576a7ceeafaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContainerSlot1: {fileID: 1866875756}
+  ContainerSlot1: {fileID: 1811032411}
   ContainerSlot2: {fileID: 1992630582}
   ContainerSlot3: {fileID: 1821922083}
   ContainerDetails: {fileID: 2080125024}
@@ -1385,6 +1385,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1811032411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
+  m_PrefabInstance: {fileID: 1866875754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251a66eb0cbab704f88ced10f7aacd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1821922081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1714,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
       propertyPath: ContainerClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1866875756}
+      objectReference: {fileID: 0}
     - target: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
       propertyPath: ContainerClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: LandContainerSlotBehavior, Assembly-CSharp
@@ -1818,17 +1829,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6734456488518656421, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
   m_PrefabInstance: {fileID: 1866875754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1866875756 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4787226410881681230, guid: 820fc09a0db81354cb21d73ae09e4122, type: 3}
-  m_PrefabInstance: {fileID: 1866875754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251a66eb0cbab704f88ced10f7aacd99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1984372387
 PrefabInstance:
   m_ObjectHideFlags: 0

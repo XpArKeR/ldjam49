@@ -10,6 +10,7 @@ public class GameRun : MonoBehaviour
 {
 
     public ShipBehaviour ShipBehaviour;
+    public ShipCargoBehaviour ShipCargoBehavior;
     public Text LevelDisplay;
     public Text TimeDisplay;
     public Text GameOverDisplay;
@@ -54,6 +55,8 @@ public class GameRun : MonoBehaviour
             Level = LevelManager.GetLevel(Core.GameState.CurrentLevel);
             StartLevel();
         }
+
+        this.ShipCargoBehavior.RenderCargo();
 
         if (EventIndex > Level.Events.Count)
         {

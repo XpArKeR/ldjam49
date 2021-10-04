@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6734456488518656421}
   - component: {fileID: 7885178624385280766}
-  - component: {fileID: 4787226410881681230}
+  - component: {fileID: 6726944192782947145}
   m_Layer: 0
   m_Name: ShipContainerSlot
   m_TagString: Untagged
@@ -151,7 +151,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4787226410881681230
+--- !u!114 &6726944192782947145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6113023279462624259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff00d3e41a6012f478794535e224a2d7, type: 3}
+  m_Script: {fileID: 11500000, guid: aa86b667c9bf13542aa2a4540f91a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ContainerClicked:
