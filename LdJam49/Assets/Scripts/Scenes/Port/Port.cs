@@ -108,7 +108,7 @@ public class Port : MonoBehaviour
 
         try
         {
-            ShipBehaviour.CheckShipStatus(1.5f);
+            ShipBehaviour.CheckShipStatus(20f);
         }
         catch (ShipDownException)
         {
