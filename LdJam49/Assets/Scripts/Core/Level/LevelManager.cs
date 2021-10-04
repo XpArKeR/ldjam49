@@ -35,7 +35,14 @@ public class LevelManager
     {
         if (name == default)
         {
-            return GetLevels()[3];
+            var level = GetLevels()[0];
+
+            if (GetLevels().Count == 1)
+            {
+                level.IsLast = true;
+            }
+
+            return level;
         }
 
         for (int i = 0; i < GetLevels().Count; i++)
@@ -43,6 +50,11 @@ public class LevelManager
             Level level = GetLevels()[i];
             if (level.Name.Equals(name))
             {
+                if (i == (GetLevels().Count - 1))
+                {
+                    level.IsLast = true;
+                }
+
                 return level;
             }
         }
