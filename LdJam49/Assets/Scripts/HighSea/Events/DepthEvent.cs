@@ -1,9 +1,17 @@
+using Newtonsoft.Json;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DepthEvent : SeaEvent
 {
+    [JsonIgnore]
+    private GameObject parent;
+    [JsonIgnore]
+    private GameObject ground;
+
+
     private float depth;
     private float timeMinDepth = 0;
 
@@ -123,7 +131,9 @@ public class DepthEvent : SeaEvent
 
     public override void init(GameObject parent)
     {
-        Debug.Log("Implement init for wind");
+        this.parent = parent;
+
+        ground = parent.transform.Find("Ground").gameObject;
     }
 
 }
