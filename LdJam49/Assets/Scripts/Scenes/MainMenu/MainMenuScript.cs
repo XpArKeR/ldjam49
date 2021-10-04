@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
+    private float backgroundPlayedTime;
+
     public GameObject MainMenuContainer;
     public GameObject OptionsMenuContainer;
     public GameObject CreditsContainer;
@@ -22,7 +24,6 @@ public class MainMenuScript : MonoBehaviour
     public EffectsAudioManager EffectsAudioManager;
     public BackgroundAudioManager BackgroundAudioManager;
     public AmbienceAudioManager AmbienceAudioManager;
-
 
     public void StartGame()
     {
@@ -37,10 +38,18 @@ public class MainMenuScript : MonoBehaviour
     public void ShowCredits()
     {
         this.ChangeContainerVisiblity(credits: true);
+
+        this.backgroundPlayedTime = Core.BackgroundAudioManager.AudioSource.time;
+        Core.BackgroundAudioManager.PlayDelayed(Path.Combine("Audio", "Scenes", "HighSea", "HighSeaBackground"), 25f, true);
     }
 
     public void BackToMainMenu()
     {
+        if (this.CreditsContainer.activeSelf)
+        {
+            Core.BackgroundAudioManager.PlayDelayed(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"), this.backgroundPlayedTime, true);
+        }
+
         this.ChangeContainerVisiblity(mainMenu: true);
     }
 
@@ -83,11 +92,7 @@ public class MainMenuScript : MonoBehaviour
             Core.AmbienceAudioManager.Unmute();
         }
 
-        if (!Core.BackgroundAudioManager.IsPlaying)
-        {
-            Core.BackgroundAudioManager.AudioSource.clip = Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"));
-            Core.BackgroundAudioManager.AudioSource.Play();
-        }
+        Core.BackgroundAudioManager.Play(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"), true);
     }
 
     // Update is called once per frame
