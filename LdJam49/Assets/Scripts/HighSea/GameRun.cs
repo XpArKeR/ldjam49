@@ -92,7 +92,7 @@ public class GameRun : MonoBehaviour
         try
         {
 
-            CheckShipStatus();
+            ShipBehaviour.CheckShipStatus(Level.WaterDepth);
         }
         catch (ShipDownException)
         {
@@ -162,37 +162,5 @@ public class GameRun : MonoBehaviour
         }
     }
 
-    private void CheckShipStatus()
-    {
-        CheckIfAfloat();
-    }
 
-    private void CheckIfAfloat()
-    {
-        if (ShipBehaviour.Ship.Draft > Level.WaterDepth)
-        {
-            throw new ShipDownException("Scratch: " + ShipBehaviour.Ship.Draft + " : " + Level.WaterDepth);
-        }
-
-        CheckDraftAngle();
-    }
-
-    private void CheckDraftAngle()
-    {
-        //float hm = ShipBehaviour.Ship.Height * ShipBehaviour.Ship.EffectiveMassPoint.y;
-        //float mDraft = ShipBehaviour.Ship.MaxDraft - hm;
-        //float alpha = Mathf.Atan2(mDraft, ShipBehaviour.Ship.Width / 2);
-        //float squaaaar = Mathf.Sqrt(Mathf.Pow(ShipBehaviour.Ship.Width / 2, 2) + Mathf.Pow(mDraft, 2));
-        //float row = squaaaar * Mathf.Sin(alpha - (Mathf.PI / 180) * ShipBehaviour.ShipAngle);
-
-        //if (row <= ShipBehaviour.Ship.Draft - hm)
-        //{
-        //    throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
-        //}
-
-        if (ShipBehaviour.ShipAngle < ShipBehaviour.Ship.MinAngle || ShipBehaviour.ShipAngle > ShipBehaviour.Ship.MaxAngle)
-        {
-            throw new ShipDownException("Tilted!! with angle  " + ShipBehaviour.Ship.MaxAngle);
-        }
-    }
 }

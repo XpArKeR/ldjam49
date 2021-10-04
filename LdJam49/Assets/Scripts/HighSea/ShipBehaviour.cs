@@ -1,6 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Constants;
-
+using System.IO;
 using UnityEngine;
 
 public class ShipBehaviour : MonoBehaviour
@@ -24,7 +24,11 @@ public class ShipBehaviour : MonoBehaviour
     private float DraftAcceleration = 0f;
 
     private float SinkingTimer = -1;
+    private float SinkingDepth = 0;
     private bool Sinking = false;
+
+    //Enironment State Variables
+    private float WaterDepth = 1000.0f;
 
     public void SinkShip()
     {
@@ -86,7 +90,18 @@ public class ShipBehaviour : MonoBehaviour
         {
             if (SinkingTimer > 0)
             {
-                ShipTransform.parent.transform.position -= new Vector3(0f, 3f * Time.deltaTime, 0);
+                if (Mathf.Abs(SinkingDepth) < WaterDepth)
+                {
+                    float dSink = -3f * Time.deltaTime;
+                    SinkingDepth += dSink;
+                    ShipTransform.Translate(new Vector3(0f, dSink, 0));
+                    Debug.Log("SinkingDepth: " + SinkingDepth);
+                } else
+                {
+                    Debug.Log("SinkingDepth:");
+                    Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShort"));
+                }
+//                ShipTransform.parent.transform.position -= new Vector3(0f, 3f * Time.deltaTime, 0);
                 SinkingTimer = SinkingTimer - Time.deltaTime;
             }
             else
@@ -168,5 +183,40 @@ public class ShipBehaviour : MonoBehaviour
     private void TranslateByDraftDelta(float delta)
     {
         ShipTransform.Translate(new Vector3(0, -(delta) / Ship.DraftDrawingFactor, 0)); // Division by Twenty is just a try
+    }
+
+    public void CheckShipStatus(float waterDepth)
+    {
+        WaterDepth = waterDepth;
+        CheckIfAfloat(waterDepth);
+    }
+
+    private void CheckIfAfloat(float waterDepth)
+    {
+        if (Ship.Draft > waterDepth)
+        {
+            throw new ShipDownException("Scratch: " + Ship.Draft + " : " + waterDepth);
+        }
+
+        CheckDraftAngle();
+    }
+
+    private void CheckDraftAngle()
+    {
+        //float hm = ShipBehaviour.Ship.Height * ShipBehaviour.Ship.EffectiveMassPoint.y;
+        //float mDraft = ShipBehaviour.Ship.MaxDraft - hm;
+        //float alpha = Mathf.Atan2(mDraft, ShipBehaviour.Ship.Width / 2);
+        //float squaaaar = Mathf.Sqrt(Mathf.Pow(ShipBehaviour.Ship.Width / 2, 2) + Mathf.Pow(mDraft, 2));
+        //float row = squaaaar * Mathf.Sin(alpha - (Mathf.PI / 180) * ShipBehaviour.ShipAngle);
+
+        //if (row <= ShipBehaviour.Ship.Draft - hm)
+        //{
+        //    throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
+        //}
+
+        if (ShipAngle < Ship.MinAngle || ShipAngle > Ship.MaxAngle)
+        {
+            throw new ShipDownException("Tilted!! with angle  " + Ship.MaxAngle);
+        }
     }
 }

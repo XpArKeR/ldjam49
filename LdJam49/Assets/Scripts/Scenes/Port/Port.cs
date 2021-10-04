@@ -5,6 +5,7 @@ using Assets.Scripts;
 using Assets.Scripts.Constants;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Port : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Port : MonoBehaviour
     public ContainerDetailsBehaviour ContainerDetails;
 
     public ShipCargoBehavior ShipCargo;
+
+    public ShipBehaviour ShipBehaviour;
+
+    public Text GameOverDisplay;
 
     private LandContainerSlotBehavior seletedLandContainer;
 
@@ -100,6 +105,17 @@ public class Port : MonoBehaviour
         {
             this.SelectContainer(this.ContainerSlot3);
         }
+
+        try
+        {
+            ShipBehaviour.CheckShipStatus(1.5f);
+        }
+        catch (ShipDownException)
+        {
+            GameOverDisplay.gameObject.SetActive(true);
+            ShipBehaviour.SinkShip();
+        }
+
     }
 
     private void SpawnContainer(LandContainerSlotBehavior containerSlotBehavior)
