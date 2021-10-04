@@ -25,7 +25,13 @@ public class Port : MonoBehaviour
 
     public void SelectContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
+        if (this.seletedLandContainer != default)
+        {
+            this.seletedLandContainer.IsSelected = false;
+        }
+
         this.seletedLandContainer = containerSlotBehavior;
+        this.seletedLandContainer.IsSelected = true;
 
         this.UpdateContainerInfo();
     }
@@ -155,6 +161,8 @@ public class Port : MonoBehaviour
                 Offset = container.Offset
             };
 
+
+            this.seletedLandContainer.IsSelected =false;
             this.seletedLandContainer.Container = default;
 
             var slot = this.ShipCargo.GenerateShipSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
