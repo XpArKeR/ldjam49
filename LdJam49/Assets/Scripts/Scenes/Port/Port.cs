@@ -21,7 +21,7 @@ public class Port : MonoBehaviour
 
     public Text GameOverDisplay;
 
-    private LandContainerSlotBehavior seletedLandContainer;
+    private LandContainerSlotBehaviour seletedLandContainer;
 
     public void SelectContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
