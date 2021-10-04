@@ -47,7 +47,7 @@ public class ShipBehaviour : MonoBehaviour
         RotationAxis = new Vector3(0, 0, 1);
 
 
-        StartShip(Core.GameState.Ship, 0);
+        StartShip(Core.GameState?.Ship, 0);
 
     }
 
@@ -69,7 +69,8 @@ public class ShipBehaviour : MonoBehaviour
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
         //ShipTransform.parent.transform.position = Offset;
-        this.MassMiddle.transform.position = MassMiddleVector + Offset;
+        if(this.MassMiddle != default)
+            this.MassMiddle.transform.position = MassMiddleVector + Offset;
 
         CalculateBoundingAngles();
     }
@@ -100,8 +101,11 @@ public class ShipBehaviour : MonoBehaviour
     {
 
         //ShipTransform.parent.transform.position = Offset;
-        this.MassMiddle.transform.position = MassMiddleVector;
-        ShipTransform.RotateAround(this.MassMiddle.transform.position, RotationAxis, Velocity * Time.deltaTime);
+        if (this.MassMiddle != default)
+        {
+            this.MassMiddle.transform.position = MassMiddleVector;
+        }
+        ShipTransform.RotateAround(MassMiddleVector, RotationAxis, Velocity * Time.deltaTime);
         //ShipTransform.Rotate(RotationAxis, Velocity * Time.deltaTime);
 
         if (Sinking)

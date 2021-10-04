@@ -89,5 +89,6 @@ public class ShipLoad
         }
 
         CenterOfMass = new Vector2(offSumX / Weight, offSumY / Weight);
+        Debug.Log("ShipLoad: CenterOfMass = " + CenterOfMass);
     }
 }
