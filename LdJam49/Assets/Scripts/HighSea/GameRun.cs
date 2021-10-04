@@ -54,7 +54,6 @@ public class GameRun : MonoBehaviour
                         Ship = ShipManager.GetDefaultShip()
                     };
 
-                    gameState.Ship.SetDefaultValues();
                     Core.StartGame(gameState);
                 }
 #endif
@@ -120,7 +119,9 @@ public class GameRun : MonoBehaviour
     private void LevelCompleted()
     {
         Core.ChangeScene(SceneNames.Port);
-        Core.GameState.Ship.ShipLoad = new ShipLoad();
+
+        Core.GameState.Ship.Unload();
+
         Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
     }
 

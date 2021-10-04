@@ -1,7 +1,8 @@
 
 using System;
-using Assets.Scripts;
+
 using Newtonsoft.Json;
+
 using UnityEngine;
 
 public class BasicShip
@@ -92,15 +93,15 @@ public class BasicShip
     {
         get
         {
-//            if (draft == default)
-//            {
-                draft = (Mass + ShipLoad.Weight) / Buoyancy;
-//            }
+            //            if (draft == default)
+            //            {
+            draft = (Mass + ShipLoad.Weight) / Buoyancy;
+            //            }
 
             return draft;
         }
     }
-
+        
     [JsonIgnore]
     private Vector2 effectuveMassPoint;
     [JsonIgnore]
@@ -293,7 +294,7 @@ public class BasicShip
         {
             float offsetX = (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) / 0.5f;
             offset = 20 * offsetX; //TODO: Define Max Offset
-//          offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
+                                   //          offset = shipLoad.Weight * (shipLoad.CenterOfMass.x - relativeCenterOfMass.x) * Width / 200;
             return this.offset;
         }
 
@@ -321,6 +322,12 @@ public class BasicShip
         }
     }
 
+    public void Unload()
+    {
+        this.ShipLoad = new ShipLoad();
+
+        CalculateBoundingAngles();
+    }
 
     public void AddContainer(LoadedContainer container)
     {
@@ -364,28 +371,4 @@ public class BasicShip
         float angle = Mathf.Acos(wm / r) - Mathf.Asin(dhm / r);
         return (180 / Mathf.PI) * angle;
     }
-
-    public void SetDefaultValues()
-    {
-        Width = 195;
-        Height = 170;
-        MaxDraft = 118;
-        Buoyancy = 40;
-        RelativeCenterOfMass = new Vector2(0.5f, 0.5f);
-
-        StabilityConstant1 = 1.2f;
-        StabilityConstant2 = -10f;
-        TiltingAngle = 20f;
-
-        Mass = 4f;
-        Damping = 3f;
-
- /*       ShipLoad = new ShipLoad()
-        {
-            CenterOfMass = new Vector2(.5f, 0.4f),
-            Weight = 300f
-        };*/
-    }
-
-
 }
