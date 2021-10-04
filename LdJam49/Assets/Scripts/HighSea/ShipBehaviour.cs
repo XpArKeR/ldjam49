@@ -73,9 +73,11 @@ public class ShipBehaviour : MonoBehaviour
         //MassMiddleVector = ScaleByLocal(MassMiddleVector);
 
         Draft = Ship.Draft;
+        TranslateByDraftDelta(-Draft);
+
 
         //ShipTransform.parent.transform.position = Offset;
-        if(this.MassMiddle != default)
+        if (this.MassMiddle != default)
             this.MassMiddle.transform.position = MassMiddleVector + Offset;
 
         CalculateBoundingAngles();
@@ -179,8 +181,7 @@ public class ShipBehaviour : MonoBehaviour
         DraftVelocity += Time.deltaTime * DraftAcceleration;
         float lastDraft = Draft;
         Draft += Time.deltaTime * DraftVelocity;
-
-        ShipTransform.Translate(new Vector3(0, -(Draft - lastDraft) / 20f, 0)); // Division by Twenty is just a try
+        TranslateByDraftDelta(Draft - lastDraft);
 
         //Calculation like a Spring-Damper-System
 
@@ -191,7 +192,12 @@ public class ShipBehaviour : MonoBehaviour
         float draftForce = Ship.Buoyancy * delta - 1.5f * totalShipMass * DraftVelocity;
         DraftAcceleration = draftForce / totalShipMass;
 
-        Debug.Log("Ship Draft:  Draft = " + Draft + " Delta = " + delta + " mass = " + totalShipMass + " buoyancy = "+Ship.Buoyancy + " Force = " + draftForce + " Acceleration = " + DraftAcceleration);
+//        Debug.Log("Ship Draft:  Draft = " + Draft + " Delta = " + delta + " mass = " + totalShipMass + " buoyancy = "+Ship.Buoyancy + " Force = " + draftForce + " Acceleration = " + DraftAcceleration);
 
+    }
+
+    private void TranslateByDraftDelta(float delta)
+    {
+        ShipTransform.Translate(new Vector3(0, -(delta) / 20f, 0)); // Division by Twenty is just a try
     }
 }
