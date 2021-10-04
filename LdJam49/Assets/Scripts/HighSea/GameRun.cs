@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 
 using Assets.Scripts;
@@ -16,6 +17,7 @@ public class GameRun : MonoBehaviour
     public Text TimeDisplay;
     public Text GameOverDisplay;
     public Text LevelCompletedDisplay;
+    public Image ArrivalImage;
 
     public GameObject ThunderStorm;
 
@@ -85,8 +87,11 @@ public class GameRun : MonoBehaviour
             return;
 
         }
+
         if (levelCompletedTime == 0 && timeCounter > Level.Length)
         {
+            //StartCoroutine(FadeImage(this.ArrivalImage, false));
+
             levelCompletedTime = timeCounter + 3f;
             LevelCompletedDisplay.gameObject.SetActive(true);
         }
@@ -135,10 +140,12 @@ public class GameRun : MonoBehaviour
         EventIndex = 0;
         levelCompletedTime = 0;
         CurrentEvents = new List<SeaEvent>();
+
         if (Level.Events == null)
         {
             Level.Events = new List<SeaEvent>();
         }
+
         LevelDisplay.text = Level.Name;
     }
 
@@ -173,5 +180,29 @@ public class GameRun : MonoBehaviour
         }
     }
 
-
+    private IEnumerator FadeImage(Image image, bool fadeAway)
+    {
+        // fade from opaque to transparent
+        if (fadeAway)
+        {
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                image.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+        }
+        // fade from transparent to opaque
+        else
+        {
+            // loop over 1 second
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                // set color with i as alpha
+                image.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+        }
+    }
 }
