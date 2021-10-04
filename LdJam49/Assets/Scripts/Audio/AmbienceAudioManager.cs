@@ -18,7 +18,7 @@ namespace Assets.Scripts.Audio
         {
             base.Initialize();
 
-            this.Volume = Core.AmbienceAudioManager.Volume;
+            this.Volume = Core.Options.AmbienceVolume;
 
             this.PropagateVolume(this.Volume);
         }
