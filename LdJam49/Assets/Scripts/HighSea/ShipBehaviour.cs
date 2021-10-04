@@ -63,6 +63,7 @@ public class ShipBehaviour : MonoBehaviour
         {
             Ship = ShipManager.GetDefaultShip();
         }
+        Ship.CalculateBoundingAngles();
 
         ShipAngle = startAngle;
 

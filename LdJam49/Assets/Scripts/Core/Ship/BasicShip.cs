@@ -9,7 +9,6 @@ public class BasicShip
 
     public BasicShip()
     {
-
     }
 
     [SerializeField]
@@ -343,7 +342,7 @@ public class BasicShip
         CalculateBoundingAngles();
     }
 
-    void CalculateBoundingAngles()
+    public void CalculateBoundingAngles()
     {
         //float hm = Ship.Height * 0.5f;
         //float hm = Ship.Height * Ship.EffectiveMassPoint.y;
