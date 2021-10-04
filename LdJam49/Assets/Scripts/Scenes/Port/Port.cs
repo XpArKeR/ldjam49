@@ -24,6 +24,8 @@ public class Port : MonoBehaviour
 
     private LandContainerSlotBehaviour seletedLandContainer;
 
+    public GameObject HowToPlay;
+
     public void SelectContainer(LandContainerSlotBehaviour containerSlotBehavior)
     {
         if (this.seletedLandContainer != default)
@@ -53,6 +55,11 @@ public class Port : MonoBehaviour
         {
             onEffectFinished();
         }
+    }
+
+    public void ToggleHowToPlay()
+    {
+        HowToPlay.SetActive(!HowToPlay.activeSelf);
     }
 
     IEnumerator DelayChangeScene(float seconds)
