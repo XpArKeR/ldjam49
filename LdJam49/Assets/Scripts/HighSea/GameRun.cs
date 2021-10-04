@@ -51,16 +51,6 @@ public class GameRun : MonoBehaviour
                         Ship = ShipManager.GetDefaultShip()
                     };
 
-                    gameState.Ship.AddContainer(new LoadedContainer()
-                    {
-                        Container = new BasicContainer()
-                        {
-                            Weight = 30f,
-                            Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
-                        },
-                        Offset = new Vector2(0, 0)
-                    });
-
                     gameState.Ship.SetDefaultValues();
                     Core.StartGame(gameState);
                 }
