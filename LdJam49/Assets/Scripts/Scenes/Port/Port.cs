@@ -14,8 +14,7 @@ public class Port : MonoBehaviour
     public LandContainerSlotBehavior ContainerSlot3;
     public ContainerDetailsBehaviour ContainerDetails;
 
-    public ShipContainerSlotBehavior ShipContainerTemplate;
-    public ShipCargoBay ShipContainer;
+    public ShipCargoBehavior ShipCargo;
 
     private LandContainerSlotBehavior seletedLandContainer;
 
@@ -67,15 +66,8 @@ public class Port : MonoBehaviour
             Core.StartGame(gameState);
         }
 #endif
-        var containerAmount = Core.GameState.Ship.ContainerCapacity;
 
-        for (int i = 0; i < containerAmount; i++)
-        {
-            var newSlot = CloneSlot(new Vector2(i, 0), this.ShipContainerTemplate.transform);
-
-            newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
-            //newSlot.transform.Translate(new Vector2(i, 0), this.ShipContainerTemplate.transform);
-        }
+        this.ShipCargo.GenerateBaseSlots(this.ShipContainerSelceted);
     }
 
     // Update is called once per frame
@@ -147,7 +139,8 @@ public class Port : MonoBehaviour
 
             this.seletedLandContainer.Container = default;
 
-            this.GenerateShipSlot(container);
+            var slot = this.ShipCargo.GenerateShipSlot(container);
+            slot.ContainerClicked.AddListener(this.ShipContainerSelceted);
 
             container.ContainerClicked.RemoveListener(this.ShipContainerSelceted);
             this.seletedLandContainer = default;
@@ -155,27 +148,5 @@ public class Port : MonoBehaviour
 
             Core.GameState.Ship.AddContainer(container.LoadedContainer);
         }
-    }
-
-    private void GenerateShipSlot(ShipContainerSlotBehavior container)
-    {
-        var newSlot = CloneSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
-
-        newSlot.ContainerClicked.AddListener(this.ShipContainerSelceted);
-    }
-
-    private ShipContainerSlotBehavior CloneSlot(Vector2 shipOffset, Transform relativeTo)
-    {
-        var newSlot = GameObject.Instantiate<ShipContainerSlotBehavior>(this.ShipContainerTemplate, ShipContainer.gameObject.transform);
-
-        newSlot.Offset = shipOffset;
-                
-        newSlot.transform.Translate(shipOffset, relativeTo);
-
-        this.ShipContainer.Slots.Add(newSlot);
-
-        newSlot.gameObject.SetActive(true);
-
-        return newSlot;
     }
 }
