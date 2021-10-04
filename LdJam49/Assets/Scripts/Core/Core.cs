@@ -138,7 +138,6 @@ namespace Assets.Scripts
                 IsFileAccessPossible = true;
             }
 
-            IsFileAccessPossible = false;
             LoadPlayerOptions();
         }
 
