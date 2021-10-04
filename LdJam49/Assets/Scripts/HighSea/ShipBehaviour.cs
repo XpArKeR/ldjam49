@@ -143,8 +143,8 @@ public class ShipBehaviour : MonoBehaviour
     {
 
         // float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
-        float radians = (Mathf.PI / 180) * (ShipAngle - Ship.Offset);
-        return Ship.ShipLoad.Weight * Mathf.Sin(radians);
+        float radians = (Mathf.PI / 180) * (ShipAngle + Ship.Offset);
+        return - Ship.ShipLoad.Weight * Mathf.Sin(radians);
     }
 
     private float CalculateShipReaction()
@@ -177,7 +177,7 @@ public class ShipBehaviour : MonoBehaviour
         var totalShipMass = (Ship.Mass + Ship.ShipLoad.Weight);
         var dampingFactor = 1f * totalShipMass; //Experimental
 
-        float draftForce = Ship.Buoyancy * delta - 1.5f * totalShipMass * DraftVelocity;
+        float draftForce = totalShipMass * (8 * delta - 1.5f * 5 * DraftVelocity);
         DraftAcceleration = draftForce / totalShipMass;
 
 //        Debug.Log("Ship Draft:  Draft = " + Draft + " Delta = " + delta + " mass = " + totalShipMass + " buoyancy = "+Ship.Buoyancy + " Force = " + draftForce + " Acceleration = " + DraftAcceleration);
