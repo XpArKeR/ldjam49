@@ -13,7 +13,7 @@
             "$type": "WaveEvent, Assembly-CSharp",
             "Strength": 10.0,
             "Direction": -1.0,
-	    "Frequency": 0.8,
+			"Frequency": 0.8,
             "EventName": "Continous Waves",
             "Duration": 30.0,
             "StartingTime": 0.0,
@@ -21,7 +21,7 @@
           {
             "$type": "WaveEvent, Assembly-CSharp",
             "Strength": 10.0,
-	    "Frequency": 1,
+			"Frequency": 1,
             "Direction": 1.0,
             "EventName": "Continous Waves",
             "Duration": 4.0,
@@ -34,7 +34,18 @@
             "EventName": "Blast",
             "Duration": 4.5,
             "StartingTime": 3.0,
-	    "Sound": "Audio/Effects/Wind/Wind2"
+			"Sound": "Audio/Effects/Wind/Wind2"
+          },
+          {
+            "$type": "DepthEvent, Assembly-CSharp",
+            "DepthZero": 300.0,
+            "GradientUp": 60.0,
+            "GradientDown": 60.0,
+            "MinWaterDepth": 150.0,
+            "MinDepthDuration": 3.0,
+            "EventName": "Not Enough Depth",
+            "Duration": 10,
+            "StartingTime": 10.0
           },
           {
             "$type": "ThunderStormEvent, Assembly-CSharp",
