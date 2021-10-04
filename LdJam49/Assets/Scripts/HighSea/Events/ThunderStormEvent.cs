@@ -42,9 +42,9 @@ public class ThunderStormEvent : SeaEvent
 
         if (time > nextLightning)
         {
-            DoLightning(lightning1, 0.005f, 0.9f);
-            DoLightning(lightning2, 0.01f, 0.8f);
-            DoLightning(lightning3, 0.015f, 0.99f);
+            DoLightning(lightning1, 0.205f, 0.9f);
+            DoLightning(lightning2, 0.21f, 0.8f);
+            DoLightning(lightning3, 0.215f, 0.99f);
 
             nextLightning += lightningInterval;
         }
