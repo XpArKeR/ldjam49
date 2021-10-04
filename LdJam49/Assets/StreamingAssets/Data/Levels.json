@@ -5,17 +5,36 @@
       "$type": "Level, Assembly-CSharp",
       "Name": "Dodo",
       "WaterDepth": 2000.0,
-      "Length": 30.0,
+      "Length": 33.3,
       "Events": {
         "$type": "System.Collections.Generic.List`1[[SeaEvent, Assembly-CSharp]], mscorlib",
         "$values": [
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 20.0,
+            "Direction": -1.0,
+	    "Frequency": 20,
+            "EventName": "Continous Waves",
+            "Duration": 30.0,
+            "StartingTime": 0.0,
+          },
+          {
+            "$type": "WaveEvent, Assembly-CSharp",
+            "Strength": 40.0,
+	    "Frequency": 30,
+            "Direction": 1.0,
+            "EventName": "Continous Waves",
+            "Duration": 4.0,
+            "StartingTime": 3.0,
+          },
           {
             "$type": "WindEvent, Assembly-CSharp",
             "Strength": 220.0,
             "Direction": 1.0,
             "EventName": "Blast",
-            "Duration": 2.0,
-            "StartingTime": 3.0
+            "Duration": 4.5,
+            "StartingTime": 3.0,
+	    "Sound": "Audio/Effects/Wind/Wind2"
           },
           {
             "$type": "ThunderStormEvent, Assembly-CSharp",
@@ -40,7 +59,8 @@
             "Direction": 1.0,
             "EventName": "Blast",
             "Duration": 2.0,
-            "StartingTime": 3.0
+            "StartingTime": 3.0,
+	    "Sound": "Audio/Effects/Wind/Wind2"
           },
           {
             "$type": "WindEvent, Assembly-CSharp",
@@ -48,7 +68,8 @@
             "Direction": -1.0,
             "EventName": "Blast",
             "Duration": 2.0,
-            "StartingTime": 7.0
+            "StartingTime": 7.0,
+	    "Sound": "Audio/Effects/Wind/Wind2"
           },
           {
             "$type": "ThunderStormEvent, Assembly-CSharp",

@@ -2,11 +2,9 @@ using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
-[Serializable]
-public class WindEvent : SeaEvent
+public class WaveEvent : SeaEvent
 {
     protected Boolean playedSound = false;
 
@@ -23,6 +21,23 @@ public class WindEvent : SeaEvent
             if (this.strength != value)
             {
                 this.strength = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private float frequency;
+    public float Frequency
+    {
+        get
+        {
+            return this.frequency;
+        }
+        set
+        {
+            if (this.frequency != value)
+            {
+                this.frequency = value;
             }
         }
     }
@@ -80,13 +95,13 @@ public class WindEvent : SeaEvent
             return true;
         }
 
-        if(!playedSound)
+        if (!playedSound)
         {
-//TODO:            Core.EffectsAudioManager.Play(Sound);
+//            Core.EffectsAudioManager.Play(Sound);
             playedSound = true;
         }
 
-        float strength = Strength * Mathf.Sin(relativeEventTime / GetDurationPI());
+        float strength = Strength * Mathf.Sin(Frequency * relativeEventTime / GetDurationPI());
         ShipBehaviour.PushSide(Direction, strength);
         return false;
     }
@@ -95,4 +110,5 @@ public class WindEvent : SeaEvent
     {
         Debug.Log("Implement init for wind");
     }
+
 }

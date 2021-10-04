@@ -56,6 +56,7 @@ public abstract class SeaEvent
         }
     }
 
+
     public abstract bool ExecuteEvent(ShipBehaviour ShipBehaviour, float time);
 
     public abstract void init(GameObject parent);
