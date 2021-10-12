@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using Assets.Scripts;
+
 using Newtonsoft.Json;
 
 using UnityEngine;
@@ -24,6 +25,23 @@ public class ShipLoad
             if (this.weight != value)
             {
                 this.weight = value;
+            }
+        }
+    }
+
+    [SerializeField]
+    private Decimal totalValue;
+    public Decimal Value
+    {
+        get
+        {
+            return this.totalValue;
+        }
+        set
+        {
+            if (this.totalValue != value)
+            {
+                this.totalValue = value;
             }
         }
     }
@@ -73,5 +91,4 @@ public class ShipLoad
             }
         }
     }
-
 }
