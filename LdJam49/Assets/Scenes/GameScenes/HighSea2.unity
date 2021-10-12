@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 405126886}
   - component: {fileID: 405126888}
   - component: {fileID: 405126887}
+  - component: {fileID: 405126889}
   m_Layer: 0
   m_Name: DestiationDisplay
   m_TagString: Untagged
@@ -348,7 +349,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 300
     m_Alignment: 2
@@ -366,6 +367,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405126885}
   m_CullTransparentMesh: 1
+--- !u!114 &405126889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405126885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329f637718b28074aa61794da490a5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 405126887}
 --- !u!1 &462826774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1488,7 @@ GameObject:
   - component: {fileID: 1532945439}
   - component: {fileID: 1532945441}
   - component: {fileID: 1532945440}
+  - component: {fileID: 1532945442}
   m_Layer: 0
   m_Name: StartDisplay
   m_TagString: Untagged
@@ -1524,7 +1539,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 300
     m_Alignment: 0
@@ -1542,6 +1557,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532945438}
   m_CullTransparentMesh: 1
+--- !u!114 &1532945442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532945438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329f637718b28074aa61794da490a5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1532945440}
 --- !u!1 &1546201989
 GameObject:
   m_ObjectHideFlags: 0
