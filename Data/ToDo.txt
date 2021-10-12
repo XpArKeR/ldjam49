@@ -1,6 +1,8 @@
 Todo:
  - Port Level Description
  - Port GameOver screen
+ - HighSeas: Make Progress dsiplay, rotation & resolution stabil
+ - remove old highseas gamescene
  
  
 Nice to have:
