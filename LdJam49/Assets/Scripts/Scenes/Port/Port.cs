@@ -72,12 +72,12 @@ public class Port : MonoBehaviour
             yield return new WaitForSeconds(1);
         } while (--loadSecondsLeft > 0);
 
-        Core.ChangeScene(SceneNames.HighSea2);
+        Core.ChangeScene(SceneNames.HighSea);
     }
 
     private void onEffectFinished()
     {
-        Core.ChangeScene(SceneNames.HighSea2);
+        Core.ChangeScene(SceneNames.HighSea);
     }
 
     // Start is called before the first frame update

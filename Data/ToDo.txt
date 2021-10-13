@@ -2,16 +2,18 @@ Todo:
  - Port Level Description
  - Port GameOver screen
  - HighSeas: Make Progress dsiplay, rotation & resolution stabil
- - remove old highseas gamescene
  - make use of load value
  - multiple audio sources for effects
  - ensure different resolutions (widescreen on some iphones result in blue spacing outside default gameview)
  - wind animation
+ - rework levels (remove test levels :) )
  
 
 Idea:
  - stabilize ship on high sea
  - loose container
+ - multiple ships
+ - different containers? liquid?
 
  
 Nice to have:
