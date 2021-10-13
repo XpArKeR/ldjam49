@@ -6,6 +6,7 @@ Todo:
  - make use of load value
  - multiple audio sources for effects
  - ensure different resolutions (widescreen on some iphones result in blue spacing outside default gameview)
+ - wind animation
  
 
 Idea:
