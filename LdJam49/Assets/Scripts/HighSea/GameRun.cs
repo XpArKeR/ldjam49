@@ -21,7 +21,6 @@ public class GameRun : MonoBehaviour
 
     public GameObject ThunderStorm;
     public GameObject Ground;
-    public GameObject ProgressDisplay;
 
     private Level Level;
     private List<SeaEvent> CurrentEvents;
@@ -80,7 +79,6 @@ public class GameRun : MonoBehaviour
     void Update()
     {
         timeCounter += Time.deltaTime;
-        ProgressDisplay.transform.Translate(new Vector3(0.28f * Time.deltaTime, 0, 0));
         if (Level == null)
         {
             return;
