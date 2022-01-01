@@ -101,7 +101,7 @@ public class BasicShip
             return draft;
         }
     }
-        
+
     [JsonIgnore]
     private Vector2 effectuveMassPoint;
     [JsonIgnore]
@@ -332,11 +332,13 @@ public class BasicShip
     public void AddContainer(LoadedContainer container)
     {
         this.ShipLoad.Weight += container.Container.Weight;
+        this.ShipLoad.Value += container.Container.Value;
 
         this.ShipLoad.Containers.Add(container);
 
         float offSumX = 0;
         float offSumY = 0;
+
         foreach (var cont in this.ShipLoad.Containers)
         {
             offSumX += cont.Container.Weight * (cont.Offset.x / (this.ContainerCapacity - 1f));
@@ -362,7 +364,7 @@ public class BasicShip
         //float wm = Ship.Width * 0.5f;
         MaxAngle = CalculateAngle(mdhdsq, dhm, wm);
         MinAngle = -CalculateAngle(mdhdsq, dhm, Width - wm);
-//        Debug.Log("Draft: " + Draft + ", Limit Angles: " + MinAngle + " " + MaxAngle);
+        //        Debug.Log("Draft: " + Draft + ", Limit Angles: " + MinAngle + " " + MaxAngle);
     }
 
     private static float CalculateAngle(float mdhdsq, float dhm, float wm)

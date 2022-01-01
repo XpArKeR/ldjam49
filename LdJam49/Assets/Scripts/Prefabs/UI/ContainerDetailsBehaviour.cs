@@ -1,12 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using System;
+
+using Assets.Scripts.Extensions;
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ContainerDetailsBehaviour : MonoBehaviour
 {
-    public Text ValueText;
-    public Text WeightText;
+    public String Title;
+
+    private Text TitleText;
+    private DescriptionValueBehaviour totalValue;
+    private DescriptionValueBehaviour totalWeight;
 
     private BasicContainer container;
     public BasicContainer Container
@@ -25,29 +31,29 @@ public class ContainerDetailsBehaviour : MonoBehaviour
         }
     }
 
-    private void UpdateContainerInformation()
-    {
-        if (this.Container != default)
-        {
-            this.ValueText.text = this.Container.Value.ToString("C");
-            this.WeightText.text = this.Container.Weight.ToString("####0.0t");
-        }
-        else
-        {
-            this.ValueText.text = "";
-            this.WeightText.text = "";
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.TitleText = this.transform.FindComponentOfChildByName<Text>("TitleText");
+        this.totalValue = this.transform.FindComponentOfChildByName<DescriptionValueBehaviour>("ValueTextEdit");
+        this.totalWeight = this.transform.FindComponentOfChildByName<DescriptionValueBehaviour>("WeightTextEdit");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (this.TitleText != null)
+        {
+            if (this.TitleText.text != this.Title)
+            {
+                this.TitleText.text = this.Title;
+            }
+        }
+    }
+
+    private void UpdateContainerInformation()
+    {
+        this.totalValue?.UpdateDetail(container.Value, "C");
+        this.totalWeight?.UpdateDetail(container.Weight, "####0.0t");
     }
 }

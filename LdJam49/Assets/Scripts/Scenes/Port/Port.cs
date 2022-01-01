@@ -18,6 +18,8 @@ public class Port : MonoBehaviour
 
     public ShipCargoBehaviour ShipCargo;
 
+    public ShipDetailsBehaviour ShipDetails;
+
     public ShipBehaviour ShipBehaviour;
 
     public Text GameOverDisplay;
@@ -70,12 +72,12 @@ public class Port : MonoBehaviour
             yield return new WaitForSeconds(1);
         } while (--loadSecondsLeft > 0);
 
-        Core.ChangeScene(SceneNames.HighSea2);
+        Core.ChangeScene(SceneNames.HighSea);
     }
 
     private void onEffectFinished()
     {
-        Core.ChangeScene(SceneNames.HighSea2);
+        Core.ChangeScene(SceneNames.HighSea);
     }
 
     // Start is called before the first frame update
@@ -142,6 +144,10 @@ public class Port : MonoBehaviour
             ShipBehaviour.SinkShip();
         }
 
+        if (this.ShipDetails?.ShipLoad != Core.GameState.Ship.ShipLoad)
+        {
+            this.ShipDetails.ShipLoad = Core.GameState.Ship.ShipLoad;
+        }
     }
 
     private void SpawnContainer(LandContainerSlotBehaviour containerSlotBehavior)
@@ -179,7 +185,6 @@ public class Port : MonoBehaviour
                 Container = this.seletedLandContainer.Container,
                 Offset = container.Offset
             };
-
 
             this.seletedLandContainer.IsSelected =false;
             this.seletedLandContainer.Container = default;
