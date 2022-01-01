@@ -10,8 +10,6 @@ namespace Assets.Scripts.Audio
     {
         public override void Initialize()
         {
-            base.Initialize();
-
             this.Volume = Core.Options.BackgroundVolume;
         }
 

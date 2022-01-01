@@ -41,7 +41,7 @@ public class GameRun : MonoBehaviour
                 Core.BackgroundAudioManager.Stop();
             }
 
-            Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio", "Scenes", "HighSea", "HighSeaBackground"), true);
+            Core.BackgroundAudioManager?.Play("HighSeaBackground", true);
 
 
             if (Level == default)

@@ -12,7 +12,22 @@ namespace Assets.Scripts.Audio
 
         public virtual void Play(String resourceKey, Boolean isLooped = false, Action onFinishedCallback = default)
         {
-            this.Play(Core.ResourceCache.GetAudioClip(resourceKey), isLooped, onFinishedCallback);
+            var audioClip = Core.Resources.GetAudioClip(resourceKey);
+
+            if (audioClip != null)
+            {
+                this.Play(audioClip, isLooped, onFinishedCallback);
+            }
+        }
+
+        public override void Play(String resourceName)
+        {
+            this.Play(Core.Resources.GetAudioClip(resourceName), false, default);
+        }
+
+        public override void Play(AudioClip audioClip)
+        {
+            this.Play(audioClip, false, default);
         }
 
         public virtual void Play(AudioClip audioClip, Boolean isLooped = false, Action onFinishedCallback = default)
@@ -38,7 +53,7 @@ namespace Assets.Scripts.Audio
 
         public virtual void PlayStarted(String resourceKey, Single delay, Boolean isLooped = false, Action onFinishedCallback = default)
         {
-            this.PlayStarted(Core.ResourceCache.GetAudioClip(resourceKey), delay, isLooped, onFinishedCallback);
+            this.PlayStarted(Core.Resources.GetAudioClip(resourceKey), delay, isLooped, onFinishedCallback);
         }
 
         public virtual void PlayStarted(AudioClip audioClip, Single startTime, Boolean isLooped = false, Action onFinishedCallback = default)

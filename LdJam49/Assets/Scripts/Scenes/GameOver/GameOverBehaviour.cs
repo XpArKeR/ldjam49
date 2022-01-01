@@ -14,7 +14,7 @@ public class GameOverBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Core.BackgroundAudioManager?.Play(System.IO.Path.Combine("Audio", "Scenes", "GameOver", "GameOverMan"));
+        Core.BackgroundAudioManager?.Play("GameOverMan");
     }
 
     // Update is called once per frame
