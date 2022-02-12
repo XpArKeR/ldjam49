@@ -1,6 +1,5 @@
 using System;
 
-using Assets.Scripts.Audio;
 using Assets.Scripts.Constants;
 
 using UnityEngine;
@@ -50,9 +49,9 @@ namespace Assets.Scripts
                 }
             }
         }
-        
-        private static EffectsAudioManager effectsAudioManager;
-        public static EffectsAudioManager EffectsAudioManager
+
+        private static GameFrame.Core.Audio.Multi.EffectsAudioManager effectsAudioManager;
+        public static GameFrame.Core.Audio.Multi.EffectsAudioManager EffectsAudioManager
         {
             get
             {
@@ -67,8 +66,8 @@ namespace Assets.Scripts
             }
         }
 
-        private static BackgroundAudioManager backgroundAudioManager;
-        public static BackgroundAudioManager BackgroundAudioManager
+        private static GameFrame.Core.Audio.Single.BackgroundAudioManager backgroundAudioManager;
+        public static GameFrame.Core.Audio.Single.BackgroundAudioManager BackgroundAudioManager
         {
             get
             {
@@ -83,8 +82,8 @@ namespace Assets.Scripts
             }
         }
 
-        private static AmbienceAudioManager ambienceAudioManager;
-        public static AmbienceAudioManager AmbienceAudioManager
+        private static GameFrame.Core.Audio.Single.AmbienceAudioManager ambienceAudioManager;
+        public static GameFrame.Core.Audio.Single.AmbienceAudioManager AmbienceAudioManager
         {
             get
             {

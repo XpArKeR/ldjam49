@@ -1,10 +1,7 @@
-
-
 using System;
 using System.IO;
 
 using Assets.Scripts;
-using Assets.Scripts.Audio;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,9 +18,9 @@ public class MainMenuScript : MonoBehaviour
     public GameObject QuitButton;
     public GameObject BackButton;
 
-    public EffectsAudioManager EffectsAudioManager;
-    public BackgroundAudioManager BackgroundAudioManager;
-    public AmbienceAudioManager AmbienceAudioManager;
+    public GameFrame.Core.Audio.Multi.EffectsAudioManager EffectsAudioManager;
+    public GameFrame.Core.Audio.Single.BackgroundAudioManager BackgroundAudioManager;
+    public GameFrame.Core.Audio.Single.AmbienceAudioManager AmbienceAudioManager;
 
     public void StartGame()
     {
