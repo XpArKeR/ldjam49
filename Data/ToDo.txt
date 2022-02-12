@@ -1,9 +1,7 @@
 Todo:
  - Port Level Description
  - Port GameOver screen
- - HighSeas: Make Progress dsiplay, rotation & resolution stabil
  - make use of load value
- - multiple audio sources for effects
  - ensure different resolutions (widescreen on some iphones result in blue spacing outside default gameview)
  - wind animation
  - rework levels (remove test levels :) )
@@ -19,4 +17,11 @@ Idea:
 Nice to have:
 
  - Easter-egg with small button that triggers an event / sound
+
+
+
+
+Done:
+ - HighSeas: Make Progress dsiplay, rotation & resolution stabil
+ - multiple audio sources for effects
  

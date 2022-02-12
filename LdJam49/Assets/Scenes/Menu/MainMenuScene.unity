@@ -4870,7 +4870,7 @@ MonoBehaviour:
   PauseToggled:
     m_PersistentCalls:
       m_Calls: []
-  AudioSource: {fileID: 2071816229}
+  Template: {fileID: 2071816229}
 --- !u!82 &2071816229
 AudioSource:
   m_ObjectHideFlags: 0
