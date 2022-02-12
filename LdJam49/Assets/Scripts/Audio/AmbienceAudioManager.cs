@@ -16,11 +16,17 @@ namespace Assets.Scripts.Audio
 
         public override void Initialize()
         {
-            base.Initialize();
-
             this.Volume = Core.Options.AmbienceVolume;
 
             this.PropagateVolume(this.Volume);
+        }
+
+        public override void Play(AudioClip audioClip)
+        {
+        }
+
+        public override void Play(string resourceName)
+        {
         }
 
         public override void Stop()

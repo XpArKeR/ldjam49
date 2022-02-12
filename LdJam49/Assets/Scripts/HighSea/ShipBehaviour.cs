@@ -106,7 +106,7 @@ public class ShipBehaviour : MonoBehaviour
                     if (Mathf.Abs(SinkingDepth) >= WaterDepth * 0.5 && !playedHitGround)
                     {
 //                        Debug.Log("SinkingDepth:");
-                        Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipOnGround"));
+                        Core.EffectsAudioManager?.Play("ShipOnGround");
                         playedHitGround = true;
                     }
                 }

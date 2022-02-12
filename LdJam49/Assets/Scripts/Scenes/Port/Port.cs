@@ -50,7 +50,7 @@ public class Port : MonoBehaviour
 
         if (Core.EffectsAudioManager != default)
         {
-            Core.EffectsAudioManager?.Play(Path.Combine("Audio", "Effects", "Ship", "ShipHornShortShort"));
+            Core.EffectsAudioManager?.Play("ShipHornShortShort");
             StartCoroutine(DelayChangeScene(1f));
         }
         else
@@ -83,7 +83,7 @@ public class Port : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Core.BackgroundAudioManager?.Play(Core.ResourceCache.GetAudioClip(Path.Combine("Audio", "Scenes", "Port", "Background_Slow")), true);
+        Core.BackgroundAudioManager?.Play("Background_Slow", true);
 
 #if UNITY_EDITOR
 

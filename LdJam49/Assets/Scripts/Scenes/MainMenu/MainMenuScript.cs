@@ -40,14 +40,14 @@ public class MainMenuScript : MonoBehaviour
         this.ChangeContainerVisiblity(credits: true);
 
         this.backgroundPlayedTime = Core.BackgroundAudioManager.AudioSource.time;
-        Core.BackgroundAudioManager.PlayStarted(Path.Combine("Audio", "Scenes", "HighSea", "HighSeaBackground"), 25f, true);
+        Core.BackgroundAudioManager.PlayStarted("HighSeaBackground", 25f, true);
     }
 
     public void BackToMainMenu()
     {
         if (this.CreditsContainer.activeSelf)
         {
-            Core.BackgroundAudioManager.PlayStarted(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"), this.backgroundPlayedTime, true);
+            Core.BackgroundAudioManager.PlayStarted("Background_without_Melody", this.backgroundPlayedTime, true);
         }
 
         this.ChangeContainerVisiblity(mainMenu: true);
@@ -92,7 +92,7 @@ public class MainMenuScript : MonoBehaviour
             Core.AmbienceAudioManager.Unmute();
         }
 
-        Core.BackgroundAudioManager.Play(Path.Combine("Audio", "Scenes", "MainMenu", "Background_without_Melody"), true);
+        Core.BackgroundAudioManager.Play("Background_without_Melody", true);
     }
 
     // Update is called once per frame

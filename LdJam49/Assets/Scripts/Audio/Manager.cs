@@ -48,10 +48,9 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        public virtual void Initialize()
-        {
-
-        }
+        public abstract void Initialize();
+        public abstract void Play(AudioClip audioClip);
+        public abstract void Play(String resourceName);
 
         public virtual void Pause()
         {

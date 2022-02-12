@@ -11,7 +11,7 @@ namespace Assets.Scripts
     public class Core
     {
         private readonly static ResourceCache resourceCache = new ResourceCache();
-        public static ResourceCache ResourceCache
+        public static ResourceCache Resources
         {
             get
             {
