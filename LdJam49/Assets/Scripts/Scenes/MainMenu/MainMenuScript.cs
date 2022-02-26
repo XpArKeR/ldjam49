@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 
 using Assets.Scripts;
 
@@ -67,17 +66,20 @@ public class MainMenuScript : MonoBehaviour
         {
             Core.EffectsAudioManager = this.EffectsAudioManager;
             Core.EffectsAudioManager.Initialize();
+            Core.EffectsAudioManager.Volume = Core.Options.EffectsVolume;
         }
         if (Core.BackgroundAudioManager == default)
         {
             Core.BackgroundAudioManager = this.BackgroundAudioManager;
             Core.BackgroundAudioManager.Initialize();
+            Core.BackgroundAudioManager.Volume = Core.Options.BackgroundVolume;
         }
 
         if (Core.AmbienceAudioManager == default)
         {
             Core.AmbienceAudioManager = this.AmbienceAudioManager;
             Core.AmbienceAudioManager.Initialize();
+            Core.AmbienceAudioManager.Volume = Core.Options.AmbienceVolume;
         }
 
         if (!Core.AmbienceAudioManager.IsPlaying)

@@ -24,16 +24,19 @@ public class OptionsMenu : MonoBehaviour
     public void OnForegroundSliderChanged()
     {
         Core.EffectsAudioManager.Volume = EffectsVolumeSlider.value;
+        Core.Options.EffectsVolume = EffectsVolumeSlider.value;
     }
 
     public void OnAmbienceSliderChanged()
     {
-        Core.BackgroundAudioManager.Volume = AmbienceVolumeSlider.value;
+        Core.AmbienceAudioManager.Volume = AmbienceVolumeSlider.value;
+        Core.Options.AmbienceVolume = AmbienceVolumeSlider.value;
     }
 
     public void OnBackgroundSliderChanged()
     {
-        Core.AmbienceAudioManager.Volume = BackgroundVolumeSlider.value;
+        Core.BackgroundAudioManager.Volume = BackgroundVolumeSlider.value;
+        Core.Options.BackgroundVolume = BackgroundVolumeSlider.value;
     }
 
     public void OnAnimationEnabledToggleValueChanged()
@@ -58,14 +61,14 @@ public class OptionsMenu : MonoBehaviour
                 this.EffectsVolumeSlider.value = Core.Options.EffectsVolume;
             }
 
-            if (this.AmbienceVolumeSlider.value != Core.Options.BackgroundVolume)
+            if (this.AmbienceVolumeSlider.value != Core.Options.AmbienceVolume)
             {
-                this.AmbienceVolumeSlider.value = Core.Options.BackgroundVolume;
+                this.AmbienceVolumeSlider.value = Core.Options.AmbienceVolume;
             }
 
-            if (this.BackgroundVolumeSlider.value != Core.Options.AmbienceVolume)
+            if (this.BackgroundVolumeSlider.value != Core.Options.BackgroundVolume)
             {
-                this.BackgroundVolumeSlider.value = Core.Options.AmbienceVolume;
+                this.BackgroundVolumeSlider.value = Core.Options.BackgroundVolume;
             }
 
             if (this.AnimationEnabledToggle.isOn != Core.Options.AreAnimationsEnabled)
