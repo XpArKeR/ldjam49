@@ -1,6 +1,6 @@
 using System;
 
-using Assets.Scripts;
+using Assets.Scripts.Base;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
-        Core.StartGame();
+        Core.Game.Start();
     }
 
     public void ShowOptions()
@@ -35,15 +35,15 @@ public class MainMenuScript : MonoBehaviour
     {
         this.ChangeContainerVisiblity(credits: true);
 
-        this.backgroundPlayedTime = Core.BackgroundAudioManager.AudioSource.time;
-        Core.BackgroundAudioManager.PlayStarted("HighSeaBackground", 25f, true);
+        this.backgroundPlayedTime = Core.Game.BackgroundAudioManager.AudioSource.time;
+        Core.Game.BackgroundAudioManager.PlayStarted("HighSeaBackground", 25f, true);
     }
 
     public void BackToMainMenu()
     {
         if (this.CreditsContainer.activeSelf)
         {
-            Core.BackgroundAudioManager.PlayStarted("Background_without_Melody", this.backgroundPlayedTime, true);
+            Core.Game.BackgroundAudioManager.PlayStarted("Background_without_Melody", this.backgroundPlayedTime, true);
         }
 
         this.ChangeContainerVisiblity(mainMenu: true);
@@ -62,36 +62,36 @@ public class MainMenuScript : MonoBehaviour
             this.VersionText.text = Application.version;
         }
 
-        if (Core.EffectsAudioManager == default)
+        if (Core.Game.EffectsAudioManager == default)
         {
-            Core.EffectsAudioManager = this.EffectsAudioManager;
-            Core.EffectsAudioManager.Initialize();
-            Core.EffectsAudioManager.Volume = Core.Options.EffectsVolume;
+            Core.Game.EffectsAudioManager = this.EffectsAudioManager;
+            Core.Game.EffectsAudioManager.Initialize();
+            Core.Game.EffectsAudioManager.Volume = Core.Game.Options.EffectsVolume;
         }
-        if (Core.BackgroundAudioManager == default)
+        if (Core.Game.BackgroundAudioManager == default)
         {
-            Core.BackgroundAudioManager = this.BackgroundAudioManager;
-            Core.BackgroundAudioManager.Initialize();
-            Core.BackgroundAudioManager.Volume = Core.Options.BackgroundVolume;
-        }
-
-        if (Core.AmbienceAudioManager == default)
-        {
-            Core.AmbienceAudioManager = this.AmbienceAudioManager;
-            Core.AmbienceAudioManager.Initialize();
-            Core.AmbienceAudioManager.Volume = Core.Options.AmbienceVolume;
+            Core.Game.BackgroundAudioManager = this.BackgroundAudioManager;
+            Core.Game.BackgroundAudioManager.Initialize();
+            Core.Game.BackgroundAudioManager.Volume = Core.Game.Options.BackgroundVolume;
         }
 
-        if (!Core.AmbienceAudioManager.IsPlaying)
+        if (Core.Game.AmbienceAudioManager == default)
         {
-            Core.AmbienceAudioManager.Resume();
+            Core.Game.AmbienceAudioManager = this.AmbienceAudioManager;
+            Core.Game.AmbienceAudioManager.Initialize();
+            Core.Game.AmbienceAudioManager.Volume = Core.Game.Options.AmbienceVolume;
+        }
+
+        if (!Core.Game.AmbienceAudioManager.IsPlaying)
+        {
+            Core.Game.AmbienceAudioManager.Resume();
         }
         else
         {
-            Core.AmbienceAudioManager.Unmute();
+            Core.Game.AmbienceAudioManager.Unmute();
         }
 
-        Core.BackgroundAudioManager.Play("Background_without_Melody", true);
+        Core.Game.BackgroundAudioManager.Play("Background_without_Melody", true);
     }
 
     // Update is called once per frame
@@ -102,7 +102,7 @@ public class MainMenuScript : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Core.OnClose();
+        Core.Game.SaveOptions();
     }
 
     private void ChangeContainerVisiblity(Boolean mainMenu = false, Boolean options = false, Boolean credits = false)
