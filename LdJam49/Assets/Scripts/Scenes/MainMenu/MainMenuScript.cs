@@ -1,6 +1,6 @@
 using System;
 
-using Assets.Scripts.Base;
+using Assets.Scripts;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
-        Core.Game.Start();
+        Core.StartGame();
     }
 
     public void ShowOptions()
@@ -35,15 +35,15 @@ public class MainMenuScript : MonoBehaviour
     {
         this.ChangeContainerVisiblity(credits: true);
 
-        this.backgroundPlayedTime = Core.Game.BackgroundAudioManager.AudioSource.time;
-        Core.Game.BackgroundAudioManager.PlayStarted("HighSeaBackground", 25f, true);
+        this.backgroundPlayedTime = Core.BackgroundAudioManager.AudioSource.time;
+        Core.BackgroundAudioManager.PlayStarted("HighSeaBackground", 25f, true);
     }
 
     public void BackToMainMenu()
     {
         if (this.CreditsContainer.activeSelf)
         {
-            Core.Game.BackgroundAudioManager.PlayStarted("Background_without_Melody", this.backgroundPlayedTime, true);
+            Core.BackgroundAudioManager.PlayStarted("Background_without_Melody", this.backgroundPlayedTime, true);
         }
 
         this.ChangeContainerVisiblity(mainMenu: true);
@@ -62,33 +62,36 @@ public class MainMenuScript : MonoBehaviour
             this.VersionText.text = Application.version;
         }
 
-        if (Core.Game.EffectsAudioManager == default)
+        if (Core.EffectsAudioManager == default)
         {
-            Core.Game.EffectsAudioManager = this.EffectsAudioManager;
-            Core.Game.EffectsAudioManager.Initialize();
+            Core.EffectsAudioManager = this.EffectsAudioManager;
+            Core.EffectsAudioManager.Initialize();
+            Core.EffectsAudioManager.Volume = Core.Options.EffectsVolume;
         }
-        if (Core.Game.BackgroundAudioManager == default)
+        if (Core.BackgroundAudioManager == default)
         {
-            Core.Game.BackgroundAudioManager = this.BackgroundAudioManager;
-            Core.Game.BackgroundAudioManager.Initialize();
-        }
-
-        if (Core.Game.AmbienceAudioManager == default)
-        {
-            Core.Game.AmbienceAudioManager = this.AmbienceAudioManager;
-            Core.Game.AmbienceAudioManager.Initialize();
+            Core.BackgroundAudioManager = this.BackgroundAudioManager;
+            Core.BackgroundAudioManager.Initialize();
+            Core.BackgroundAudioManager.Volume = Core.Options.BackgroundVolume;
         }
 
-        if (!Core.Game.AmbienceAudioManager.IsPlaying)
+        if (Core.AmbienceAudioManager == default)
         {
-            Core.Game.AmbienceAudioManager.Resume();
+            Core.AmbienceAudioManager = this.AmbienceAudioManager;
+            Core.AmbienceAudioManager.Initialize();
+            Core.AmbienceAudioManager.Volume = Core.Options.AmbienceVolume;
+        }
+
+        if (!Core.AmbienceAudioManager.IsPlaying)
+        {
+            Core.AmbienceAudioManager.Resume();
         }
         else
         {
-            Core.Game.AmbienceAudioManager.Unmute();
+            Core.AmbienceAudioManager.Unmute();
         }
 
-        Core.Game.BackgroundAudioManager.Play("Background_without_Melody", true);
+        Core.BackgroundAudioManager.Play("Background_without_Melody", true);
     }
 
     // Update is called once per frame
@@ -99,7 +102,7 @@ public class MainMenuScript : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Core.Game.SaveOptions();
+        Core.OnClose();
     }
 
     private void ChangeContainerVisiblity(Boolean mainMenu = false, Boolean options = false, Boolean credits = false)
