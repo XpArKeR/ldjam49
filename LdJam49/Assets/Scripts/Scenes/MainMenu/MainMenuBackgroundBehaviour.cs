@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using Assets.Scripts.Extensions;
+using GameFrame.Core.Extensions;
 
 using UnityEngine;
 
