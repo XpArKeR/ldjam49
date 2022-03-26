@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using Assets.Scripts;
+using Assets.Scripts.Base;
 
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class LevelManager
 
     private static List<Level> LoadLevels()
     {
-        if (Core.IsFileAccessPossible)
+        if (Core.Game.IsFileAccessPossible)
         {
             var filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Data", "Levels.json");
 

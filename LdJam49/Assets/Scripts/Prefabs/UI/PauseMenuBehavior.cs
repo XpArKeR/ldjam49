@@ -1,6 +1,6 @@
 using System;
 
-using Assets.Scripts;
+using Assets.Scripts.Base;
 using Assets.Scripts.Constants;
 
 using UnityEngine;
@@ -28,13 +28,13 @@ public class PauseMenuBehavior : MonoBehaviour
                 Hide();
 
                 Time.timeScale = 1;
-                Core.EffectsAudioManager?.Resume();
+                Core.Game.EffectsAudioManager?.Resume();
             }
         }
         else
         {
             Time.timeScale = 0;
-            Core.EffectsAudioManager?.Pause();
+            Core.Game.EffectsAudioManager?.Pause();
 
             Show();
         }
@@ -69,8 +69,8 @@ public class PauseMenuBehavior : MonoBehaviour
 
     public void Quit()
     {
-        Core.CloseGamestate();
-        Core.ChangeScene(SceneNames.MainMenu);
+        Core.Game.Stop();
+        Core.Game.ChangeScene(SceneNames.MainMenu);
     }
 
     // Start is called before the first frame update
@@ -83,7 +83,7 @@ public class PauseMenuBehavior : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {            
+        {
             ToggleMenu();
         }
     }

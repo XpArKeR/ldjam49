@@ -1,5 +1,6 @@
 
 using Assets.Scripts;
+using Assets.Scripts.Base;
 
 using Newtonsoft.Json;
 
@@ -71,7 +72,7 @@ public class ThunderStormEvent : SeaEvent
             if (getRandom(activateChance))
             {
                 lightning.SetActive(true);
-                Core.EffectsAudioManager?.Play("Thunderstorm_1");
+                Core.Game.EffectsAudioManager?.Play("Thunderstorm_1");
 
                 if (lightning != darkLayer)
                 {

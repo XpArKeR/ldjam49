@@ -1,5 +1,4 @@
-
-using Assets.Scripts;
+using Assets.Scripts.Base;
 using Assets.Scripts.Constants;
 
 using UnityEngine;
@@ -20,7 +19,7 @@ public class EndSceneBehaviour : MonoBehaviour
 
     public void BackToTitleScreen()
     {
-        Core.CloseGamestate();
-        Core.ChangeScene(SceneNames.MainMenu);
+        Core.Game.Stop();
+        Core.Game.ChangeScene(SceneNames.MainMenu);
     }
 }

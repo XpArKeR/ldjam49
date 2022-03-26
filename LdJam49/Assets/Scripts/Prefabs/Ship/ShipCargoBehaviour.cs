@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using Assets.Scripts;
+using Assets.Scripts.Base;
 
 using UnityEngine;
 
@@ -19,14 +19,13 @@ public class ShipCargoBehaviour : MonoBehaviour
     void Update()
     {
 
-
     }
 
     public void RenderCargo()
     {
-        if (Core.GameState.Ship.ShipLoad.Containers.Count > 0)
+        if (Core.Game.State.Ship.ShipLoad.Containers.Count > 0)
         {
-            foreach (var container in Core.GameState.Ship.ShipLoad.Containers)
+            foreach (var container in Core.Game.State.Ship.ShipLoad.Containers)
             {
                 var generatedSlot = GenerateShipSlot(container);
 
@@ -38,7 +37,7 @@ public class ShipCargoBehaviour : MonoBehaviour
     public void GenerateBaseSlots(UnityEngine.Events.UnityAction<ShipContainerSlotBehaviour> onShipContainerSlotClicked)
     {
         var slots = new List<ShipContainerSlotBehaviour>();
-        var containerAmount = Core.GameState.Ship.ContainerCapacity;
+        var containerAmount = Core.Game.State.Ship.ContainerCapacity;
 
         for (int i = 0; i < containerAmount; i++)
         {

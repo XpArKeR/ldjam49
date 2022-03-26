@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using Assets.Scripts;
+using Assets.Scripts.Base;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Extensions;
 
@@ -35,18 +36,18 @@ public class GameRun : MonoBehaviour
     {
         if (!isStarted)
         {
-            if (Core.BackgroundAudioManager?.IsPlaying == true)
+            if (Core.Game.BackgroundAudioManager?.IsPlaying == true)
             {
-                Core.BackgroundAudioManager.Stop();
+                Core.Game.BackgroundAudioManager.Stop();
             }
 
-            Core.BackgroundAudioManager?.Play("HighSeaBackground", true);
+            Core.Game.BackgroundAudioManager?.Play("HighSeaBackground", true);
 
 
             if (Level == default)
             {
 #if UNITY_EDITOR
-                if (Core.GameState == default)
+                if (Core.Game.State == default)
                 {
                     var gameState = new GameState()
                     {
@@ -54,11 +55,11 @@ public class GameRun : MonoBehaviour
                         Ship = ShipManager.GetDefaultShip()
                     };
 
-                    Core.StartGame(gameState);
+                    Core.Game.Start(gameState);
                 }
 #endif
 
-                Level = LevelManager.GetLevel(Core.GameState.CurrentLevel);
+                Level = LevelManager.GetLevel(Core.Game.State.CurrentLevel);
                 StartLevel();
             }
 
@@ -118,15 +119,15 @@ public class GameRun : MonoBehaviour
     {
         if (Level.IsLast)
         {
-            Core.ChangeScene(SceneNames.EndScene);
+            Core.Game.ChangeScene(SceneNames.EndScene);
         }
         else
         {
-            Core.ChangeScene(SceneNames.Port);
+            Core.Game.ChangeScene(SceneNames.Port);
 
-            Core.GameState.Ship.Unload();
+            Core.Game.State.Ship.Unload();
 
-            Core.GameState.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
+            Core.Game.State.CurrentLevel = LevelManager.GetNextLevel(Level.Name).Name;
         }
     }
 
@@ -176,7 +177,6 @@ public class GameRun : MonoBehaviour
             {
                 nextEvent = null;
             }
-
         }
     }
 

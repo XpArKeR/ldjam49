@@ -1,5 +1,4 @@
-
-using Assets.Scripts;
+using Assets.Scripts.Base;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,22 +22,22 @@ public class OptionsMenu : MonoBehaviour
 
     public void OnForegroundSliderChanged()
     {
-        Core.EffectsAudioManager.Volume = EffectsVolumeSlider.value;
+        Core.Game.EffectsAudioManager.Volume = EffectsVolumeSlider.value;
     }
 
     public void OnAmbienceSliderChanged()
     {
-        Core.BackgroundAudioManager.Volume = AmbienceVolumeSlider.value;
+        Core.Game.BackgroundAudioManager.Volume = AmbienceVolumeSlider.value;
     }
 
     public void OnBackgroundSliderChanged()
     {
-        Core.AmbienceAudioManager.Volume = BackgroundVolumeSlider.value;
+        Core.Game.AmbienceAudioManager.Volume = BackgroundVolumeSlider.value;
     }
 
     public void OnAnimationEnabledToggleValueChanged()
     {
-        Core.Options.AreAnimationsEnabled = this.AnimationEnabledToggle.isOn;
+        Core.Game.Options.AreAnimationsEnabled = this.AnimationEnabledToggle.isOn;
     }
 
     public void OnRestoreDefaultsClick()
@@ -46,31 +45,31 @@ public class OptionsMenu : MonoBehaviour
         EffectsVolumeSlider.value = 1f;
         AmbienceVolumeSlider.value = 0.125f;
         BackgroundVolumeSlider.value = 0.125f;
-        Core.Options.AreAnimationsEnabled = true;
+        Core.Game.Options.AreAnimationsEnabled = true;
     }
 
     private void UpdateValues()
     {
-        if (Core.Options != default)
+        if (Core.Game.Options != default)
         {
-            if (this.EffectsVolumeSlider.value != Core.Options.EffectsVolume)
+            if (this.EffectsVolumeSlider.value != Core.Game.Options.EffectsVolume)
             {
-                this.EffectsVolumeSlider.value = Core.Options.EffectsVolume;
+                this.EffectsVolumeSlider.value = Core.Game.Options.EffectsVolume;
             }
 
-            if (this.AmbienceVolumeSlider.value != Core.Options.BackgroundVolume)
+            if (this.AmbienceVolumeSlider.value != Core.Game.Options.BackgroundVolume)
             {
-                this.AmbienceVolumeSlider.value = Core.Options.BackgroundVolume;
+                this.AmbienceVolumeSlider.value = Core.Game.Options.BackgroundVolume;
             }
 
-            if (this.BackgroundVolumeSlider.value != Core.Options.AmbienceVolume)
+            if (this.BackgroundVolumeSlider.value != Core.Game.Options.AmbienceVolume)
             {
-                this.BackgroundVolumeSlider.value = Core.Options.AmbienceVolume;
+                this.BackgroundVolumeSlider.value = Core.Game.Options.AmbienceVolume;
             }
 
-            if (this.AnimationEnabledToggle.isOn != Core.Options.AreAnimationsEnabled)
+            if (this.AnimationEnabledToggle.isOn != Core.Game.Options.AreAnimationsEnabled)
             {
-                this.AnimationEnabledToggle.isOn = Core.Options.AreAnimationsEnabled;
+                this.AnimationEnabledToggle.isOn = Core.Game.Options.AreAnimationsEnabled;
             }
         }
     }

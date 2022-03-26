@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 
 using Assets.Scripts;
+using Assets.Scripts.Base;
 using Assets.Scripts.Constants;
 
 using UnityEngine;
@@ -43,14 +43,14 @@ public class Port : MonoBehaviour
 
     public void SetSail()
     {
-        if (Core.BackgroundAudioManager?.IsPlaying == true)
+        if (Core.Game.BackgroundAudioManager?.IsPlaying == true)
         {
-            Core.BackgroundAudioManager?.Stop();
+            Core.Game.BackgroundAudioManager?.Stop();
         }
 
-        if (Core.EffectsAudioManager != default)
+        if (Core.Game.EffectsAudioManager != default)
         {
-            Core.EffectsAudioManager?.Play("ShipHornShortShort");
+            Core.Game.EffectsAudioManager?.Play("ShipHornShortShort");
             StartCoroutine(DelayChangeScene(1f));
         }
         else
@@ -72,29 +72,29 @@ public class Port : MonoBehaviour
             yield return new WaitForSeconds(1);
         } while (--loadSecondsLeft > 0);
 
-        Core.ChangeScene(SceneNames.HighSea);
+        Core.Game.ChangeScene(SceneNames.HighSea);
     }
 
     private void onEffectFinished()
     {
-        Core.ChangeScene(SceneNames.HighSea);
+        Core.Game.ChangeScene(SceneNames.HighSea);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Core.BackgroundAudioManager?.Play("Background_Slow", true);
+        Core.Game.BackgroundAudioManager?.Play("Background_Slow", true);
 
 #if UNITY_EDITOR
 
-        if (Core.GameState == default)
+        if (Core.Game.State == default)
         {
             var gameState = new GameState()
             {
                 CurrentScene = SceneNames.Port,
                 Ship = ShipManager.GetDefaultShip()
             };
-            Core.StartGame(gameState);
+            Core.Game.Start(gameState);
         }
 #endif
 
@@ -144,9 +144,9 @@ public class Port : MonoBehaviour
             ShipBehaviour.SinkShip();
         }
 
-        if (this.ShipDetails?.ShipLoad != Core.GameState.Ship.ShipLoad)
+        if (this.ShipDetails?.ShipLoad != Core.Game.State.Ship.ShipLoad)
         {
-            this.ShipDetails.ShipLoad = Core.GameState.Ship.ShipLoad;
+            this.ShipDetails.ShipLoad = Core.Game.State.Ship.ShipLoad;
         }
     }
 
@@ -156,7 +156,7 @@ public class Port : MonoBehaviour
         var container = new BasicContainer()
         {
             Weight = weight,
-            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.3f, 0.3f))*100000f),
+            Value = System.Convert.ToDecimal((weight / 80.0f + UnityEngine.Random.Range(-0.3f, 0.3f)) * 100000f),
             Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f))
         };
 
@@ -186,7 +186,7 @@ public class Port : MonoBehaviour
                 Offset = container.Offset
             };
 
-            this.seletedLandContainer.IsSelected =false;
+            this.seletedLandContainer.IsSelected = false;
             this.seletedLandContainer.Container = default;
 
             var slot = this.ShipCargo.GenerateShipSlot(new Vector2(container.Offset.x, container.Offset.y + 1), container.transform);
@@ -196,7 +196,7 @@ public class Port : MonoBehaviour
             this.seletedLandContainer = default;
             this.UpdateContainerInfo();
 
-            Core.GameState.Ship.AddContainer(container.LoadedContainer);
+            Core.Game.State.Ship.AddContainer(container.LoadedContainer);
         }
     }
 }

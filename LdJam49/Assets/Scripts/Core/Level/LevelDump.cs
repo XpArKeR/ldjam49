@@ -44,7 +44,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 6.0,
-			""Sound"": ""Audio/Effects/Wind/Wind1""
+			""Sound"": ""Wind1""
           },
           {
             ""$type"": ""DepthEvent, Assembly-CSharp"",
@@ -64,7 +64,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 4.5,
             ""StartingTime"": 17.0,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -73,7 +73,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 4.5,
             ""StartingTime"": 23.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
         ]
       }
@@ -104,7 +104,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 4.5,
-			""Sound"": ""Audio/Effects/Wind/Wind1""
+			""Sound"": ""Wind1""
           },
           {
             ""$type"": ""WaveEvent, Assembly-CSharp"",
@@ -133,7 +133,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 6.0,
             ""StartingTime"": 17.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -142,7 +142,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 4.5,
             ""StartingTime"": 23.0,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
         ]
       }
@@ -179,7 +179,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 5.1,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""WaveEvent, Assembly-CSharp"",
@@ -197,7 +197,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 6.0,
             ""StartingTime"": 7.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -206,7 +206,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 12.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""ThunderStormEvent, Assembly-CSharp"",
@@ -221,7 +221,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 4.5,
             ""StartingTime"": 23.0,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -230,7 +230,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 24.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
         ]
       }
@@ -267,7 +267,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 5.1,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""WaveEvent, Assembly-CSharp"",
@@ -285,7 +285,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 6.0,
             ""StartingTime"": 7.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -294,7 +294,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 12.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""DepthEvent, Assembly-CSharp"",
@@ -314,7 +314,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 22.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -323,7 +323,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 4.5,
             ""StartingTime"": 25.0,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
         ]
       }
@@ -354,7 +354,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 4.1,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""ThunderStormEvent, Assembly-CSharp"",
@@ -378,7 +378,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 12.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""DepthEvent, Assembly-CSharp"",
@@ -398,7 +398,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 6.0,
             ""StartingTime"": 18.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -407,7 +407,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 25.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           }
         ]
       }
@@ -438,7 +438,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 4.1,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""ThunderStormEvent, Assembly-CSharp"",
@@ -462,7 +462,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 6.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""DepthEvent, Assembly-CSharp"",
@@ -482,7 +482,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 10,
             ""StartingTime"": 12.0,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -491,7 +491,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 6.0,
             ""StartingTime"": 18.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -500,7 +500,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 5.0,
             ""StartingTime"": 25.0,
-			""Sound"": ""Audio/Effects/Wind/Wind3""
+			""Sound"": ""Wind3""
           }
         ]
       }
@@ -540,7 +540,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 4.5,
             ""StartingTime"": 3.0,
-			""Sound"": ""Audio/Effects/Wind/Wind2""
+			""Sound"": ""Wind2""
           },
           {
             ""$type"": ""DepthEvent, Assembly-CSharp"",
@@ -579,7 +579,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 2.0,
             ""StartingTime"": 3.0,
-	    ""Sound"": ""Audio/Effects/Wind/Wind2""
+	    ""Sound"": ""Wind2""
           },
           {
             ""$type"": ""WindEvent, Assembly-CSharp"",
@@ -588,7 +588,7 @@ public class LevelDump
             ""EventName"": ""Blast"",
             ""Duration"": 2.0,
             ""StartingTime"": 7.0,
-	    ""Sound"": ""Audio/Effects/Wind/Wind2""
+	    ""Sound"": ""Wind2""
           },
           {
             ""$type"": ""ThunderStormEvent, Assembly-CSharp"",

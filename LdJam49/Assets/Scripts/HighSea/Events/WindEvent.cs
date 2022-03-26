@@ -1,8 +1,7 @@
-using Assets.Scripts;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+
+using Assets.Scripts.Base;
+
 using UnityEngine;
 
 [Serializable]
@@ -80,9 +79,9 @@ public class WindEvent : SeaEvent
             return true;
         }
 
-        if(!playedSound)
+        if (!playedSound)
         {
-            Core.EffectsAudioManager?.Play(Sound);
+            Core.Game.EffectsAudioManager?.Play(Sound);
             playedSound = true;
         }
 

@@ -1,7 +1,5 @@
-using Assets.Scripts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Base;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +30,8 @@ public class ProgressDisplay : MonoBehaviour
         if (heightScale > 1)
         {
             offset = widthScale / heightScale;
-        } else
+        }
+        else
         {
             offset = heightScale / widthScale;
         }
@@ -60,7 +59,7 @@ public class ProgressDisplay : MonoBehaviour
 
             displayImage.anchorMin = new Vector2(percentMoved, 0f);
             displayImage.anchorMax = new Vector2(percentMoved + offset, 1f);
-           
+
         }
     }
 
@@ -74,8 +73,9 @@ public class ProgressDisplay : MonoBehaviour
         float finishTime;
         try
         {
-            finishTime = LevelManager.GetLevel(Core.GameState.CurrentLevel).Length;
-        } catch
+            finishTime = LevelManager.GetLevel(Core.Game.State.CurrentLevel).Length;
+        }
+        catch
         {
             finishTime = 30;
             Debug.Log("Could not load level for progress display");

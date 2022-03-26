@@ -1,6 +1,7 @@
 using Assets.Scripts;
+using Assets.Scripts.Base;
 using Assets.Scripts.Constants;
-using System.IO;
+
 using UnityEngine;
 
 public class ShipBehaviour : MonoBehaviour
@@ -50,12 +51,9 @@ public class ShipBehaviour : MonoBehaviour
 
     void Start()
     {
-
         RotationAxis = new Vector3(0, 0, 1);
 
-
-        StartShip(Core.GameState?.Ship, 0);
-
+        StartShip(Core.Game.State?.Ship, 0);
     }
 
     void StartShip(BasicShip newShip, float startAngle)
@@ -78,7 +76,7 @@ public class ShipBehaviour : MonoBehaviour
 
         Draft = Ship.Draft;
         TranslateByDraftDelta(Draft);
-//        Debug.Log("Set Draft = " + Draft);
+        //        Debug.Log("Set Draft = " + Draft);
 
 
         //ShipTransform.parent.transform.position = Offset;
@@ -105,17 +103,17 @@ public class ShipBehaviour : MonoBehaviour
 
                     if (Mathf.Abs(SinkingDepth) >= WaterDepth * 0.5 && !playedHitGround)
                     {
-//                        Debug.Log("SinkingDepth:");
-                        Core.EffectsAudioManager?.Play("ShipOnGround");
+                        //                        Debug.Log("SinkingDepth:");
+                        Core.Game.EffectsAudioManager?.Play("ShipOnGround");
                         playedHitGround = true;
                     }
                 }
-//                ShipTransform.parent.transform.position -= new Vector3(0f, 3f * Time.deltaTime, 0);
+                //                ShipTransform.parent.transform.position -= new Vector3(0f, 3f * Time.deltaTime, 0);
                 SinkingTimer = SinkingTimer - Time.deltaTime;
             }
             else
             {
-                Core.ChangeScene(SceneNames.GameOver);
+                Core.Game.ChangeScene(SceneNames.GameOver);
             }
         }
 
@@ -134,10 +132,7 @@ public class ShipBehaviour : MonoBehaviour
 
         float RotationAcceleration = CalculateRotationAcceleration();
         Acceleration = RotationAcceleration;
-
     }
-
-
 
     private float CalculateRotationAcceleration()
     {
@@ -149,7 +144,7 @@ public class ShipBehaviour : MonoBehaviour
 
         // float radians = (Mathf.PI / 180) * (ShipAngle + Ship.ShipLoad.Offset);
         float radians = (Mathf.PI / 180) * (ShipAngle + Ship.Offset);
-        return - Ship.ShipLoad.Weight * Mathf.Sin(radians);
+        return -Ship.ShipLoad.Weight * Mathf.Sin(radians);
     }
 
     private float CalculateShipReaction()
@@ -185,7 +180,7 @@ public class ShipBehaviour : MonoBehaviour
         float draftForce = totalShipMass * (8 * delta - 1.5f * 5 * DraftVelocity);
         DraftAcceleration = draftForce / totalShipMass;
 
-//        Debug.Log("Ship Draft:  Draft = " + Draft + " Delta = " + delta + " mass = " + totalShipMass + " buoyancy = "+Ship.Buoyancy + " Force = " + draftForce + " Acceleration = " + DraftAcceleration);
+        //        Debug.Log("Ship Draft:  Draft = " + Draft + " Delta = " + delta + " mass = " + totalShipMass + " buoyancy = "+Ship.Buoyancy + " Force = " + draftForce + " Acceleration = " + DraftAcceleration);
 
     }
 
@@ -222,7 +217,7 @@ public class ShipBehaviour : MonoBehaviour
         //    throw new ShipDownException("Tilted: " + row + " : " + (ShipBehaviour.Ship.Draft - hm));
         //}
 
-        if (ShipAngle < Ship.MinAngle*0.9 || ShipAngle > Ship.MaxAngle*0.9) //REMARK: Dirty
+        if (ShipAngle < Ship.MinAngle * 0.9 || ShipAngle > Ship.MaxAngle * 0.9) //REMARK: Dirty
         {
             throw new ShipDownException("Tilted!! with angle  " + Ship.MaxAngle);
         }
